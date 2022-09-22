@@ -196,6 +196,7 @@
     <ClCompile Include="tr_light.c" />
     <ClCompile Include="tr_main.c" />
     <ClCompile Include="tr_marks.c" />
+    <ClCompile Include="tr_mdr.c" />
     <ClCompile Include="tr_mesh.c" />
     <ClCompile Include="tr_model.c" />
     <ClCompile Include="tr_noise.c" />

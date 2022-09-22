@@ -323,6 +323,9 @@
     <ClCompile Include="..\ft2\ttsbit.c">
       <Filter>FreeType2\Source Files No. 2</Filter>
     </ClCompile>
+    <ClCompile Include="tr_mdr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anorms256.h">
