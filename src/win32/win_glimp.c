@@ -64,7 +64,7 @@ typedef enum {
 #define TRY_PFD_FAIL_SOFT   1
 #define TRY_PFD_FAIL_HARD   2
 
-#define WINDOW_CLASS_NAME   "Wolfenstein"
+#define WINDOW_CLASS_NAME   "Duke Nukem Forever"
 
 static void     GLW_InitExtensions( void );
 static rserr_t  GLW_SetMode( const char *drivername,
@@ -612,7 +612,7 @@ static qboolean GLW_CreateWindow( const char *drivername, int width, int height,
 		g_wv.hWnd = CreateWindowEx(
 			exstyle,
 			WINDOW_CLASS_NAME,
-			"Wolfenstein",
+			"Duke Nukem Forever",
 			stylebits,
 			x, y, w, h,
 			NULL,
