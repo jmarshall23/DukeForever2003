@@ -52,9 +52,9 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 	//AICHAR_NONE
 	{0},
 
-	//AICHAR_SOLDIER
+	//AICHAR_GRUNT_EDF2
 	{
-		"Soldier",
+		"edf2",
 		{
 			220,        // running speed
 			90,         // walking speed
@@ -91,7 +91,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 			"infantryOrdersDeny",    // deny - refuse orders (doing something else)
 		},
 		AITEAM_NAZI,                        // team
-		"infantryss/default",                    // default model/skin
+		"edf2/default",                    // default model/skin
 		{WP_MP40,WP_GRENADE_LAUNCHER},      // starting weapons
 		BBOX_SMALL, {32,48},                // bbox, crouch/stand height
 		AIFL_CATCH_GRENADE | AIFL_STAND_IDLE2, // flags
@@ -1292,7 +1292,7 @@ void AIChar_AttackSound( cast_state_t *cs ) {
 		return;
 	}
 
-	if ( cs->weaponNum == WP_LUGER ) {
+	if ( cs->weaponNum == WP_M1911 ) {
 		G_AddEvent( ent, EV_GENERAL_SOUND, G_SoundIndex( aiDefaults[ent->aiCharacter].soundScripts[ORDERSSOUNDSCRIPT] ) );
 	} else {
 		G_AddEvent( ent, EV_GENERAL_SOUND, G_SoundIndex( aiDefaults[ent->aiCharacter].soundScripts[ATTACKSOUNDSCRIPT] ) );
@@ -1497,326 +1497,11 @@ void AIChar_spawn( gentity_t *ent ) {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_soldier (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-soldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'infantryss/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-/*
--------- MODEL FOR RADIANT ONLY - DO NOT SET THIS AS A KEY --------
-model="models\mapobjects\characters\test\nazi.md3"
-*/
 /*
 ============
 SP_ai_soldier
 ============
 */
-void SP_ai_soldier( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_SOLDIER );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_american (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-american entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'american/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_american
-============
-*/
-void SP_ai_american( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_AMERICAN );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_zombie (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive PortalZombie
-zombie entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'zombie/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_zombie
-============
-*/
-void SP_ai_zombie( gentity_t *ent ) {
-	ent->r.svFlags |= SVF_NOFOOTSTEPS;
-	AICast_DelayedSpawnCast( ent, AICHAR_ZOMBIE );
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_warzombie (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive PortalZombie
-warrior zombie entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'warrior/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_warzombie
-============
-*/
-void SP_ai_warzombie( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_WARZOMBIE );
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_venom (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-venom entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'venom/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_venom
-============
-*/
-void SP_ai_venom( gentity_t *ent ) {
-	ent->r.svFlags |= SVF_NOFOOTSTEPS;
-	AICast_DelayedSpawnCast( ent, AICHAR_VENOM );
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_loper (1 0.25 0) (-32 -32 -24) (32 32 48) TriggerSpawn NoRevive
-loper entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'loper/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_loper
-============
-*/
-void SP_ai_loper( gentity_t *ent ) {
-	ent->r.svFlags |= SVF_NOFOOTSTEPS;
-	AICast_DelayedSpawnCast( ent, AICHAR_LOPER );
-	//
-	level.loperZapSound = G_SoundIndex( "loperZap" );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_boss_helga (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-helga entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'helga/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_boss_helga
-============
-*/
-void SP_ai_boss_helga( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_HELGA );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_boss_heinrich (1 0.25 0) (-32 -32 -24) (32 32 156) TriggerSpawn NoRevive
-heinrich entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'helga/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_boss_heinrich
-============
-*/
-void SP_ai_boss_heinrich( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_HEINRICH );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_partisan (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'partisan/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_partisan
-============
-*/
-void SP_ai_partisan( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_PARTISAN );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_civilian (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'civilian/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_civilian
-============
-*/
-void SP_ai_civilian( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_CIVILIAN );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_eliteguard (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-elite guard entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'eliteguard/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_eliteguard
-============
-*/
-void SP_ai_eliteguard( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_ELITEGUARD );
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_frogman (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-elite guard entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'frogman/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_frogman
-============
-*/
-void SP_ai_frogman( gentity_t *ent ) {
-	ent->r.svFlags |= SVF_NOFOOTSTEPS;
-	AICast_DelayedSpawnCast( ent, AICHAR_FROGMAN );
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_stimsoldier_dual (1 0.25 0) (-32 -32 -24) (32 32 64) TriggerSpawn NoRevive
-stim soldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'stim/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_stimsoldier_dual
-============
-*/
-void SP_ai_stimsoldier_dual( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_STIMSOLDIER1 );
-	//
-	level.stimSoldierFlySound = G_SoundIndex( "sound/stimsoldier/flyloop.wav" );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_stimsoldier_rocket (1 0.25 0) (-32 -32 -24) (32 32 64) TriggerSpawn NoRevive
-stim soldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'stim/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_stimsoldier_rocket
-============
-*/
-void SP_ai_stimsoldier_rocket( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_STIMSOLDIER2 );
-	//
-	level.stimSoldierFlySound = G_SoundIndex( "sound/stimsoldier/flyloop.wav" );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_stimsoldier_tesla (1 0.25 0) (-32 -32 -24) (32 32 64) TriggerSpawn NoRevive
-stim soldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'stim/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_stimsoldier_tesla
-============
-*/
-void SP_ai_stimsoldier_tesla( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_STIMSOLDIER3 );
-	//
-	level.stimSoldierFlySound = G_SoundIndex( "sound/stimsoldier/flyloop.wav" );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_supersoldier (1 0.25 0) (-32 -32 -24) (32 32 64) TriggerSpawn NoRevive
-supersoldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'supersoldier/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_supersoldier
-============
-*/
-void SP_ai_supersoldier( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_SUPERSOLDIER );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_protosoldier (1 0.25 0) (-32 -32 -24) (32 32 64) TriggerSpawn NoRevive
-protosoldier entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'protosoldier/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_protosoldier
-============
-*/
-void SP_ai_protosoldier( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_PROTOSOLDIER );
-}
-
-//----------------------------------------------------------------------------------------------------------------------------
-/*QUAKED ai_blackguard (1 0.25 0) (-16 -16 -24) (16 16 64) TriggerSpawn NoRevive
-black guard entity
-"skin" the .skin file to use for this character (must exist in the player characters directory, otherwise 'blackguard/default' is used)
-"head" the .skin file to use for his head (must exist in the pc's dir, otherwise 'default' is used)
-"ainame" name of AI
-*/
-
-/*
-============
-SP_ai_blackguard
-============
-*/
-void SP_ai_blackguard( gentity_t *ent ) {
-	AICast_DelayedSpawnCast( ent, AICHAR_BLACKGUARD );
+void SP_ai_grunt_edf2( gentity_t *ent ) {
+	AICast_DelayedSpawnCast( ent, AICHAR_GRUNT_EDF2);
 }

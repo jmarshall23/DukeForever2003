@@ -2132,7 +2132,7 @@ static void PM_BeginWeaponChange( int oldweapon, int newweapon, qboolean reload 
 	switchtime = 250;   // dropping/raising usually takes 1/4 sec.
 	// sometimes different switch times for alt weapons
 	switch ( oldweapon ) {
-	case WP_LUGER:
+	case WP_M1911:
 		if ( altswitch ) {
 			switchtime = 50;
 		}
@@ -2213,7 +2213,7 @@ static void PM_FinishWeaponChange( void ) {
 
 	// sometimes different switch times for alt weapons
 	switch ( newweapon ) {
-	case WP_LUGER:
+	case WP_M1911:
 		if ( newweapon == weapAlts[oldweapon] ) {
 			switchtime = 50;
 		}
@@ -2571,7 +2571,7 @@ void PM_AdjustAimSpreadScale( void ) {
 
 	wpnScale = 0.0f;
 	switch ( pm->ps->weapon ) {
-	case WP_LUGER:
+	case WP_M1911:
 	case WP_SILENCER:
 		wpnScale = 0.5f;
 		break;
@@ -2942,7 +2942,7 @@ if ( pm->ps->weaponTime > 0 ) {
 //----(SA)	removed for DM and id
 /*
 		// RF, testing special case Pistol, which fires faster if you tap the fire button
-		if ( pm->ps->weapon == WP_LUGER ) {
+		if ( pm->ps->weapon == WP_M1911 ) {
 			if ( pm->ps->releasedFire ) {
 				if (pm->ps->weaponTime <= 250 && (pm->cmd.buttons & BUTTON_ATTACK)) {
 					pm->ps->weaponTime = 0;
@@ -2977,7 +2977,7 @@ if ( pm->ps->weaponTime > 0 ) {
 #ifdef GAMEDLL
 	if ( g_gametype.integer != GT_SINGLE_PLAYER ) {
 #endif
-	if ( pm->ps->weapon == WP_LUGER ) {
+	if ( pm->ps->weapon == WP_M1911 ) {
 		if ( pm->ps->releasedFire ) {
 			if ( pm->ps->weaponTime <= 150 && ( pm->cmd.buttons & BUTTON_ATTACK ) ) {
 				pm->ps->weaponTime = 0;
@@ -3145,7 +3145,7 @@ case WP_FG42SCOPE:
 	break;
 case WP_PANZERFAUST:
 case WP_SILENCER:
-case WP_LUGER:
+case WP_M1911:
 case WP_COLT:
 case WP_AKIMBO:         //----(SA)	added
 case WP_SNIPERRIFLE:
@@ -3362,7 +3362,7 @@ case WP_PANZERFAUST:
 	aimSpreadScaleAdd = 30;
 	break;
 
-case WP_LUGER:
+case WP_M1911:
 	addTime = ammoTable[pm->ps->weapon].nextShotTime;
 	aimSpreadScaleAdd = 35;
 	break;

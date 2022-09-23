@@ -580,7 +580,7 @@ void SnapVectorTowards( vec3_t v, vec3_t to ) {
 int G_GetWeaponDamage( int weapon ) {
 	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
 		switch ( weapon ) {
-		case WP_LUGER:
+		case WP_M1911:
 		case WP_SILENCER: return 6;
 		case WP_COLT: return 8;
 		case WP_AKIMBO: return 8;       //----(SA)	added
@@ -609,7 +609,7 @@ int G_GetWeaponDamage( int weapon ) {
 		}
 	} else { // multiplayer damage
 		switch ( weapon ) {
-		case WP_LUGER:
+		case WP_M1911:
 		case WP_SILENCER: return 14;
 		case WP_COLT: return 18;
 		case WP_AKIMBO: return 18;      //----(SA)	added
@@ -653,7 +653,7 @@ float G_GetWeaponSpread( int weapon ) {
 		if ( g_userAim.integer ) {
 			// these should be higher since they become erratic if aiming is out
 			switch ( weapon ) {
-			case WP_LUGER:      return 600;
+			case WP_M1911:      return 600;
 			case WP_SILENCER:   return 900;
 			case WP_COLT:       return 700;
 			case WP_AKIMBO:     return 700; //----(SA)	added
@@ -670,7 +670,7 @@ float G_GetWeaponSpread( int weapon ) {
 			}
 		} else {    // old values
 			switch ( weapon ) {
-			case WP_LUGER:      return 25;
+			case WP_M1911:      return 25;
 			case WP_SILENCER:   return 150;
 			case WP_COLT:       return 30;
 			case WP_AKIMBO:     return 30;      //----(SA)	added
@@ -688,7 +688,7 @@ float G_GetWeaponSpread( int weapon ) {
 		}
 	} else { // JPW NERVE but in multiplayer...  new spreads and don't look at g_userAim
 		switch ( weapon ) {
-		case WP_LUGER: return 600;
+		case WP_M1911: return 600;
 		case WP_SILENCER: return 900;
 		case WP_COLT: return 800;
 		case WP_AKIMBO: return 800;         //----(SA)added
@@ -709,8 +709,8 @@ float G_GetWeaponSpread( int weapon ) {
 	return 0;   // shouldn't get here
 }
 
-#define LUGER_SPREAD    G_GetWeaponSpread( WP_LUGER )
-#define LUGER_DAMAGE    G_GetWeaponDamage( WP_LUGER ) // JPW
+#define LUGER_SPREAD    G_GetWeaponSpread( WP_M1911 )
+#define LUGER_DAMAGE    G_GetWeaponDamage( WP_M1911 ) // JPW
 #define SILENCER_SPREAD G_GetWeaponSpread( WP_SILENCER )
 #define COLT_SPREAD     G_GetWeaponSpread( WP_COLT )
 #define COLT_DAMAGE     G_GetWeaponDamage( WP_COLT ) // JPW
@@ -1730,7 +1730,7 @@ void FireWeapon( gentity_t *ent ) {
 		} else {
 			//	/maximum/ accuracy for player for a given weapon
 			switch ( ent->s.weapon ) {
-			case WP_LUGER:
+			case WP_M1911:
 			case WP_SILENCER:
 			case WP_COLT:
 			case WP_AKIMBO:
@@ -1765,7 +1765,7 @@ void FireWeapon( gentity_t *ent ) {
 		break;
 // jpw
 		break;
-	case WP_LUGER:
+	case WP_M1911:
 		Bullet_Fire( ent, LUGER_SPREAD * aimSpreadScale, LUGER_DAMAGE );
 		break;
 	case WP_SILENCER:

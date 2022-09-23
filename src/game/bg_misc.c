@@ -91,7 +91,7 @@ ammotable_t ammoTable[] = {
 
 	{   999,            0,      999,    0,      50,             200,    0,      0,      MOD_KNIFE               },  //	WP_KNIFE				// 1
 
-	{   MAX_AMMO_9MM,   1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_LUGER               },  //	WP_LUGER				// 2	// NOTE: also 32 round 'snail' magazine
+	{   MAX_AMMO_9MM,   1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_M1911               },  //	WP_M1911				// 2	// NOTE: also 32 round 'snail' magazine
 	{   MAX_AMMO_9MM,   1,      32,     2600,   DELAY_LOW,      100,    0,      0,      MOD_MP40                },  //	WP_MP40					// 3
 	{   MAX_AMMO_MAUSER,1,      10,     2500,   DELAY_HIGH,     1200,   0,      0,      MOD_MAUSER              },  //	WP_MAUSER				// 4	// NOTE: authentic clips are 5/10/25 rounds
 	{   MAX_AMMO_FG42,  1,      20,     2000,   DELAY_LOW,      200,    0,      0,      MOD_FG42                },  //	WP_FG42					// 5
@@ -141,7 +141,7 @@ ammotable_t ammoTable[] = {
 int weapAlts[] = {
 	WP_NONE,            // 0 WP_NONE
 	WP_NONE,            // 1 WP_KNIFE
-	WP_SILENCER,        // 2 WP_LUGER
+	WP_SILENCER,        // 2 WP_M1911
 	WP_NONE,            // 3 WP_MP40
 	WP_SNIPERRIFLE,     // 4 WP_MAUSER
 	WP_FG42SCOPE,       // 5 WP_FG42	// was SP5
@@ -165,7 +165,7 @@ int weapAlts[] = {
 	WP_FG42,            // 23 WP_FG42SCOPE
 //	WP_BAR,				// 24 WP_BAR2		//----(SA)	new
 	WP_NONE,            // 25 WP_STEN
-	WP_LUGER,           // 26 WP_SILENCER	//----(SA)	was sp5
+	WP_M1911,           // 26 WP_SILENCER	//----(SA)	was sp5
 	WP_COLT,            // 27 WP_AKIMBO		//----(SA)	new
 	WP_NONE,            // 28 WP_CLASS_SPECIAL
 //	WP_NONE,			// 29 WP_CROSS
@@ -983,9 +983,9 @@ model="models/weapons2/luger/luger.md3"
 		"Luger",             // pickup
 		50,
 		IT_WEAPON,
-		WP_LUGER,
-		WP_LUGER,
-		WP_LUGER,
+		WP_M1911,
+		WP_M1911,
+		WP_M1911,
 		"",                      // precache
 		"",                      // sounds
 		{0,0,0,0}
@@ -1059,7 +1059,7 @@ model="models/weapons2/sten/sten.md3"
 		30,
 		IT_WEAPON,
 		WP_STEN,
-		WP_LUGER,
+		WP_M1911,
 		WP_STEN,
 		"",                  // precache
 		"",                  // sounds
@@ -1165,7 +1165,7 @@ model="models\weapons2\mp40\mp40.md3"
 		30,
 		IT_WEAPON,
 		WP_MP40,
-		WP_LUGER,
+		WP_M1911,
 		WP_MP40,
 		"",                  // precache
 		"",                  // sounds
@@ -1276,8 +1276,8 @@ model="models/weapons2/sp5/sp5.md3"
 		10,
 		IT_WEAPON,
 		WP_SILENCER,
-		WP_LUGER,
-		WP_LUGER,
+		WP_M1911,
+		WP_M1911,
 		"",                  // precache
 		"",                  // sounds
 		{0,0,0,0}
@@ -1924,9 +1924,9 @@ model="models/powerups/ammo/am9mm_s.md3"
 		"9mm Rounds",        // pickup
 		30,
 		IT_AMMO,
-		WP_LUGER,
-		WP_LUGER,
-		WP_LUGER,
+		WP_M1911,
+		WP_M1911,
+		WP_M1911,
 		"",                  // precache
 		"",                  // sounds
 		{32,24,16,16}
@@ -1947,9 +1947,9 @@ model="models/powerups/ammo/am9mm_m.md3"
 		"9mm",           // pickup			//----(SA)	changed
 		60,
 		IT_AMMO,
-		WP_LUGER,
-		WP_LUGER,
-		WP_LUGER,
+		WP_M1911,
+		WP_M1911,
+		WP_M1911,
 		"",                  // precache
 		"",                  // sounds
 		{64,48,32,32}
@@ -1970,9 +1970,9 @@ model="models/powerups/ammo/am9mm_l.md3"
 		"9mm Box",           // pickup
 		100,
 		IT_AMMO,
-		WP_LUGER,
-		WP_LUGER,
-		WP_LUGER,
+		WP_M1911,
+		WP_M1911,
+		WP_M1911,
 		"",                  // precache
 		"",                  // sounds
 		{96,64,48,48}

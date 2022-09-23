@@ -307,27 +307,7 @@ void SP_props_box_64( gentity_t *self );
 // END JOSEPH
 
 // Ridah
-void SP_ai_soldier( gentity_t *ent );
-void SP_ai_american( gentity_t *ent );
-void SP_ai_zombie( gentity_t *ent );
-void SP_ai_warzombie( gentity_t *ent );
-void SP_ai_marker( gentity_t *ent );
-void SP_ai_effect( gentity_t *ent );
-void SP_ai_trigger( gentity_t *ent );
-void SP_ai_venom( gentity_t *ent );
-void SP_ai_loper( gentity_t *ent );
-void SP_ai_boss_helga( gentity_t *ent );
-void SP_ai_boss_heinrich( gentity_t *ent ); //----(SA)	added
-void SP_ai_eliteguard( gentity_t *ent );
-void SP_ai_stimsoldier_dual( gentity_t *ent );
-void SP_ai_stimsoldier_rocket( gentity_t *ent );
-void SP_ai_stimsoldier_tesla( gentity_t *ent );
-void SP_ai_supersoldier( gentity_t *ent );
-void SP_ai_blackguard( gentity_t *ent );
-void SP_ai_protosoldier( gentity_t *ent );
-void SP_ai_frogman( gentity_t *ent );
-void SP_ai_partisan( gentity_t *ent );
-void SP_ai_civilian( gentity_t *ent );
+void SP_ai_grunt_edf2( gentity_t *ent );
 // done.
 
 // Rafael particles
@@ -575,29 +555,7 @@ spawn_t spawns[] = {
 	{"team_WOLF_checkpoint", SP_team_WOLF_checkpoint},       // DHM - Nerve
 
 	// Ridah
-	{"ai_soldier", SP_ai_soldier},
-	{"ai_american", SP_ai_american},
-	{"ai_zombie", SP_ai_zombie},
-	{"ai_warzombie", SP_ai_warzombie},
-	{"ai_venom", SP_ai_venom},
-	{"ai_loper", SP_ai_loper},
-	{"ai_boss_helga", SP_ai_boss_helga},
-	{"ai_boss_heinrich", SP_ai_boss_heinrich},   //----(SA)
-	{"ai_eliteguard", SP_ai_eliteguard},
-	{"ai_stimsoldier_dual", SP_ai_stimsoldier_dual},
-	{"ai_stimsoldier_rocket", SP_ai_stimsoldier_rocket},
-	{"ai_stimsoldier_tesla", SP_ai_stimsoldier_tesla},
-	{"ai_supersoldier", SP_ai_supersoldier},
-	{"ai_protosoldier", SP_ai_protosoldier},
-	{"ai_frogman", SP_ai_frogman},
-	{"ai_blackguard", SP_ai_blackguard},
-	{"ai_partisan", SP_ai_partisan},
-	{"ai_civilian", SP_ai_civilian},
-
-
-	{"ai_marker", SP_ai_marker},
-	{"ai_effect", SP_ai_effect},
-	{"ai_trigger", SP_ai_trigger},
+	{"ai_grunt_edf2", SP_ai_grunt_edf2 },
 	// done.
 
 	// Rafael particles

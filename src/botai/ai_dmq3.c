@@ -465,7 +465,7 @@ void BotUpdateInventory( bot_state_t *bs ) {
 	//armor
 	bs->inventory[INVENTORY_ARMOR] = bs->cur_ps.stats[STAT_ARMOR];
 	//weapons
-	bs->inventory[INVENTORY_LUGER]              =   COM_BitCheck( bs->cur_ps.weapons, ( WP_LUGER ) );
+	bs->inventory[INVENTORY_M1911]              =   COM_BitCheck( bs->cur_ps.weapons, ( WP_M1911 ) );
 	bs->inventory[INVENTORY_MAUSER]             =   COM_BitCheck( bs->cur_ps.weapons, ( WP_MAUSER ) );
 	bs->inventory[INVENTORY_MP40]               =   COM_BitCheck( bs->cur_ps.weapons, ( WP_MP40 ) );
 	bs->inventory[INVENTORY_GRENADELAUNCHER]    =   COM_BitCheck( bs->cur_ps.weapons, ( WP_GRENADE_LAUNCHER ) );

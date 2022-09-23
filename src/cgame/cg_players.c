@@ -179,10 +179,10 @@ CG_CalcMoveSpeeds
 ==================
 */
 void CG_CalcMoveSpeeds( clientInfo_t *ci ) {
-	char *tags[2] = {"tag_footleft", "tag_footright"};
+	char* tags[2] = { "tag_footleft", "tag_footright" };
 	vec3_t oldPos[2];
 	refEntity_t refent;
-	animation_t *anim;
+	animation_t* anim;
 	int i, j, k;
 	float totalSpeed;
 	int numSpeed;
@@ -192,9 +192,9 @@ void CG_CalcMoveSpeeds( clientInfo_t *ci ) {
 
 	refent.hModel = ci->legsModel;
 
-	for ( i = 0, anim = ci->modelInfo->animations; i < ci->modelInfo->numAnimations; i++, anim++ ) {
+	for (i = 0, anim = ci->modelInfo->animations; i < ci->modelInfo->numAnimations; i++, anim++) {
 
-		if ( anim->moveSpeed == 0 ) {
+		if (anim->moveSpeed == 0) {
 			continue;
 		}
 
@@ -203,7 +203,7 @@ void CG_CalcMoveSpeeds( clientInfo_t *ci ) {
 		numSpeed = 0;
 		numSteps = 0;
 		isStrafe = qfalse;
-		if ( strstr( anim->name, "strafe" ) ) {
+		if (strstr(anim->name, "strafe")) {
 			isStrafe = qtrue;
 		}
 
@@ -211,73 +211,83 @@ void CG_CalcMoveSpeeds( clientInfo_t *ci ) {
 		refent.frame = anim->firstFrame + anim->numFrames - 1;
 		refent.oldframe = refent.frame;
 		// for each foot
-		for ( k = 0; k < 2; k++ ) {
-			if ( trap_R_LerpTag( &o[k], &refent, tags[k], 0 ) < 0 ) {
-				CG_Error( "CG_CalcMoveSpeeds: unable to find tag %s, cannot calculate movespeed", tags[k] );
+		for (k = 0; k < 2; k++) {
+			if (trap_R_LerpTag(&o[k], &refent, tags[k], 0) < 0) {
+			//	CG_Error("CG_CalcMoveSpeeds: unable to find tag %s, cannot calculate movespeed", tags[k]);
 			}
 		}
 		// save the positions
-		for ( k = 0; k < 2; k++ ) {
-			VectorCopy( o[k].origin, oldPos[k] );
+		for (k = 0; k < 2; k++) {
+			VectorCopy(o[k].origin, oldPos[k]);
 		}
 		//
 		// set the numSteps
-		if ( !isStrafe ) {
-			if ( o[0].origin[0] > o[1].origin[0] ) {
+		if (!isStrafe) {
+			if (o[0].origin[0] > o[1].origin[0]) {
 				thisFirst = 0;
-			} else { thisFirst = 1;}
-		} else {
-			if ( o[0].origin[1] > o[1].origin[1] ) {
+			}
+			else { thisFirst = 1; }
+		}
+		else {
+			if (o[0].origin[1] > o[1].origin[1]) {
 				thisFirst = 0;
-			} else { thisFirst = 1;}
+			}
+			else { thisFirst = 1; }
 		}
 		lastFirst = thisFirst;
 
 		// for each frame
-		for ( j = 0; j < anim->numFrames; j++ ) {
+		for (j = 0; j < anim->numFrames; j++) {
 
 			refent.frame = anim->firstFrame + j;
 			refent.oldframe = refent.frame;
 
 			// for each foot
-			for ( k = 0; k < 2; k++ ) {
-				if ( trap_R_LerpTag( &o[k], &refent, tags[k], 0 ) < 0 ) {
-					CG_Error( "CG_CalcMoveSpeeds: unable to find tag %s, cannot calculate movespeed", tags[k] );
+			for (k = 0; k < 2; k++) {
+				if (trap_R_LerpTag(&o[k], &refent, tags[k], 0) < 0) {
+				//	CG_Error("CG_CalcMoveSpeeds: unable to find tag %s, cannot calculate movespeed", tags[k]);
 				}
 			}
 
 			// find the contact foot
-			if ( anim->flags & ANIMFL_LADDERANIM ) {
-				if ( o[0].origin[0] > o[1].origin[0] ) {
+			if (anim->flags & ANIMFL_LADDERANIM) {
+				if (o[0].origin[0] > o[1].origin[0]) {
 					low = 0;
-				} else {
+				}
+				else {
 					low = 1;
 				}
-				totalSpeed += fabs( oldPos[low][2] - o[low].origin[2] );
-			} else {
-				if ( o[0].origin[2] < o[1].origin[2] ) {
+				totalSpeed += fabs(oldPos[low][2] - o[low].origin[2]);
+			}
+			else {
+				if (o[0].origin[2] < o[1].origin[2]) {
 					low = 0;
-				} else {
+				}
+				else {
 					low = 1;
 				}
-				if ( !isStrafe ) {
-					totalSpeed += fabs( oldPos[low][0] - o[low].origin[0] );
-				} else {
-					totalSpeed += fabs( oldPos[low][1] - o[low].origin[1] );
+				if (!isStrafe) {
+					totalSpeed += fabs(oldPos[low][0] - o[low].origin[0]);
+				}
+				else {
+					totalSpeed += fabs(oldPos[low][1] - o[low].origin[1]);
 				}
 				//
 				// set the numSteps
-				if ( !isStrafe ) {
-					if ( o[0].origin[0] > o[1].origin[0] ) {
+				if (!isStrafe) {
+					if (o[0].origin[0] > o[1].origin[0]) {
 						thisFirst = 0;
-					} else { thisFirst = 1;}
-				} else {
-					if ( o[0].origin[1] > o[1].origin[1] ) {
+					}
+					else { thisFirst = 1; }
+				}
+				else {
+					if (o[0].origin[1] > o[1].origin[1]) {
 						thisFirst = 0;
-					} else { thisFirst = 1;}
+					}
+					else { thisFirst = 1; }
 				}
 				// if they have changed, record the step
-				if ( lastFirst != thisFirst ) {
+				if (lastFirst != thisFirst) {
 					numSteps++;
 					lastFirst = thisFirst;
 				}
@@ -286,32 +296,32 @@ void CG_CalcMoveSpeeds( clientInfo_t *ci ) {
 			numSpeed++;
 
 			// save the positions
-			for ( k = 0; k < 2; k++ ) {
-				VectorCopy( o[k].origin, oldPos[k] );
+			for (k = 0; k < 2; k++) {
+				VectorCopy(o[k].origin, oldPos[k]);
 			}
 			lastLow = low;
 		}
 
 		// record the speed
-		if ( anim->moveSpeed < 0 ) {  // use the auto calculations
-			anim->moveSpeed = (int)( ( totalSpeed / numSpeed ) * 1000.0 / anim->frameLerp );
+		if (anim->moveSpeed < 0) {  // use the auto calculations
+			anim->moveSpeed = 100; // (int)((totalSpeed / numSpeed) * 1000.0 / anim->frameLerp);
 		}
 		// set the stepGap
-		if ( !numSteps ) {
+		if (!numSteps) {
 			numSteps = 2;
 		}
-		if ( numSteps % 2 ) {
+		if (numSteps % 2) {
 			numSteps++;             // round it up if odd number of steps
 		}
-		anim->stepGap = ( 0.5 * ( (float)anim->moveSpeed * (float)anim->duration / 1000.0 ) );
-		anim->stepGap /= ( numSteps / 2 );  // in case there are more than 2 steps in animation
-		if ( isStrafe ) {
+		anim->stepGap = (0.5 * ((float)anim->moveSpeed * (float)anim->duration / 1000.0));
+		anim->stepGap /= (numSteps / 2);  // in case there are more than 2 steps in animation
+		if (isStrafe) {
 			anim->stepGap *= 1.3;   // HACK
 		}
 	}
 
-	if ( cgs.localServer ) {
-		CG_SendMoveSpeed( ci->modelInfo->animations, ci->modelInfo->numAnimations, ci->modelInfo->modelname );
+	if (cgs.localServer) {
+		CG_SendMoveSpeed(ci->modelInfo->animations, ci->modelInfo->numAnimations, ci->modelInfo->modelname);
 	}
 }
 
@@ -405,17 +415,7 @@ static qboolean CG_RegisterClientSkin( clientInfo_t *ci, const char *modelName, 
 		return qtrue;
 	}
 
-	Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower_%s.skin", modelName, skinName );
-	ci->legsSkin = trap_R_RegisterSkin( filename );
-
-	Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper_%s.skin", modelName, skinName );
-	ci->torsoSkin = trap_R_RegisterSkin( filename );
-
-	if ( !ci->legsSkin || !ci->torsoSkin ) {
-		return qfalse;
-	}
-
-	return qtrue;
+	return qfalse;
 }
 
 /*
@@ -566,7 +566,7 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 	}
 
 	// load cmodels before models so filecache works
-
+/*
 	if ( trap_R_GetSkinModel( ci->legsSkin, "md3_part", &namefromskin[0] ) ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players/%s/%s", modelName, namefromskin );
 		ci->legsModel = trap_R_RegisterModel( filename );
@@ -575,30 +575,26 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 		ci->legsModel = trap_R_RegisterModel( filename );
 
 		if ( !ci->legsModel ) {   // revert to mesh animation
-			Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower.md3", modelName );
+			Com_sprintf( filename, sizeof( filename ), "models/players/%s/%s.md3", modelName, modelName);
 			ci->legsModel = trap_R_RegisterModel( filename );
 		} else {                // found skeletal model
 			ci->isSkeletal = qtrue;
 			ci->torsoModel = ci->legsModel;
 		}
 	}
+*/
+	Com_sprintf(filename, sizeof(filename), "models/players/%s/body.mds", modelName);
+	ci->legsModel = trap_R_RegisterModel(filename);
 
-	if ( !ci->isSkeletal ) {
+	if (ci->legsModel) {  // found skeletal model
+		ci->isSkeletal = qtrue;
+		ci->torsoModel = ci->legsModel;
+	}
+	else {
+		Com_sprintf(filename, sizeof(filename), "models/players/%s/%s.md3", modelName, modelName);
+		ci->legsModel = trap_R_RegisterModel( filename );
 
-		if ( !ci->legsModel ) {
-			Com_Printf( "Failed to load legs model file %s\n", filename );
-			return qfalse;
-		}
-
-		if ( trap_R_GetSkinModel( ci->torsoSkin, "md3_part", &namefromskin[0] ) ) {
-			Com_sprintf( filename, sizeof( filename ), "models/players/%s/%s", modelName, namefromskin );
-		} else {
-			Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper.md3", modelName );
-		}
-
-		ci->torsoModel = trap_R_RegisterModel( filename );
-
-		if ( !ci->torsoModel ) {
+		if ( !ci->legsModel) {
 			Com_Printf( "Failed to load torso model file %s\n", filename );
 			return qfalse;
 		}
@@ -1221,7 +1217,7 @@ void CG_LoadClientInfo( clientInfo_t *ci ) {
 	// load the head first (since if the head loads but there is a problem with something in the lower
 	// body, you will want to default the model back to a default and want the head to match)
 	//
-
+#if 0
 	if ( !CG_RegisterClientHeadname( ci, ci->modelName, ci->hSkinName ) ) {
 		if ( cg_buildScript.integer ) {
 			CG_Error( "CG_RegisterClientHeadname( %s, %s ) failed.  setting default", ci->modelName, ci->hSkinName );
@@ -1235,8 +1231,9 @@ void CG_LoadClientInfo( clientInfo_t *ci ) {
 			}
 		}
 	}
+#endif
 
-	if ( headfail || !CG_RegisterClientModelname( ci, ci->modelName, ci->skinName ) ) {
+	if ( !CG_RegisterClientModelname( ci, ci->modelName, ci->skinName ) ) {
 		if ( cg_buildScript.integer ) {
 			CG_Error( "CG_RegisterClientModelname( %s, %s ) failed", ci->modelName, ci->skinName );
 		}

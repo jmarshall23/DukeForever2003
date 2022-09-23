@@ -93,7 +93,7 @@ float Com_GetFlamethrowerRange( void );
 
 // RF, temp only, use infantryss so we can test new anim system
 //#define	DEFAULT_MODEL		"american"
-#define DEFAULT_MODEL       "bj2"
+#define DEFAULT_MODEL       "player"
 #define DEFAULT_HEAD        "default"    // technically the default head skin.  this means "head_default.skin" for the head
 
 // RF, on fire effects
@@ -498,7 +498,9 @@ typedef enum
 {
 	AICHAR_NONE,
 
-	AICHAR_SOLDIER,
+	AICHAR_GRUNT_EDF2,
+
+// Old Wolfenstein AI
 	AICHAR_AMERICAN,
 	AICHAR_ZOMBIE,
 	AICHAR_WARZOMBIE,
@@ -532,7 +534,7 @@ typedef enum {
 
 	WP_KNIFE,               // 1
 	// German weapons
-	WP_LUGER,               // 2
+	WP_M1911,               // 2
 	WP_MP40,                // 3
 	WP_MAUSER,              // 4
 	WP_FG42,                // 5
@@ -624,7 +626,7 @@ extern int weapAlts[];  // defined in bg_misc.c
 #define WP_BEGINSECONDARY   WP_SNIPERRIFLE
 #define WP_LASTSECONDARY    WP_FG42SCOPE
 
-#define WEAPS_ONE_HANDED    ( ( 1 << WP_KNIFE ) | ( 1 << WP_LUGER ) | ( 1 << WP_COLT ) | ( 1 << WP_SILENCER ) | ( 1 << WP_GRENADE_LAUNCHER ) | ( 1 << WP_GRENADE_PINEAPPLE ) )
+#define WEAPS_ONE_HANDED    ( ( 1 << WP_KNIFE ) | ( 1 << WP_M1911 ) | ( 1 << WP_COLT ) | ( 1 << WP_SILENCER ) | ( 1 << WP_GRENADE_LAUNCHER ) | ( 1 << WP_GRENADE_PINEAPPLE ) )
 //----(SA)	end
 
 typedef enum {
@@ -1140,7 +1142,7 @@ typedef enum {
 	MOD_KNIFE,
 	MOD_KNIFE2,
 	MOD_KNIFE_STEALTH,
-	MOD_LUGER,
+	MOD_M1911,
 	MOD_COLT,
 	MOD_MP40,
 	MOD_THOMPSON,
@@ -1241,7 +1243,7 @@ typedef struct gitem_s {
 
 	int giTag;
 
-	int giAmmoIndex;            // type of weapon ammo this uses.  (ex. WP_MP40 and WP_LUGER share 9mm ammo, so they both have WP_LUGER for giAmmoIndex)
+	int giAmmoIndex;            // type of weapon ammo this uses.  (ex. WP_MP40 and WP_M1911 share 9mm ammo, so they both have WP_M1911 for giAmmoIndex)
 	int giClipIndex;            // which clip this weapon uses.  this allows the sniper rifle to use the same clip as the garand, etc.
 
 	char        *precaches;     // string of all models and images this item will use

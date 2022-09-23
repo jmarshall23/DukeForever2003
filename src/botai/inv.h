@@ -38,7 +38,7 @@ If you have questions concerning this license or the applicable additional terms
 //armor
 #define INVENTORY_ARMOR             1
 //weapons
-#define INVENTORY_LUGER             4
+#define INVENTORY_M1911             4
 #define INVENTORY_MAUSER            5
 #define INVENTORY_MP40              6
 #define INVENTORY_SP5               7

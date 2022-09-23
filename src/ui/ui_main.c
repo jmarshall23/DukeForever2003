@@ -4020,7 +4020,7 @@ static weaponType_t weaponTypes[] = {
 	{ 0, "NULL", 0, "none", 0, "none", "", "" },
 
 	{ WP_COLT,  "1911 pistol",   PT_PISTOL,  "mp_weapon", 0, "ui/assets/weapon_colt1911.tga",      "firing_pistolB_1",      "stand_pistolB" },
-	{ WP_LUGER, "Luger pistol",  PT_PISTOL,  "mp_weapon", 1, "ui/assets/weapon_luger.tga",     "firing_pistolB_1",      "stand_pistolB" },
+	{ WP_M1911, "Luger pistol",  PT_PISTOL,  "mp_weapon", 1, "ui/assets/weapon_luger.tga",     "firing_pistolB_1",      "stand_pistolB" },
 	//	{ 0,		"Medkit",		PT_MEDKIT,	"mp_item2",		2, "ui/assets/item_medkit.tga",			"firing_pistolB_1",		"stand_pistolB" },
 
 	{ WP_MP40,              "MP40 submachinegun",        PT_LIGHTONLY | PT_RIFLE,    "mp_weapon", 3, "ui/assets/weapon_mp40.tga",          "relaxed_idle_2h_1", "relaxed_idle_2h_1" },

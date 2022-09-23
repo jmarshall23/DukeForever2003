@@ -200,7 +200,7 @@ void AICast_InputToUserCommand( cast_state_t *cs, bot_input_t *bi, usercmd_t *uc
 			 (   ( cs->lockViewAnglesTime >= level.time ) ||
 				 ( fabs( AngleDifference( cs->ideal_viewangles[YAW], cs->viewangles[YAW] ) ) < 20 ) ) &&
 			 // check for radid luger firing by skilled users (release fire between shots)
-			 ( ( ( level.time + cs->entityNum * 500 ) / 2000 ) % 2 || !( rand() % ( 1 + g_gameskill.integer ) ) || ( cs->attributes[ATTACK_SKILL] < 0.5 ) || ( cs->weaponNum != WP_LUGER ) || ( cs->bs->cur_ps.weaponTime == 0 ) || ( cs->bs->cur_ps.releasedFire ) ) ) {
+			 ( ( ( level.time + cs->entityNum * 500 ) / 2000 ) % 2 || !( rand() % ( 1 + g_gameskill.integer ) ) || ( cs->attributes[ATTACK_SKILL] < 0.5 ) || ( cs->weaponNum != WP_M1911 ) || ( cs->bs->cur_ps.weaponTime == 0 ) || ( cs->bs->cur_ps.releasedFire ) ) ) {
 			ucmd->buttons |= BUTTON_ATTACK;
 			// do some swaying around for some weapons
 			AICast_WeaponSway( cs, ofs );

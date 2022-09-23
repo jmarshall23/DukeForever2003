@@ -863,10 +863,10 @@ void SetWolfSpawnWeapons( gclient_t *client ) {
 	switch ( client->sess.sessionTeam ) { // JPW NERVE was playerPistol
 
 	case TEAM_RED: // JPW NERVE
-		COM_BitSet( client->ps.weapons, WP_LUGER );
-		client->ps.ammoclip[BG_FindClipForWeapon( WP_LUGER )] += 8;
-		client->ps.ammo[BG_FindAmmoForWeapon( WP_LUGER )] += 24;
-		client->ps.weapon = WP_LUGER;
+		COM_BitSet( client->ps.weapons, WP_M1911 );
+		client->ps.ammoclip[BG_FindClipForWeapon( WP_M1911 )] += 8;
+		client->ps.ammo[BG_FindAmmoForWeapon( WP_M1911 )] += 24;
+		client->ps.weapon = WP_M1911;
 		break;
 	default: // '0' // TEAM_BLUE
 		COM_BitSet( client->ps.weapons, WP_COLT );
@@ -1219,7 +1219,7 @@ qboolean G_ParseAnimationFiles( char *modelname, gclient_t *cl ) {
 	Q_strncpyz( cl->modelInfo->modelname, modelname, sizeof( cl->modelInfo->modelname ) );
 
 	// load the cfg file
-	Com_sprintf( filename, sizeof( filename ), "models/players/%s/wolfanim.cfg", modelname );
+	Com_sprintf( filename, sizeof( filename ), "models/players/%s/dnfanim.cfg", modelname );
 	len = trap_FS_FOpenFile( filename, &f, FS_READ );
 	if ( len <= 0 ) {
 		G_Printf( "G_ParseAnimationFiles(): file '%s' not found\n", filename );       //----(SA)	added
@@ -1237,7 +1237,7 @@ qboolean G_ParseAnimationFiles( char *modelname, gclient_t *cl ) {
 	BG_AnimParseAnimConfig( cl->modelInfo, filename, text );
 
 	// load the script file
-	Com_sprintf( filename, sizeof( filename ), "models/players/%s/wolfanim.script", modelname );
+	Com_sprintf( filename, sizeof( filename ), "models/players/%s/dnfanim.script", modelname );
 	len = trap_FS_FOpenFile( filename, &f, FS_READ );
 	if ( len <= 0 ) {
 		if ( cl->modelInfo->version > 1 ) {
@@ -1823,9 +1823,9 @@ void ClientSpawn( gentity_t *ent ) {
 //	client->ps.ammo[BG_FindAmmoForWeapon(WP_MP40)] = 100;
 
 //	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
-//		client->ps.ammo[BG_FindAmmoForWeapon(WP_LUGER)] = 50;
+//		client->ps.ammo[BG_FindAmmoForWeapon(WP_M1911)] = 50;
 //	} else {
-//		client->ps.ammo[BG_FindAmmoForWeapon(WP_LUGER)] = 100;
+//		client->ps.ammo[BG_FindAmmoForWeapon(WP_M1911)] = 100;
 //	}
 
 //	COM_BitSet( client->ps.weapons, WP_GAUNTLET );

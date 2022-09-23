@@ -56,7 +56,7 @@ void CG_CheckAmmo( void ) {
 
 	total = 0;
 
-	// first weap now WP_LUGER
+	// first weap now WP_M1911
 	for ( i = WP_FIRST ; i < WP_NUM_WEAPONS ; i++ )
 	{
 		if ( !( weapons[0] & ( 1 << i ) ) ) {
@@ -67,7 +67,7 @@ void CG_CheckAmmo( void ) {
 		case WP_PANZERFAUST:
 		case WP_GRENADE_LAUNCHER:
 		case WP_GRENADE_PINEAPPLE:
-		case WP_LUGER:
+		case WP_M1911:
 		case WP_COLT:
 		case WP_AKIMBO:
 		case WP_SILENCER:

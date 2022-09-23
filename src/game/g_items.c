@@ -279,7 +279,7 @@ void Fill_Clip( playerState_t *ps, int weapon ) {
 	int inclip, maxclip, ammomove;
 	int ammoweap = BG_FindAmmoForWeapon( weapon );
 
-	if ( weapon < WP_LUGER || weapon >= WP_NUM_WEAPONS ) {
+	if ( weapon < WP_M1911 || weapon >= WP_NUM_WEAPONS ) {
 		return;
 	}
 

@@ -57,7 +57,7 @@ int weapBanks[MAX_WEAP_BANKS][MAX_WEAPS_IN_BANK] = {
 	{0,                     0,                      0           },  //	0 (empty)
 
 	{WP_KNIFE,              0,                      0           },  //	1
-	{WP_LUGER,              WP_COLT,                0           },  //	2	// WP_AKIMBO
+	{WP_M1911,              WP_COLT,                0           },  //	2	// WP_AKIMBO
 	{WP_MP40,               WP_THOMPSON,            WP_STEN     },  //	3
 	{WP_MAUSER,             WP_GARAND,              0           },  //	4
 	{WP_FG42,               0,                      0           },  //	5
@@ -72,7 +72,7 @@ int weapBanks[MAX_WEAP_BANKS][MAX_WEAPS_IN_BANK] = {
 int weapBanksMultiPlayer[MAX_WEAP_BANKS_MP][MAX_WEAPS_IN_BANK_MP] = {
 	{0,                     0,                      0,          0,          0,          0,              0,          0           },  // empty bank '0'
 	{WP_KNIFE,              0,                      0,          0,          0,          0,              0,          0           },
-	{WP_LUGER,              WP_COLT,                0,          0,          0,          0,              0,          0           },
+	{WP_M1911,              WP_COLT,                0,          0,          0,          0,              0,          0           },
 	{WP_MP40,               WP_THOMPSON,            WP_STEN,    WP_MAUSER,  WP_GARAND,  WP_PANZERFAUST, WP_VENOM,   WP_FLAMETHROWER     },
 	{WP_GRENADE_LAUNCHER,   WP_GRENADE_PINEAPPLE,   0,          0,          0,          0,              0,          0,          },
 	{WP_CLASS_SPECIAL,      0,                      0,          0,          0,          0,              0,          0,          },
@@ -1258,7 +1258,7 @@ void CG_RegisterWeapon( int weaponNum ) {
 		weaponInfo->flashSound[1] = trap_S_RegisterSound( "sound/weapons/knife/knife_slash2.wav" );
 		break;
 
-	case WP_LUGER:
+	case WP_M1911:
 		MAKERGB( weaponInfo->flashDlightColor, 1.0, 0.6, 0.23 );
 
 		weaponInfo->switchSound[0] = trap_S_RegisterSound( "sound/weapons/luger/silencerremove.wav" );   //----(SA)	added
@@ -3696,13 +3696,13 @@ int getEquivWeapon( int weapnum ) {
 
 	switch ( weapnum ) {
 		// going from german to american
-	case WP_LUGER:              num = WP_COLT;              break;
+	case WP_M1911:              num = WP_COLT;              break;
 	case WP_MAUSER:             num = WP_GARAND;            break;
 	case WP_MP40:               num = WP_THOMPSON;          break;
 	case WP_GRENADE_LAUNCHER:   num = WP_GRENADE_PINEAPPLE; break;
 
 		// going from american to german
-	case WP_COLT:               num = WP_LUGER;             break;
+	case WP_COLT:               num = WP_M1911;             break;
 	case WP_GARAND:             num = WP_MAUSER;            break;
 	case WP_THOMPSON:           num = WP_MP40;              break;
 	case WP_GRENADE_PINEAPPLE:  num = WP_GRENADE_LAUNCHER;  break;
@@ -3827,7 +3827,7 @@ void CG_PlaySwitchSound( int lastweap, int newweap ) {
 	if ( getAltWeapon( lastweap ) == newweap ) { // alt switch
 		switch ( newweap ) {
 		case WP_SILENCER:
-		case WP_LUGER:
+		case WP_M1911:
 			switchsound = cg_weapons[newweap].switchSound[0];
 			break;
 		default:
@@ -3930,7 +3930,7 @@ void CG_AltWeapon_f( void ) {
 		//		 I still think I'm going to make the weapon banks stored in the config, so this will
 		//		just be a matter of resetting the banks to what's in the config.
 		switch ( original ) {
-		case WP_LUGER:
+		case WP_M1911:
 			if ( cg.snap->ps.eFlags & EF_MELEE_ACTIVE ) {   // if you're holding a chair, you can't screw on the silencer
 				return;
 			}
@@ -3940,7 +3940,7 @@ void CG_AltWeapon_f( void ) {
 			if ( cg.snap->ps.eFlags & EF_MELEE_ACTIVE ) {   // if you're holding a chair, you can't remove the silencer
 				return;
 			}
-			weapBanks[2][0] = WP_LUGER;
+			weapBanks[2][0] = WP_M1911;
 			break;
 
 		case WP_AKIMBO:
@@ -4680,7 +4680,7 @@ void CG_WeaponFireRecoil( int weapon ) {
 	yawRandom = 0;
 	//
 	switch ( weapon ) {
-	case WP_LUGER:
+	case WP_M1911:
 	case WP_SILENCER:
 	case WP_COLT:
 	case WP_AKIMBO: //----(SA)	added
@@ -5159,7 +5159,7 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, in
 							   1.0 );   // rand scale
 		break;
 
-	case WP_LUGER:
+	case WP_M1911:
 	case WP_AKIMBO: //----(SA)	added
 	case WP_COLT:
 	case WP_MAUSER:

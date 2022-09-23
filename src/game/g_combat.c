@@ -270,7 +270,7 @@ char    *modNames[] = {
 	"MOD_KNIFE",
 	"MOD_KNIFE2",
 	"MOD_KNIFE_STEALTH",
-	"MOD_LUGER",
+	"MOD_M1911",
 	"MOD_COLT",
 	"MOD_MP40",
 	"MOD_THOMPSON",
@@ -668,7 +668,7 @@ qboolean IsHeadShotWeapon( int mod, gentity_t *targ, gentity_t *attacker ) {
 
 	switch ( mod ) {
 		// players are allowed headshots from these weapons
-	case MOD_LUGER:
+	case MOD_M1911:
 	case MOD_COLT:
 	case MOD_AKIMBO:
 	case MOD_MP40:
@@ -1208,7 +1208,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 
 				// (SA) except pistols.
 				// first pistol head shot does normal 2x damage and flings hat, second gets kill
-				//			if((mod != MOD_LUGER && mod != MOD_COLT ) || (targ->client->ps.eFlags & EF_HEADSHOT))	{	// (SA) DM requests removing double shot pistol head shots (3/19)
+				//			if((mod != MOD_M1911 && mod != MOD_COLT ) || (targ->client->ps.eFlags & EF_HEADSHOT))	{	// (SA) DM requests removing double shot pistol head shots (3/19)
 
 				// (SA) removed BG for DM.
 
@@ -1218,7 +1218,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 						if ( !( targ->client->ps.eFlags & EF_HEADSHOT ) ) { // only obliterate him after he's lost his helmet
 							break;
 						}
-					case AICHAR_SOLDIER:
+					//case AICHAR_SOLDIER:
 					case AICHAR_AMERICAN:
 					case AICHAR_ELITEGUARD:
 					case AICHAR_PARTISAN:
@@ -1245,7 +1245,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 			// snooper kills these types in one shot with any contact
 			if ( ( mod == MOD_SNOOPERSCOPE || mod == MOD_GARAND ) && !( attacker->aiCharacter ) ) {
 				switch ( targ->aiCharacter ) {
-				case AICHAR_SOLDIER:
+				//case AICHAR_SOLDIER:
 				case AICHAR_AMERICAN:
 				case AICHAR_ELITEGUARD:
 				case AICHAR_BLACKGUARD:
