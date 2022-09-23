@@ -971,11 +971,11 @@ model="models/weapons2/knife2/knife2.md3"
 model="models/weapons2/luger/luger.md3"
 */
 	{
-		"weapon_luger",
+		"weapon_m1911",
 		"sound/misc/w_pkup.wav",
-		{   "models/weapons2/luger/luger.md3",
-			"models/weapons2/luger/v_luger.md3",
-			"models/weapons2/luger/pu_luger.md3",
+		{   "models/weapons/pistol/pistol.md3",
+			"models/weapons/pistol/pistol.md3", // todo world model
+			"models/weapons/pistol/pistol.md3",
 			0, 0 },
 
 		"icons/iconw_luger_1",   // icon

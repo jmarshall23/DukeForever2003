@@ -1226,12 +1226,28 @@ void CG_RegisterWeapon( int weaponNum ) {
 	weaponInfo->standModel = trap_R_RegisterModel( path );
 //----(SA)	end
 
+// jmarshall
+	memset(weaponInfo->weapon_offset, 0, sizeof(vec3_t));
+// jmarshall end
+
 	switch ( weaponNum ) {
 	case WP_MONSTER_ATTACK1:
 	case WP_MONSTER_ATTACK2:
 	case WP_MONSTER_ATTACK3:
 		break;
+// jmarshall
+	case WP_M1911:
+		VectorSet(weaponInfo->weapon_offset, 20, 5, -15);
+		MAKERGB(weaponInfo->flashDlightColor, 1.0, 0.6, 0.23);
 
+		weaponInfo->switchSound[0] = trap_S_RegisterSound("sound/weapons/luger/silencerremove.wav");   //----(SA)	added
+
+		weaponInfo->flashSound[0] = trap_S_RegisterSound("sound/weapons/luger/lugerf1.wav");
+		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound("sound/weapons/mp40/mp40e1.wav"); // use same as mp40
+		weaponInfo->reloadSound = trap_S_RegisterSound("sound/weapons/luger/luger_reload.wav");
+		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
+		break;
+// jmarshall end
 
 	case WP_AKIMBO: //----(SA)	added
 		// same as colt
@@ -1256,17 +1272,6 @@ void CG_RegisterWeapon( int weaponNum ) {
 	case WP_KNIFE:
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/knife/knife_slash1.wav" );
 		weaponInfo->flashSound[1] = trap_S_RegisterSound( "sound/weapons/knife/knife_slash2.wav" );
-		break;
-
-	case WP_M1911:
-		MAKERGB( weaponInfo->flashDlightColor, 1.0, 0.6, 0.23 );
-
-		weaponInfo->switchSound[0] = trap_S_RegisterSound( "sound/weapons/luger/silencerremove.wav" );   //----(SA)	added
-
-		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/luger/lugerf1.wav" );
-		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound( "sound/weapons/mp40/mp40e1.wav" ); // use same as mp40
-		weaponInfo->reloadSound = trap_S_RegisterSound( "sound/weapons/luger/luger_reload.wav" );
-		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
 		break;
 
 	case WP_SILENCER:   // luger mod
@@ -2569,6 +2574,7 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 	VectorCopy( parent->lightingOrigin, gun.lightingOrigin );
 	gun.shadowPlane = parent->shadowPlane;
 	gun.renderfx = parent->renderfx;
+	gun.reverseRender = qtrue; 
 
 	// set custom shading for railgun refire rate
 	if ( ps ) {
@@ -3077,8 +3083,12 @@ void CG_AddViewWeapon( playerState_t *ps ) {
 		gunoff[0] = cg_gun_x.value;
 		gunoff[1] = cg_gun_y.value;
 		gunoff[2] = cg_gun_z.value;
-
-//----(SA)	removed
+// jmarshall
+		if (gunoff[0] == 0 && gunoff[1] == 0 && gunoff[2] == 0)
+		{
+			VectorCopy(weapon->weapon_offset, gunoff);
+		}
+// jmarshall end
 
 		VectorMA( hand.origin, gunoff[0], cg.refdef.viewaxis[0], hand.origin );
 		VectorMA( hand.origin, gunoff[1], cg.refdef.viewaxis[1], hand.origin );
