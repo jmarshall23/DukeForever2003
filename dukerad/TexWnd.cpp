@@ -82,7 +82,7 @@ qtexture_t	*current_texture = NULL;
 int			current_x, current_y, current_row;
 
 int			texture_nummenus;
-#define		MAX_TEXTUREDIRS	128
+#define		MAX_TEXTUREDIRS	256 // doubled for duke nukem forever
 char		texture_menunames[MAX_TEXTUREDIRS][128];
 
 qboolean	g_dontuse = true;		// set to true to load the texture but not flag as used
