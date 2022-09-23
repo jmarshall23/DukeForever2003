@@ -1,0 +1,39 @@
+BSPC version 1.5, Nov 13 2000 17:43:33 by Mr Elusive
+Usage:   bspc [-<switch> [-<switch> ...]]
+Example 1: bspc -bsp2aas znt2dm?.bsp -output e:\quake2\gladiator
+Example 2: bspc -bsp2aas pak1.pak\maps/q2dm*.bsp -output e:\quake2\gladiator
+
+Switches:
+   map2bsp <[pakfilefilter/]filefilter> = convert MAP to BSP
+   map2aas <[pakfilefilter/]filefilter> = convert MAP to AAS
+   bsp2map <[pakfilefilter/]filefilter> = convert BSP to MAP
+   bsp2bsp <[pakfilefilter/]filefilter> = convert BSP to BSP
+   bsp2aas <[pakfilefilter/]filefilter> = convert BSP to AAS
+   reach   <[pakfilefilter/]filefilter> = compute reachability & clusters
+   aasopt  <[pakfilefilter/]filefilter> = optimize aas file
+   output  <output path>                = set output path
+   cfg     <filename>                   = use this cfg file
+   optimize                             = enable optimization
+   noverbose                            = disable verbose output
+   threads                              = number of threads to use
+   breath                               = breath first bsp building
+   nobrushmerge                         = don't merge brushes
+   noliquids                            = don't write liquids to map
+   freetree                             = free the bsp tree
+   nocsg                                = disables brush chopping
+   sv_friction                          = friction (default = 6)
+   sv_stopspeed                         = stop speed (default = 100)
+   sv_gravity                           = gravity (default = 800)
+   sv_waterfriction                     = water friction (default = 1)
+   sv_watergravity                      = gravity in water (default = 400)
+   sv_maxvelocity                       = max velocity (default = 320)
+   sv_maxwalkvelocity                   = max walk velocity (default = 300)
+   sv_maxcrouchvelocity                 = max crouch velocity (default = 100)
+   sv_maxswimvelocity                   = max swim velocity (default = 150)
+   sv_airaccelerate                     = air acceleration (default = 1)
+   sv_maxstep                           = max step (default = 18)
+   sv_maxsteepness                      = max floor steepness (default = 0.7
+   sv_maxwaterjump                      = max water jump (default = 21)
+   sv_maxbarrier                        = max barrier jump (default = 32)
+   sv_jumpvel                           = jump velocity (default = 224)
+

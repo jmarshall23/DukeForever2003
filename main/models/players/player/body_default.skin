@@ -1,0 +1,12 @@
+
+u_body,models/players/Bj/bj_body1.tga
+u_rthand,models/players/Bj/bj_body1.tga
+u_lfthand,models/players/Bj/bj_body1.tga
+l_legs,models/players/Bj/bj_legs1.tga
+
+ammo,models/players/Bj/acc/bj_eq1.tga
+ammo2,models/players/Bj/acc/bj_eq1.tga
+ammo3,models/players/Bj/acc/bj_eq1.tga
+ammo4,models/players/Bj/acc/bj_eq1.tga
+
+//md3_back, "acc/backpack.md3"

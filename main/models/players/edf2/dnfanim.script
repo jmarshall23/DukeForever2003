@@ -1,0 +1,497 @@
+
+//==========================================================================
+//
+// Character Animation Script F O R    Z   O   M   B   I   E
+//
+// This defines the animations and events that might occur at different times
+// for this character. State changes, and random behaviour during idle/alert
+// states will look here for default behaviour, if that character doesn't have
+// something specific in their scripts for that level.
+//
+//==========================================================================
+// DEFINES
+//
+// These can be used to simplify the scripting, by defining replacement strings
+
+DEFINES
+
+// weapons
+set weapons pistols = SP5 Pistol AND luger AND colt
+set weapons machineguns = mp40 AND thompson AND sten AND flamethrower 
+set weapons rifles = mauser rifle AND snooper rifle
+set weapons throwables = dynamite weapon AND pineapple AND grenade
+
+set weapons monster1 = MonsterAttack1
+set weapons monster2 = MonsterAttack2
+set weapons monster3 = MonsterAttack3
+
+set weapons one_handed_weapons = SP5 Pistol AND luger AND colt
+set weapons two_handed_weapons = mp40 AND thompson AND sten AND mauser rifle AND snooper rifle AND sniper scope AND flamethrower AND panzerfaust AND venom 
+
+// movetypes
+set movetype moving = walk AND walkcr AND walkcrbk AND walkbk AND run AND runbk AND straferight AND strafeleft
+
+//==========================================================================
+// ANIMATIONS
+//
+//	NOTE: scripts are chosen by first-come-first-serve basis. The first match
+//	found is the one used.
+//
+// format:
+//
+// state <state description>
+// {
+//		<movement type>
+//		{
+//			[DEFAULT / <condition type> [<condition value>], ...]
+//			{
+//				<both/legs/torso> <animation> [sound <filename>]
+//				<both/legs/torso> <animation> [sound <filename>]
+//				...
+//			}
+//		}
+//	}
+//
+//	legend:
+//
+//	<state description>: relaxed, alert, combat
+//
+//	<movement type>: idle, idlecr, walk, walkbk, walkcr, walkcrbk, run, runbk, straferight, strafeleft, turnright, turnleft
+//
+//	<condition type>: weapons, position, enemy_weapon, underwater, mounted, movetype, underhand, leaning
+//
+//	<condition value>:
+//
+//		weapons: <see weapon pickup names>
+//		position: behind, infront, right, left
+//		enemy_weapon: <see weapon pickup names>
+//		underwater: <no values>
+//		mounted: mg42
+//		movetype: <see movement types>
+//		underhand: <no values>
+//		leaning: right, left
+//
+
+ANIMATIONS
+
+STATE RELAXED
+{
+	idle
+	{
+		default
+		{
+			both alert_idle
+		}
+	}
+
+	idlecr
+	{
+		default
+		{
+			both alert_idle	
+		}
+	}
+
+	walk
+	{
+		default
+		{
+			both walk_1
+			both walk_2
+			both walk_damaged
+		}
+	}
+
+	walkcr
+	{
+		default
+		{
+			both crouch
+		}
+	}
+
+	walkcrbk
+	{
+		default
+		{
+			both crouch_bk
+		}
+	}
+
+	walkbk
+	{
+		default
+		{
+			both back
+		}
+	}
+
+	run
+	{
+		default
+		{
+			both run
+			both walk_1
+			both crouch 
+			both walk_2
+
+		}
+	}
+
+	runbk
+	{
+		default
+		{
+			both back
+			both crouch_bk 
+		}
+	}
+
+
+	turnright
+	{		
+		movetype idle
+		{
+			legs alert_turn_R
+		}
+	}
+
+	turnleft
+	{		
+		movetype idle
+		{
+			legs alert_turn_L
+		}
+	}
+}
+
+
+STATE ALERT
+{
+	idle
+	{
+		default
+		{
+			both alert_idle
+		}
+	}
+
+	idlecr
+	{
+		default
+		{
+			both alert_idle		
+		}
+	}
+
+	walk
+	{
+		default
+		{
+			both walk_1
+			both walk_2
+			both walk_damaged
+		}
+	}
+
+	walkcr
+	{
+		default
+		{
+			both crouch
+		}
+	}
+
+	walkcrbk
+	{
+		default
+		{
+			both crouch_bk
+		}
+	}
+
+	walkbk
+	{
+		default
+		{
+			both back
+		}
+	}
+
+	run
+	{
+		default
+		{
+			both run
+			both walk_1
+			both crouch 
+			both walk_2
+
+		}
+	}
+
+	runbk
+	{
+		default
+		{
+			both back
+			both crouch_bk 
+		}
+	}
+
+
+	turnright
+	{		
+		movetype idle
+		{
+			legs alert_turn_R
+		}
+	}
+
+	turnleft
+	{		
+		movetype idle
+		{
+			legs alert_turn_L
+		}
+	}
+}
+
+STATE COMBAT
+{
+	idle
+	{
+		default
+		{
+			both combat_idle
+		}
+	}
+
+	idlecr
+	{
+		default
+		{
+			both combat_idle		
+		}
+	}
+
+	walk
+	{
+		secondlife
+		{
+			both walk_damaged
+		}
+		default
+		{
+			both walk_1
+			both walk_2
+			both walk_damaged
+		}
+	}
+
+	walkcr
+	{
+		default
+		{
+			both crouch
+		}
+	}
+
+	walkcrbk
+	{
+		default
+		{
+			both crouch_bk
+		}
+	}
+
+	walkbk
+	{
+		default
+		{
+			both back
+		}
+	}
+
+	run
+	{
+		secondlife
+		{
+			both walk_damaged
+		}
+		charging
+		{
+			both run
+		}
+		default
+		{
+			both run
+			both walk_1
+			both crouch
+			both walk_2
+		}
+	}
+	runbk
+	{
+		default
+		{
+			both back
+			both crouch_bk 
+		}
+	}
+
+
+	turnright
+	{		
+		movetype idle
+		{
+			legs combat_turn_R
+		}
+	}
+
+	turnleft
+	{		
+		movetype idle
+		{
+			legs combat_turn_L
+		}
+	}
+}
+
+
+
+//==========================================================================
+// CANNED_ANIMATIONS
+//
+//	These animations are played at random, momentarily cutting off the
+//	above "normal" animations.
+//
+//	format:
+//
+//	(see ANIMATION section above)
+//
+
+CANNED_ANIMATIONS
+
+//==========================================================================
+// STATECHANGES
+//
+// format:
+//
+// statechange <directionto> <state>
+// {
+//		[DEFAULT / <condition type> [<condition value>], ...]
+//		{
+//			<both/legs/torso> <animation> [sound <filename>]
+//			<both/legs/torso> <animation> [sound <filename>]
+//			...
+//		}
+// }
+//
+// legend:
+//
+// <directionto>: upto, downto
+//
+
+STATECHANGES
+
+statechange alert combat
+{
+	weapons none
+	{
+		both alert_to_combat
+	}
+}
+
+//==========================================================================
+// EVENTS
+//
+// format:
+//
+// <event description>
+// {
+//		[DEFAULT / <condition type> [<condition value>], ...]
+//		{
+//			<both/legs/torso> <animation> [sound <filename>]
+//			<both/legs/torso> <animation> [sound <filename>]
+//			...
+//		}
+// }
+//
+// legend:
+//
+// <event description>: death, pain, fireweapon, jump, jumpbk, land, dropweapon,
+//		raiseweapon, climbdismount, reload
+//
+//	NOTE: for gameplay anims (weapons firing, reload, etc) that show no legs movement
+//		only the torso should animation from here, leave the legs doing what their
+//		locomotive anims want them to do
+//
+
+EVENTS
+
+jump
+{
+	default
+	{
+		both jump_1step
+	}
+}
+
+jumpbk
+{
+	default
+	{
+		both jump_1step 
+	}
+}
+
+fireweapon
+{
+	weapons monster3, movetype idle
+	{
+//		both attack3
+		both attack2
+		both attack4
+		both attack1
+		both attack5
+//		both attack6
+	}
+	weapons monster3
+	{
+		torso attack3
+		torso attack2
+		torso attack4
+		torso attack1
+		torso attack5
+//		torso attack6
+	}
+}
+
+
+revive
+{
+	default
+	{
+		both revive
+	}
+}
+
+death
+{
+	default
+	{
+		both death_1 sound zombieDeathFall
+	}
+}
+
+pain
+{
+	default
+	{
+		both pain1
+		both pain2
+		both pain3
+		both pain4
+	}
+}
