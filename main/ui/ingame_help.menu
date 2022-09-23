@@ -1,0 +1,781 @@
+#include "ui/menudef.h"
+
+
+
+{
+//	assetGlobalDef {
+//		cursor "ui/assets/3_cursor2"	// cursor	
+//		gradientBar "ui/assets/gradientbar2.tga"	// gradient bar
+//		fadeClamp 1.0					// sets the fadeup alpha
+//		fadeCycle 1						// how often fade happens in milliseconds
+//		fadeAmount 0.1					// amount to adjust alpha per cycle
+//
+//		shadowX  5						// x amount for shadow offset
+//		shadowY  5						// y amount for shadow offset
+//		shadowColor 0.1 0.1 0.1 0.25	// shadow color
+//
+//		font "fonts/impact.ttf" 16		// font
+//		smallFont "fonts/impact.ttf" 12	// font
+//		bigFont "fonts/impact.ttf" 20	// font
+//	}
+
+
+
+
+menudef {
+   	name help
+   	fullScreen MENU_FALSE
+	style WINDOW_STYLE_FILLED
+   	visible MENU_TRUE
+	border 1
+	bordersize 1
+	bordercolor .2 .2 .2 1
+	forecolor 1 1 1 1
+	backcolor 0 0 0 .25
+   	rect 0 0 640 480
+
+	outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+	focusColor 1 .75 0 1
+	disableColor .5 .5 .5 1
+
+	itemdef {
+		name contrastbox
+		group foo
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .7
+		rect 50 50 240 260
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .65
+		visible 1
+		decoration
+	}
+
+	itemdef {
+		name titletext
+
+		text "Move cursor over HUD items for information"
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalign ITEM_ALIGN_CENTER
+	textalignx 160
+	textaligny 20
+	textscale .25
+
+		group foo
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .7
+		rect 10 10 320 30
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .65
+		visible 1
+		decoration
+	}
+
+
+/////
+// help text
+/////
+
+itemDef {
+	name message_help1
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalign ITEM_ALIGN_CENTER
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Stamina:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help1
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalign ITEM_ALIGN_CENTER
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Description"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+itemDef {
+	name message_help2
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Health:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help2
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "How you doin'?"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+itemDef {
+	name message_help3
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Armor:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help3
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Brain buckets 'n such"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+itemDef {
+	name message_help4
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalign ITEM_ALIGN_CENTER
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Cursor Hint:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help4
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "What's that?"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Weapon Info:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Weapon:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 115 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "What you're packin'"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 145 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Ammo:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 160 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "How useful it is"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 190 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Reserves:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 205 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "More where that came from"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 235 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Heat:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help5
+	group grpmessage
+	style 0 
+	rect 50 250 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "too hot, no shot"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+
+
+
+itemDef {
+	name message_help6
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Weapon Selection:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help6
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Description"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+itemDef {
+	name message_help7
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Crosshair:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+itemDef {
+	name message_help7
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Keep this small"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+
+itemDef {
+	name message_help8
+	group grpmessage
+	style 0 
+	rect 50 70 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_BLINK
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "Item:"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_help8
+	group grpmessage
+	style 0 
+	rect 50 100 240 30
+	textalign ITEM_ALIGN_CENTER
+	textstyle ITEM_TEXTSTYLE_NORMAL
+	textalignx 120
+	textaligny 25
+	textscale .3
+	text "These are handy"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+
+
+
+
+
+
+
+
+
+	// weapon corner
+
+		itemDef {
+			name help6
+			rect 558 2 80 40
+			visible MENU_TRUE
+			ownerdraw CG_PLAYER_WEAPON_ICON2D
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help6; setitemcolor help6 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help6; setitemcolor help6 bordercolor 1 0 0 0.7  }
+		}
+
+		itemDef {
+			name help6
+			rect 558 50 80 40
+			visible MENU_TRUE
+			ownerdraw CG_PLAYER_WEAPON_ICON2D
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help6; setitemcolor help6 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help6; setitemcolor help6 bordercolor 1 0 0 0.7  }
+		}
+
+		itemDef {
+			name help6
+			rect 558 98 80 40
+	type 1
+	textfont UI_FONT_NORMAL
+			visible MENU_TRUE
+			ownerdraw CG_PLAYER_WEAPON_ICON2D
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help6; setitemcolor help6 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help6; setitemcolor help6 bordercolor 1 0 0 0.7  }
+		}
+
+
+
+// crosshair
+	itemDef {
+		name help7
+		rect 305 225 30 30
+		visible MENU_TRUE
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+		style WINDOW_STYLE_EMPTY
+		mouseEnter { fadein message_help7; setitemcolor help7 bordercolor 0.1 0.1 1 0.7 }
+		mouseExit { fadeout message_help7; setitemcolor help7 bordercolor 1 0 0 0.7  }
+		}
+
+
+
+		itemDef {
+			name "stambar"
+			visible MENU_TRUE
+			rect 10 400 8 68
+			ownerdraw CG_STAMINA
+			addColorRangerel 0.0 0.25	1 0.1 0.1 0.3	// 0-25%
+			addColorRangerel 0.25 1.0	0.1 1 0.1 0.3	// 25-100%
+		}
+
+		itemDef {
+			name help1
+			visible MENU_TRUE
+			rect 8 398 12 72
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help1; setitemcolor help1 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help1; setitemcolor help1 bordercolor 1 0 0 0.7  }
+		}
+
+
+
+		// health text
+		itemDef {
+ 			name help2
+			rect 45 438 32 32
+			visible 1
+			textstyle ITEM_TEXTSTYLE_SHADOWEDMORE
+			textscale .5
+			forecolor 1 1 1 1
+			ownerdraw CG_PLAYER_HEALTH
+			addColorRange 10 999 .63 .47 .25 1	// healthy
+			addColorRange -999 10 1 0 0 1	// hurting
+
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help2; setitemcolor help2 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help2; setitemcolor help2 bordercolor 1 0 0 0.7  }
+		}
+
+
+		// armor text
+		itemDef {
+ 			name help3
+			rect 180 438 32 32
+			visible 1
+			textstyle ITEM_TEXTSTYLE_SHADOWEDMORE
+			textscale .5
+			forecolor .34 .35 .24 1
+			ownerdraw CG_PLAYER_ARMOR_VALUE
+			addColorRange -999 999 .34 .35 .24 1
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help3; setitemcolor help3 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help3; setitemcolor help3 bordercolor 1 0 0 0.7  }
+		}
+
+
+
+
+	itemDef {
+		name help4
+		visible 1
+		rect 296 420 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/ladderHint.tga"
+		mouseEnter { fadein message_help4; setitemcolor help4 bordercolor 0.1 0.1 1 0.7 }
+		mouseExit {
+			fadeout message_help4;
+			setitemcolor help4 bordercolor 1 0 0 0.7;
+			hide help4a;
+			hide help4b;
+			hide help4c;
+			hide help4d;
+			hide help4e;
+			}
+}
+
+
+	itemDef {
+		name help4a
+		group message_help4
+		visible 0
+		rect 170 330 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/usableHint.tga"
+	}
+	itemDef {
+		name help4b
+		group message_help4
+		visible 0
+		rect 230 330 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/breakableHint.tga"
+	}
+
+	itemDef {
+		name help4c
+		group message_help4
+		visible 0
+		rect 296 330 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/ladderHint.tga"
+	}
+
+	itemDef {
+		name help4d
+		group message_help4
+		visible 0
+		rect 360 330 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/clipboardHint.tga"
+	}
+	itemDef {
+		name help4e
+		group message_help4
+		visible 0
+		rect 424 330 48 48
+		border 1
+		bordersize 1
+		bordercolor 1 0 0 0.7
+		style WINDOW_STYLE_SHADER
+		background "gfx/2d/knifeHint.tga"
+	}
+
+
+
+		itemDef {
+			name "stabRect"
+			decoration
+			visible MENU_TRUE
+			addColorRange	0 128	.24 .4 .14 1
+			addColorRange	128 255	.24 .14 .4 1
+			rect 50 208 5 64
+			ownerdraw CG_PLAYER_WEAPON_STABILITY
+		}
+
+
+
+
+//		weapon info (ammo/heat/etc)
+		itemDef {
+			name help5
+			visible MENU_TRUE
+			rect 507 390 130 86
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+	forecolor 1 1 1 1
+	backcolor 0 0 0 .25
+			mouseEnter { fadein message_help5; setitemcolor help5 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help5; setitemcolor help5 bordercolor 1 0 0 0.7  }
+		}
+
+
+		itemDef {
+			name "heat"
+			decoration
+			visible MENU_TRUE
+			rect 550 417 80 56
+			align HUD_HORIZONTAL
+			ownerdraw CG_PLAYER_WEAPON_HEAT
+		}
+
+		// ammo icon
+		itemDef {
+			name "a"
+			rect 550 425 80 40
+			visible MENU_TRUE
+			align ITEM_ALIGN_CENTER
+			ownerdraw CG_PLAYER_WEAPON_ICON2D
+			style WINDOW_STYLE_EMPTY
+
+		}
+
+
+		// ammo text
+		itemDef {
+ 			name "amtex"
+			ownerdraw CG_PLAYER_AMMO_VALUE
+			rect 600 413 34 0
+			visible 1
+			textstyle ITEM_TEXTSTYLE_SHADOWEDMORE
+			textscale .5
+			forecolor .63 .59 .57 1
+			addColorRangerel 0.0	0.1		1 0 0  1		// alert!
+			addColorRangerel 0.1	0.4		1 1 0 1			// warning!
+		}
+
+		// clip count text
+		itemDef {
+ 			name "cliptex"
+			rect 515 470 40 0
+			visible 1
+			textstyle ITEM_TEXTSTYLE_SHADOWEDMORE
+			ownerdraw CG_PLAYER_AMMOCLIP_VALUE
+			decoration
+			textscale .5
+			forecolor .63 .59 .57 1
+			addColorRangerel 0.0	0.1		1 0 0  1		// alert!
+			addColorRangerel 0.1	0.4		1 1 0 1			// warning!
+		}
+
+
+		itemDef {
+			name help8
+			rect 606 310 24 48
+			visible MENU_TRUE
+			decoration
+			ownerdraw CG_PLAYER_HOLDABLE
+			style WINDOW_STYLE_EMPTY
+			border 1
+			bordersize 1
+			bordercolor 1 0 0 0.7
+			mouseEnter { fadein message_help8; setitemcolor help8 bordercolor 0.1 0.1 1 0.7 }
+			mouseExit { fadeout message_help8; setitemcolor help8 bordercolor 1 0 0 0.7  }
+		}
+	}
+}

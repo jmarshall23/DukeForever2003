@@ -1,0 +1,1683 @@
+#include "ui/menudef.h"
+
+
+{
+
+	menuDef {
+    		name "pregame_new"
+    		background "ui/assets/backscreen"
+      		rect 0 0 640 480
+    		fullScreen MENU_FALSE
+    		visible MENU_TRUE
+      		style WINDOW_STYLE_EMPTY
+
+//
+// draw levelshot
+//
+
+			itemDef {
+					name background
+					rect 0 0 640 480
+					style WINDOW_STYLE_SHADER
+					ownerdraw UI_LEVELSHOT
+					forecolor 0 0 0 1
+					visible MENU_TRUE
+					decoration
+				}
+
+
+//
+// draw text window 1
+//			itemDef {
+//				name win1
+//				rect 42 272 280 200
+//				textfile "text/EnglishUSA/m1_l2_br_p1.txt"
+//				textfont UI_FONT_HANDWRITING
+//				textscale .2
+//				forecolor .1 .1 .1 .9
+//				visible MENU_TRUE
+//				autowrapped
+//				decoration
+//			}
+
+// draw text window 2
+//			itemDef {
+//				name win2
+//				rect 328 12 296 456
+//				textfile "text/EnglishUSA/m1_l2_br_p2.txt"
+//				textfont UI_FONT_HANDWRITING
+//				textscale .2
+//				forecolor .1 .1 .1 .9
+//				visible MENU_TRUE
+//				autowrapped
+//				decoration
+//			}
+/////////////// escape1 ////////////////////////////////////
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l1_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l1_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		textfile "text/EnglishUSA/escape1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		textfile "text/EnglishUSA/escape1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+
+
+/////////////// escape2 ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "escape2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l2_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "escape2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l2_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "escape2" }	// added current map rev
+		textfile "text/EnglishUSA/escape2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "escape2" }	// added current map rev
+		textfile "text/EnglishUSA/escape2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+
+/////////////// tram ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "tram" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l3_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "tram" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m1_l3_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 30 254 456
+		cvarTest "mapname"
+		showcvar { "tram" }	// added current map rev
+		textfile "text/EnglishUSA/tram.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 30 254 456
+		cvarTest "mapname"
+		showcvar { "tram" }	// added current map rev
+		textfile "text/EnglishUSA/tram.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+
+/////////////// village ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "village1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l4_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "village1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l4_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "village1" }	// added current map rev
+		textfile "text/EnglishUSA/village1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "village1" }	// added current map rev
+		textfile "text/EnglishUSA/village1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// crypt ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "crypt1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l5_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "crypt1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l5_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "crypt1" }	// added current map rev
+		textfile "text/EnglishUSA/crypt1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "crypt1" }	// added current map rev
+		textfile "text/EnglishUSA/crypt1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+
+/////////////// crypt2 ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "crypt2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l6_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "crypt2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l6_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "crypt2" }	// added current map rev
+		textfile "text/EnglishUSA/crypt2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "crypt2" }	// added current map rev
+		textfile "text/EnglishUSA/crypt2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+/////////////// church ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "church" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l7_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "church" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l7_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "church" }	// added current map rev
+		textfile "text/EnglishUSA/church.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "church" }	// added current map rev
+		textfile "text/EnglishUSA/church.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// boss1 ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "boss1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l8_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "boss1" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m2_l8_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "boss1" }	// added current map rev
+		textfile "text/EnglishUSA/boss1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "boss1" }	// added current map rev
+		textfile "text/EnglishUSA/boss1.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// forest ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "forest" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l9_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "forest" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l9_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "forest" }	// added current map rev
+		textfile "text/EnglishUSA/forest.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "forest" }	// added current map rev
+		textfile "text/EnglishUSA/forest.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// rocket ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "rocket" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l10_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "rocket" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l10_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "rocket" }	// added current map rev
+		textfile "text/EnglishUSA/rocket.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "rocket" }	// added current map rev
+		textfile "text/EnglishUSA/rocket.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// baseout ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "baseout" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l11_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "baseout" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l11_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "baseout" }	// added current map rev
+		textfile "text/EnglishUSA/baseout.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "baseout" }	// added current map rev
+		textfile "text/EnglishUSA/baseout.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// assault ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "assault" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l12_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "assault" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m3_l12_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "assault" }	// added current map rev
+		textfile "text/EnglishUSA/assault.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "assault" }	// added current map rev
+		textfile "text/EnglishUSA/assault.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// sfm ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "sfm" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l13_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "sfm" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l13_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "sfm" }	// added current map rev
+		textfile "text/EnglishUSA/sfm.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "sfm" }	// added current map rev
+		textfile "text/EnglishUSA/sfm.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// factory ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "factory" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l14_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "factory" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l14_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "factory" }	// added current map rev
+		textfile "text/EnglishUSA/factory.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "factory" }	// added current map rev
+		textfile "text/EnglishUSA/factory.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// trainyard ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "trainyard" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l15_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "trainyard" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l15_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "trainyard" }	// added current map rev
+		textfile "text/EnglishUSA/trainyards.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "trainyard" }	// added current map rev
+		textfile "text/EnglishUSA/trainyards.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// swf ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "swf" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l16_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "swf" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m4_l16_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "swf" }	// added current map rev
+		textfile "text/EnglishUSA/swf.txt"
+//		textfile "text/EnglishUSA/trainyards.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "swf" }	// added current map rev
+		textfile "text/EnglishUSA/swf.txt"
+//		textfile "text/EnglishUSA/trainyards.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// norway ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "norway" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l17_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "norway" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l17_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "norway" }	// added current map rev
+		textfile "text/EnglishUSA/norway.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "norway" }	// added current map rev
+		textfile "text/EnglishUSA/norway.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// xlab ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "xlabs" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l18_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "xlabs" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l18_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "xlabs" }	// added current map rev
+		textfile "text/EnglishUSA/xlabs.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "xlabs" }	// added current map rev
+		textfile "text/EnglishUSA/xlabs.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// boss2 ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "boss2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l19_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "boss2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m5_l19_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "boss2" }	// added current map rev
+		textfile "text/EnglishUSA/boss2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "boss2" }	// added current map rev
+		textfile "text/EnglishUSA/boss2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+///////////
+
+
+/////////////// dam ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dam" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l20_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dam" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l20_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dam" }	// added current map rev
+		textfile "text/EnglishUSA/dam.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dam" }	// added current map rev
+		textfile "text/EnglishUSA/dam.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+/////////////// village2 ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "village2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l21_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "village2" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l21_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "village2" }	// added current map rev
+		textfile "text/EnglishUSA/village2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "village2" }	// added current map rev
+		textfile "text/EnglishUSA/village2.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+/////////////// chateau ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "chateau" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l22_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "chateau" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l22_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "chateau" }	// added current map rev
+		textfile "text/EnglishUSA/chateau.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "chateau" }	// added current map rev
+		textfile "text/EnglishUSA/chateau.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+/////////////// dark ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dark" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l23_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dark" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m6_l23_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dark" }	// added current map rev
+		textfile "text/EnglishUSA/dark.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dark" }	// added current map rev
+		textfile "text/EnglishUSA/dark.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+/////////////// dig ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dig" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l24_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "dig" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l24_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dig" }	// added current map rev
+		textfile "text/EnglishUSA/dig.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "dig" }	// added current map rev
+		textfile "text/EnglishUSA/dig.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+/////////////// castle ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "castle" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l25_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "castle" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l25_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "castle" }	// added current map rev
+		textfile "text/EnglishUSA/castle.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "castle" }	// added current map rev
+		textfile "text/EnglishUSA/castle.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+/////////////// end ///////////////////////
+
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "end" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l26_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win1
+		cvarTest "mapname"
+		showcvar { "end" }	// added current map rev
+		rect 32 272 280 200
+		textfile "text/EnglishUSA/m7_l26_br_p1a.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "end" }	// added current map rev
+		textfile "text/EnglishUSA/end.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .9
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name win2
+		rect 348 12 254 456
+		cvarTest "mapname"
+		showcvar { "end" }	// added current map rev
+		textfile "text/EnglishUSA/end.txt"
+		textfont UI_FONT_SMALL
+		textscale .2
+		forecolor .1 .1 .1 .6
+		visible MENU_TRUE
+		autowrapped
+		decoration
+	}
+
+
+
+///////////
+
+//
+// the button
+//
+		itemDef {
+			name but2
+			rect 560 420 80 60
+			style 3
+		  	background "forwardarrow"
+			visible 1
+			mouseEnter { hide but2 ; show but2_alt}
+		}
+
+		itemDef {
+			name but2_alt
+			type ITEM_TYPE_BUTTON
+			rect 560 420 80 60
+			style 3
+			visible 0
+			background "ui/assets/forwardarrow_alt.tga"
+//			action { exec "fade 0 0 0 0 3"; close pregame }
+			action { uiScript playerstart }
+			mouseExit { hide but2_alt ; show but2 }
+		}
+
+}	// menudef
+}	// end
+

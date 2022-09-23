@@ -1,0 +1,123 @@
+
+// PREGAME menu
+//
+// shown after mission stats at the beginning of the next level
+
+
+#include "ui/menudef.h"
+{
+
+	menuDef {
+		name "pregame"
+   		visible 0
+   		fullscreen 1
+   		rect 0 0 640 480
+		focusColor 1 .75 0 1
+   		style 1
+   		border 1
+//		onEsc { open pregame }	// don't let it close
+
+
+//
+// draw levelshot
+//
+		itemDef {
+			name background
+			rect 0 0 640 480
+			style WINDOW_STYLE_SHADER
+			ownerdraw UI_LEVELSHOT
+			forecolor 0 0 0 1
+			visible 1
+			decoration
+		}
+
+//
+// use player weapon settings
+//
+/*	
+
+		itemDef {
+			name but1
+			rect 466 420 64 42
+			style 3
+		  	background "ui/assets/backarrow.tga"
+			visible 1
+			mouseEnter { hide but1 ; show but1_alt}
+			}
+
+		itemDef {
+			name but1_alt
+			type ITEM_TYPE_BUTTON
+			rect 466 420 64 42
+			style 3
+			visible 0
+			background "ui/assets/backarrow_alt.tga"
+			action { exec "fade 0 0 0 0 3"; close pregame }
+			mouseExit { hide but1_alt ; show but1}
+			}
+
+*/
+//
+// use suggested weapon settings
+//
+		itemDef {
+			name but2
+			rect 560 420 80 60
+			style 3
+		  	background "ui/assets/forwardarrow.tga"
+			visible 1
+			mouseEnter { hide but2 ; show but2_alt}
+		}
+
+		itemDef {
+			name but2_alt
+			type ITEM_TYPE_BUTTON
+			rect 560 420 80 60
+			style 3
+			visible 0
+			background "ui/assets/forwardarrow_alt.tga"
+			action { exec "fade 0 0 0 0 3"; 
+			close pregame.menu ;  
+			open roq_pregame }
+			mouseExit { hide but2_alt ; show but2}
+		}
+
+//
+//
+//
+
+/*
+pregame.menu
+
+itemDef {
+      name system
+      text "SYSTEM"
+ 	type 1
+	style 0	
+	textstyle 6
+	rect 180 90 52 14 
+	textalign 0
+	textscale .2		
+	textalignx 4
+	textaligny 12
+	forecolor .9 .9 .9 .9
+	visible 1 
+	action { play "sound/misc/kcaction.wav" ; 
+	close control_menu ; 
+	close system_menu ;
+	close options_menu ; 
+	close cdkey_menu ;
+	close default_menu ;   
+	close resetscore_menu ;  
+	open system_menu }	
+	mouseenter { show message_system }
+	mouseexit { hide message_system }	
+	}
+
+*/
+
+
+
+
+	}
+}

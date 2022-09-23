@@ -804,7 +804,7 @@ Fixed fov at intermissions, otherwise account for fov variable and zooms.
 
 static int CG_CalcFov( void ) {
 	static float lastfov = 90;      // for transitions back from zoomed in modes
-	float x;
+	float x, y;
 	float phase;
 	float v;
 	int contents;
@@ -813,6 +813,8 @@ static int CG_CalcFov( void ) {
 	float f;
 	int inwater;
 	qboolean dead;
+	float ratio_x, ratio_y;
+	float base_fov;
 
 	CG_Zoom();
 
@@ -895,9 +897,24 @@ static int CG_CalcFov( void ) {
 		fov_x = 55;
 	}
 
-	x = cg.refdef.width / tan( fov_x / 360 * M_PI );
-	fov_y = atan2( cg.refdef.height, x );
+	base_fov = fov_x;
+
+	x = 640.0f / tan( fov_x / 360 * M_PI );
+	fov_y = atan2( 480.0f, x );
 	fov_y = fov_y * 360 / M_PI;
+
+	// 16:9
+	ratio_x = 16.0f;
+	ratio_y = 9.0f;
+
+	y = ratio_y / tan(fov_y / 360.0f * M_PI);
+	fov_x = atan2(ratio_x, y) * 360.0f / M_PI;
+
+	if (fov_x < base_fov) {
+		fov_x = base_fov;
+		x = ratio_x / tan(fov_x / 360.0f * M_PI);
+		fov_y = atan2(ratio_y, x) * 360.0f / M_PI;
+	}
 
 	// warp if underwater
 	contents = CG_PointContents( cg.refdef.vieworg, -1 );

@@ -1,0 +1,521 @@
+#include "ui/menudef.h"
+{
+
+menuDef {
+	name "hbook2"
+   	visible 0
+   	fullscreen 0
+   	rect 0 0 640 480
+	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+	onOpen { play "sound/notebook/book_open.wav"}
+	onESC { play "sound/notebook/book_close.wav"}
+
+
+
+
+
+// BACKGROUND
+
+	itemDef {
+		name background
+		rect 20 30 600 420	// centered
+		style WINDOW_STYLE_SHADER
+//		background "p_book1"
+		background "ui/assets/p_book1.tga"
+		forecolor 0 0 0 1
+		visible 1
+		decoration
+	}
+
+
+
+// PAGE 1 ////////////////
+
+	itemDef {	/// NEXT BUTTON
+		name b_next1
+		group page1
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 1
+		action { play "sound/notebook/book_pageflip.wav"; hide page1; show page2}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page1a
+		group page1
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p1.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+itemDef {
+		name page1a
+		group page1
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p1a.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page1b
+		group page1
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p2.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page1b
+		group page1
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p2a.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+// PAGE 2 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev2
+		group page2
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page2; show page1}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next2
+		group page2
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page2; show page3}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page2a
+		group page2
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p3.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page2b
+		group page2
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p4.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page2b
+		group page2
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p4a.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+// PAGE 3 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev3
+		group page3
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page3; show page2}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next3
+		group page3
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page3; show page4}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page3a
+		group page3
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p5.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page3a
+		group page3
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p5a.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+	itemDef {
+		name page3b
+		group page3
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p6.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page3b
+		group page3
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p6a.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+// PAGE 4 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev4
+		group page4
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page4; show page3}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next4
+		group page4
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page4; show page5}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page4a
+		group page4
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p7.txt"
+//		text "res_p7"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page4a
+		group page4
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p7a.txt"
+		textfont UI_FONT_HANDWRITING
+//		text "res_p7"
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page4b
+		group page4
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p8.txt"
+//		text "res_p8"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page4b
+		group page4
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p8a.txt"
+	        textfont UI_FONT_HANDWRITING
+//		text "res_p8"
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+// PAGE 5 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev5
+		group page5
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page5; show page4}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next5
+		group page5
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page5; show page6}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page5a
+		group page5
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/res_p9.txt"
+//		text "res_p9"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page5b
+		group page5
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p10.txt"
+//		text "res_p10"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page5b
+		group page5
+		rect 360 60 240 380
+		textfile "text/EnglishUSA/res_p10a.txt"
+		textfont UI_FONT_HANDWRITING
+//		text "res_p10"
+		textscale .16
+		forecolor .3 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+// PAGE 6 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev6
+		group page6
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page6; show page5}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next6
+		group page6
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page6; show page7}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page6a
+		group page6
+		rect 60 60 215 380
+		textfile "text/EnglishUSA/res_p11.txt"
+//		text "res_p11"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page6b
+		group page6
+		rect 360 60 215 380
+		textfile "text/EnglishUSA/res_p12.txt"
+//		text "res_p12"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+// PAGE 7 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev7
+		group page7
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page7; show page6}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page7a
+		group page7
+		rect 60 60 215 380
+		textfile "text/EnglishUSA/res_p13.txt"
+//		text "res_p13"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page7b
+		group page7
+		rect 360 60 215 380
+		textfile "text/EnglishUSA/res_p14.txt"
+//		text "res_p14"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+
+
+}	// end menudef
+
+}	// end all
+
+

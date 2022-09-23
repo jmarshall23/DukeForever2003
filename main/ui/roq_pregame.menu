@@ -1,0 +1,33 @@
+
+#include "ui/menudef.h"
+{
+
+	menuDef {
+		name "roq_pregame"
+   		visible 0
+   		fullscreen 1
+   		rect 0 0 640 480
+		focusColor 1 .75 0 1
+   		style 1
+   		border 1
+//		onEsc { open pregame }	// don't let it close
+}
+}
+
+itemDef {
+	name mappreview
+	style WINDOW_STYLE_CINEMATIC
+	cinematic "map4.roq"
+	rect 0 0 640 400
+	backcolor 1 1 1 .25
+	border 1
+	bordersize 1
+	bordercolor .1 .1 .1 1
+	decoration
+	visible 1
+	}
+
+}
+}
+
+}

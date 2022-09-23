@@ -1,0 +1,1425 @@
+#include "ui/menudef.h"
+
+#define DEFAULT_TEXT_SCALE 0.25
+
+// ======================================
+// wm_limboView
+// ======================================
+{
+	menuDef {
+		name			"wm_limboView"
+		visible			0
+		fullscreen		0
+		rect			0 0 640 480
+		focusColor		1 1 1 1
+		disablecolor	0 0 0 0
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+
+	itemDef {
+		name			window
+		visible			1
+		rect			9 119 421 331
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+ 		border			1
+		bordercolor		0 0.18824 0.31373 1
+		decoration
+	}
+
+	onOpen		{ setCvar ui_limboMode "1"; uiScript getSpawnPoints }
+	onClose		{ setCvar ui_limboMode "0" }
+	onEsc		{ setCvar ui_limboMode "0" }
+
+	execKeyInt	9 { exec "+scores" }
+	execKey		t { uiScript "ActivateLimboChat" }
+}
+
+// ======================================
+// wm_limboChat
+// ======================================
+{
+	menuDef {
+		name			"wm_limboChat"
+		visible			0
+		fullscreen		0
+		rect			10 10 419 104
+		focusColor		1 1 1 1
+		disablecolor	0 0 0 0
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+
+		execKeyInt		9 { exec "+scores" }
+		execKey			t { uiScript "ActivateLimboChat" }
+
+	// LIMBO CHAT
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 419 104
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		background		"ui/assets/limbo_chat_background.tga"
+		decoration
+	}
+
+	itemDef {
+		name			window
+		visible			1
+		rect			5 22 419 104
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		decoration
+
+		ownerdraw		UI_LIMBOCHAT
+		textscale		0.18
+	}
+
+	itemDef {
+		name			window_limbo_chat
+		visible			1
+		rect			10 85 180 16
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		outlinecolor	1 1 0 .5
+		type			ITEM_TYPE_EDITFIELD
+ 		style			0
+   		border			1
+		bordercolor		0 0 0 1
+		maxChars		80
+		text			"Text:"
+		cvar			"ui_cmd"
+		textscale		0.18
+		textalign		ITEM_ALIGN_LEFT		
+		textalignx		5
+		textaligny		11
+		mouseEnter		{ setitemcolor window_limbo_chat bordercolor 1 1 0 1 }
+		mouseExit		{ setitemcolor window_limbo_chat bordercolor 1 1 0 0 }
+		accept			{ uiScript limboChat }
+	}
+
+	// NAME
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 60 30
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		text			"Chat"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		12
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		cvar			"name"
+	}
+}
+
+// ======================================
+// wm_limboModel
+// ======================================
+{
+	menuDef {
+		name			"wm_limboModel"
+		visible			0
+		fullscreen		0
+		rect			437 10 194 205
+		focusColor		1 1 1 1
+		disablecolor	0 0 0 0
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		background		"ui/assets/limbo_player_background.tga"
+
+		execKeyInt		9 { exec "+scores" }
+		execKey			t { uiScript "ActivateLimboChat" }
+
+	// LIMBO CHAT
+	itemDef {
+		name			modelselection
+		visible			1
+		rect			0 14 194 200
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			1
+   		border			0
+		decoration
+		ownerdraw		UI_PLAYERMODEL
+	}
+
+	// MODEL
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 60 30
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		text			"Model"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		12
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+	}
+
+	itemDef {
+		name			window_limbo_name
+		visible			1
+		rect			10 185 180 16
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		outlinecolor	1 1 0 .5
+		type			ITEM_TYPE_EDITFIELD
+ 		style			0
+   		border			1
+		bordercolor		0 0 0 1
+		maxChars		32
+		text			"Name:"
+		cvar			"name"
+		textscale		0.18
+		textalign		ITEM_ALIGN_LEFT		
+		textalignx		5
+		textaligny		11
+		mouseEnter		{ setitemcolor window_limbo_name bordercolor 1 1 0 1 }
+		mouseExit		{ setitemcolor window_limbo_name bordercolor 1 1 0 0 }
+	}
+}
+
+// ======================================
+// wm_limboButtonBar
+// ======================================
+{
+	menuDef {
+		name			"wm_limboButtonBar"
+		visible			0
+		fullscreen		0
+		rect			10 460 620 18
+//		focusColor		1 1 1 1
+//		disablecolor	0 0 0 0
+		backcolor		0 0.18824 0.31373 1
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+
+		focuscolor		1 1 0 1
+		disablecolor	0.5 0.5 0.5 1
+
+		execKeyInt		9 { exec "+scores" }
+		execKey			t { uiScript "ActivateLimboChat" }
+
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 120 20
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			1
+		bordercolor		0 0 0 1
+		type			ITEM_TYPE_BUTTON
+		text			"Configure"
+		textscale		0.22
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		action			{ setCvar ui_limboOptions "0" }
+	}
+
+	itemDef {
+		name			window
+		visible			1
+		rect			125 0 120 20
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			1
+		bordercolor		0 0 0 1
+		type			ITEM_TYPE_BUTTON
+		text			"Spawn Point"
+		textscale		0.22
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		action			{ setCvar ui_limboOptions "3" }
+	}
+
+	itemDef {
+		name			window
+		visible			1
+		rect			250 0 120 20
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			1
+		bordercolor		0 0 0 1
+		type			ITEM_TYPE_BUTTON
+		text			"Map"
+		textscale		0.22
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		action			{ setCvar ui_limboOptions "4" }
+	}
+}
+
+// ======================================
+// wm_limboOptions
+// ======================================
+{
+	menuDef {
+		name			"wm_limboOptions"
+		visible			0
+		fullscreen		0
+		rect			437 224 194 227
+//		focusColor		1 1 1 1
+//		disablecolor	0 0 0 0
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+
+		focuscolor		1 1 0 1
+		disablecolor	0.5 0.5 0.5 1
+
+		execKeyInt		9 { exec "+scores" }
+		execKey			t { uiScript "ActivateLimboChat" }
+
+	// =================================================
+	// TEAM GROUP
+	// =================================================
+
+	// BACKGROUND
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			0 0 194 227
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		decoration
+		background		"ui/assets/limbo_team_background.tga"
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+	// TEAM SELECT
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			0 0 60 30
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		text			"Team Select"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		12
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+
+		decoration
+	}
+
+	// AXIS
+	itemDef {
+		name			window_axisTeam
+		group			grpLimboTeam
+		visible			1
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"AXIS"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		35
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_axisTeam; setitemcolor window_axisTeam forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_axisTeam; setitemcolor window_axisTeam forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_TEAM WM_AXIS; setCvar ui_limboOptions "1" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+	// ALLIES
+	itemDef {
+		name			window_alliesTeam
+		group			grpLimboTeam
+		visible			1
+		rect			44 94 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"ALLIES"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		28
+		textaligny		16
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 94 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_alliesTeam; setitemcolor window_alliesTeam forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_alliesTeam; setitemcolor window_alliesTeam forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_TEAM WM_ALLIES; setCvar ui_limboOptions "1" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+	// SPECTATOR
+	itemDef {
+		name			window_spectatorTeam
+		group			grpLimboTeam
+		visible			1
+		rect			44 126 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"SPECTATOR"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		10
+		textaligny		16
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 126 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_spectatorTeam; setitemcolor window_spectatorTeam forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_spectatorTeam; setitemcolor window_spectatorTeam forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_TEAM WM_SPECTATOR; setCvar ui_limboMode "0"; uiScript startMultiplayer }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+	// PREV
+	itemDef {
+		name			window_pickTeamPrev
+		group			grpLimboTeam
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"PREV"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickTeamPrev; setitemcolor window_pickTeamPrev forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickTeamPrev; setitemcolor window_pickTeamPrev forecolor 1 1 1 1 }
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+	// NEXT
+	itemDef {
+		name			window_pickTeamNext
+		group			grpLimboTeam
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"NEXT"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickTeamNext; setitemcolor window_pickTeamNext forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickTeamNext; setitemcolor window_pickTeamNext forecolor 1 1 1 1 }
+		action			{ setCvar ui_limboOptions "1" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "0" }
+	}
+
+
+	// =================================================
+	// CLASS GROUP
+	// =================================================
+
+	// BACKGROUND
+	itemDef {
+		name			window
+		group			grpLimboClass
+		visible			1
+		rect			0 0 194 227
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		decoration
+		background		"ui/assets/limbo_class_background.tga"
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// CLASS SELECT
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 60 30
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Class Select"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		12
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+
+		decoration
+	}
+
+	// SOLDIER
+	itemDef {
+		name			window_pickClassSoldier
+		group			grpLimboClass
+		visible			1
+		rect			44 49 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Soldier"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		25
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 49 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassSoldier; setitemcolor window_pickClassSoldier forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassSoldier; setitemcolor window_pickClassSoldier forecolor 1 1 1 1 }
+		action			{
+			show "grpLimboWeapon_Soldier*";
+			hide "grpLimboWeapon_Lieut*";
+			uiScript wm_pickitem2 WM_SELECT_CLASS WM_SOLDIER;
+			setCvar ui_limboOptions "2"
+		}
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// ENGINEER
+	itemDef {
+		name			window_pickClassEngineer
+		group			grpLimboClass
+		visible			1
+		rect			44 81 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Engineer"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		22
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 81 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassEngineer; setitemcolor window_pickClassEngineer forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassEngineer; setitemcolor window_pickClassEngineer forecolor 1 1 1 1 }
+		action			{ 
+			hide "grpLimboWeapon_Soldier*";
+			hide "grpLimboWeapon_Lieut*";
+			uiScript wm_pickitem2 WM_SELECT_CLASS WM_ENGINEER;
+			setCvar ui_limboOptions "2"
+		}
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// MEDIC
+	itemDef {
+		name			window_pickClassMedic
+		group			grpLimboClass
+		visible			1
+		rect			44 112 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Medic"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		33
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 112 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassMedic; setitemcolor window_pickClassMedic forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassMedic; setitemcolor window_pickClassMedic forecolor 1 1 1 1 }
+		action			{ 
+			hide "grpLimboWeapon_Soldier*";
+			hide "grpLimboWeapon_Lieut*";
+			uiScript wm_pickitem2 WM_SELECT_CLASS WM_MEDIC;
+			setCvar ui_limboOptions "2"
+		}
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// LIEUTENANT
+	itemDef {
+		name			window_pickClassLieutenant
+		group			grpLimboClass
+		visible			1
+		rect			44 143 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Lieutenant"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		14
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 143 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassLieutenant; setitemcolor window_pickClassLieutenant forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassLieutenant; setitemcolor window_pickClassLieutenant forecolor 1 1 1 1 }
+		action			{ 
+			hide "grpLimboWeapon_Soldier*";
+			show "grpLimboWeapon_Lieut*";
+			uiScript wm_pickitem2 WM_SELECT_CLASS WM_LIEUTENANT;
+			setCvar ui_limboOptions "2"
+		}
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// PREV
+	itemDef {
+		name			window_pickClassPrev
+		group			grpLimboClass
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"PREV"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassPrev; setitemcolor window_pickClassPrev forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassPrev; setitemcolor window_pickClassPrev forecolor 1 1 1 1 }
+		action			{ setCvar ui_limboOptions "0" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+	// NEXT
+	itemDef {
+		name			window_pickClassNext
+		group			grpLimboClass
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"NEXT"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_pickClassNext; setitemcolor window_pickClassNext forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_pickClassNext; setitemcolor window_pickClassNext forecolor 1 1 1 1 }
+		action			{ setCvar ui_limboOptions "2" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "1" }
+	}
+
+
+	// =================================================
+	// WEAPON GROUP
+	// =================================================
+
+	// BACKGROUND
+	itemDef {
+		name			window
+		group			grpLimboWeapon
+		visible			1
+		rect			0 0 194 227
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		decoration
+		background		"ui/assets/limbo_weapon_background.tga"
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// WEAPON SELECT
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 60 30
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Weapon Select"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		12
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+
+		decoration
+	}
+
+	// MP40
+	itemDef {
+		name			window_weaponMP40_Lieut
+		group			grpLimboWeapon_Lieut
+		visible			0
+		rect			44 24 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"MP 40"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		30
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			44 24 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponMP40_Lieut; setitemcolor window_weaponMP40_Lieut forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponMP40_Lieut; setitemcolor window_weaponMP40_Lieut forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_MP40 }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// THOMPSON
+	itemDef {
+		name			window_weaponThompson_Lieut
+		group			grpLimboWeapon_Lieut
+		visible			0
+		rect			44 44 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Thompson"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		15
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Lieut
+		visible			1
+		rect			44 44 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponThompson_Lieut; setitemcolor window_weaponThompson_Lieut forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponThompson_Lieut; setitemcolor window_weaponThompson_Lieut forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_THOMPSON }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// STEN
+	itemDef {
+		name			window_weaponSten_Lieut
+		group			grpLimboWeapon_Lieut
+		visible			0
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Sten"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		36
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Lieut
+		visible			1
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponSten_Lieut; setitemcolor window_weaponSten_Lieut forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponSten_Lieut; setitemcolor window_weaponSten_Lieut forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_STEN }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// MP40
+	itemDef {
+		name			window_weaponMP40
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 24 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"MP 40"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		30
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 24 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponMP40; setitemcolor window_weaponMP40 forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponMP40; setitemcolor window_weaponMP40 forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_MP40 }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// THOMPSON
+	itemDef {
+		name			window_weaponThompson
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 44 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Thompson"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		15
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 44 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponThompson; setitemcolor window_weaponThompson forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponThompson; setitemcolor window_weaponThompson forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_THOMPSON }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// STEN
+	itemDef {
+		name			window_weaponSten
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Sten"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		36
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 64 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponSten; setitemcolor window_weaponSten forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponSten; setitemcolor window_weaponSten forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_STEN }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// MAUSER
+	itemDef {
+		name			window_weaponMauser
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 84 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Mauser"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		28
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 84 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponMauser; setitemcolor window_weaponMauser forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponMauser; setitemcolor window_weaponMauser forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_MAUSER }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// PANZERFAUST
+	itemDef {
+		name			window_weaponPanzerfaust
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 104 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Panzerfaust"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		10
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 104 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponPanzerfaust; setitemcolor window_weaponPanzerfaust forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponPanzerfaust; setitemcolor window_weaponPanzerfaust forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_PANZERFAUST }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// VENOM
+	itemDef {
+		name			window_weaponVenom
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 124 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Venom"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		30
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 124 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponVenom; setitemcolor window_weaponVenom forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponVenom; setitemcolor window_weaponVenom forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_VENOM }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// FLAMETHROWER
+	itemDef {
+		name			window_weaponFlamethrower
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 144 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"Flamethrower"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		5
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon_Soldier
+		visible			1
+		rect			44 144 107 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponFlamethrower; setitemcolor window_weaponFlamethrower forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponFlamethrower; setitemcolor window_weaponFlamethrower forecolor 1 1 1 1 }
+		action			{ uiScript wm_pickitem2 WM_SELECT_WEAPON WM_WEAPON_FLAMETHROWER }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// PREV
+	itemDef {
+		name			window_weaponPrev
+		group			grpLimboWeapon
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"PREV"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon
+		visible			1
+		rect			44 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponPrev; setitemcolor window_weaponPrev forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponPrev; setitemcolor window_weaponPrev forecolor 1 1 1 1 }
+		action			{ setCvar ui_limboOptions "1" }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// NEXT
+	itemDef {
+		name			window_weaponNext
+		group			grpLimboWeapon
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			0
+		bordercolor		0 0 0 1
+		text			"PLAY!"
+		textscale		0.25
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		3
+		textaligny		14
+		textstyle		ITEM_TEXTSTYLE_SHADOWEDMORE
+		decoration
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+	itemDef {
+		name			window
+		group			grpLimboWeapon
+		visible			1
+		rect			106 204 44 19
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+		type			ITEM_TYPE_BUTTON
+   		border			0
+		bordercolor		0 0 0 1
+		mouseEnter		{ setfocus window_weaponNext; setitemcolor window_weaponNext forecolor 1 1 0 1 }
+		mouseExit		{ setfocus window_weaponNext; setitemcolor window_weaponNext forecolor 1 1 1 1 }
+		action			{ setCvar ui_limboMode "0"; uiScript startMultiplayer }
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "2" }
+	}
+
+	// =================================================
+	// SPAWN POINT GROUP
+	// =================================================
+
+	// BACKGROUND
+	itemDef {
+		name			window
+		group			grpLimboTeam
+		visible			1
+		rect			0 0 194 227
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_SHADER
+   		border			0
+		decoration
+		background		"ui/assets/limbo_player_background.tga"
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "3" }
+	}
+
+	itemDef {
+		name			window
+		type			ITEM_TYPE_LISTBOX
+		rect			5 16 180 204
+		style			WINDOW_STYLE_FILLED
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		border			1
+		visible			1
+		textscale		.22
+		textalign		0 //ITEM_ALIGN_CENTER
+		textalignx		2
+		textaligny		10
+		elementtype		LISTBOX_TEXT
+		feeder			FEEDER_PICKSPAWN
+		elementwidth	200
+		elementheight	16
+		bordercolor		.7 0 0 1
+		outlinecolor	.1 .1 .7 .5
+
+		cvarTest		"ui_limboOptions"
+		showCVar		{ "3" }
+	}
+}

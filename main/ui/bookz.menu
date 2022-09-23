@@ -1,0 +1,205 @@
+#include "ui/menudef.h"
+{
+
+menuDef {
+	name "hbook3"
+   	visible 0
+   	fullscreen 0
+   	rect 0 0 640 480
+	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+	onOpen { play "sound/notebook/book_open.wav"}
+	onESC { play "sound/notebook/book_close.wav"}
+
+
+
+
+
+// BACKGROUND
+
+	itemDef {
+		name background
+		rect 20 30 600 420	// centered
+		style WINDOW_STYLE_SHADER
+//		background "p_book1"
+		background "ui/assets/p_book1.tga"
+		forecolor 0 0 0 1
+		visible 1
+		decoration
+	}
+
+
+
+// PAGE 1 ////////////////
+
+	itemDef {	/// NEXT BUTTON
+		name b_next1
+		group page1
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 1
+		action { play "sound/notebook/book_pageflip.wav"; hide page1; show page2}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page1a
+		group page1
+		rect 65 70 220 330
+		textfile "text/EnglishUSA/zem_p1.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page1b
+		group page1
+		rect 365 70 205 330
+		textfile "text/EnglishUSA/zem_p2.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 1
+		autowrapped
+		decoration
+	}
+
+
+// PAGE 2 ////////////////
+
+	itemDef {	/// PREV BUTTON
+		name b_prev2
+		group page2
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn.tga"
+		rect 42 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+		action { play "sound/notebook/book_pageflip.wav"; hide page2; show page1}
+		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+//	itemDef {	/// NEXT BUTTON
+//		name b_next2
+//		group page2
+//		type ITEM_TYPE_BUTTON
+//		style WINDOW_STYLE_SHADER
+//		background "ui/assets/pageturn2.tga"
+//		rect 506 352 64 64
+//		forecolor 1 1 1 1
+//		backcolor .37 .1 .1 1
+//		visible 0
+//		action { play "sound/notebook/book_pageflip.wav"; hide page2; show page3}
+//		action { play "sound/notebook/book_pageflip.wav"}
+//		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+//		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+//	}
+
+	itemDef {
+		name page2a
+		group page2
+		rect 65 70 220 330
+		textfile "text/EnglishUSA/zem_p3.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page2b
+		group page2
+		rect 380 60 240 330
+		textfile "text/EnglishUSA/blank.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+
+// PAGE 3 ////////////////
+
+//	itemDef {	/// PREV BUTTON
+//		name b_prev3
+//		group page3
+//		type ITEM_TYPE_BUTTON
+//		style WINDOW_STYLE_SHADER
+//		background "ui/assets/pageturn.tga"
+//		rect 92 352 64 64
+//		forecolor 1 1 1 1
+//		backcolor .37 .1 .1 1
+//		visible 0
+//		action { play "sound/notebook/book_pageflip.wav"; hide page3; show page2}
+//		mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+//		mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+//	}
+
+	itemDef {	/// NEXT BUTTON
+		name b_next3
+		group page3
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/pageturn2.tga"
+		rect 532 370 64 64
+		forecolor 1 1 1 1
+		backcolor .37 .1 .1 1
+		visible 0
+//		action { play "sound/notebook/book_pageflip.wav"; hide page3; show page2}
+		action { play "sound/notebook/book_pageflip.wav"}
+		mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+		mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+	itemDef {
+		name page3a
+		group page3
+		rect 60 60 240 330
+		textfile "text/EnglishUSA/zbook1.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+	itemDef {
+		name page3b
+		group page3
+		rect 380 60 240 330
+		textfile "text/EnglishUSA/zbook1.txt"
+		textscale .16
+		forecolor .1 .1 .1 .9
+		visible 0
+		decoration
+		autowrapped
+	}
+
+
+
+
+
+
+
+}	// end menudef
+
+}	// end all
+
+

@@ -75,8 +75,8 @@ void SCR_AdjustFrom640( float *x, float *y, float *w, float *h ) {
 #endif
 
 	// scale for screen sizes
-	xscale = cls.glconfig.vidWidth / 640.0;
-	yscale = cls.glconfig.vidHeight / 480.0;
+	xscale = cls.glconfig.vidWidth / SCREEN_WIDTH;
+	yscale = cls.glconfig.vidHeight / SCREEN_HEIGHT;
 	if ( x ) {
 		*x *= xscale;
 	}
@@ -444,7 +444,7 @@ void SCR_DrawScreenField( stereoFrame_t stereoFrame ) {
 	// wide aspect ratio screens need to have the sides cleared
 	// unless they are displaying game renderings
 	if ( cls.state != CA_ACTIVE ) {
-		if ( cls.glconfig.vidWidth * 480 > cls.glconfig.vidHeight * 640 ) {
+		if ( cls.glconfig.vidWidth * SCREEN_HEIGHT > cls.glconfig.vidHeight * SCREEN_WIDTH) {
 			re.SetColor( g_color_table[0] );
 			re.DrawStretchPic( 0, 0, cls.glconfig.vidWidth, cls.glconfig.vidHeight, 0, 0, 0, 0, cls.whiteShader );
 			re.SetColor( NULL );

@@ -727,122 +727,102 @@ static void VectorArrayNormalize( vec4_t *normals, unsigned int count ) {
 /*
 ** LerpMeshVertexes
 */
-
-// jmarshall - cleaned this up and added support for changing the winding order of the meshes.
 static void LerpMeshVertexes( md3Surface_t *surf, float backlerp ) {
-	int outputIndexes[3] = { 0, 1, 2 };
-	int outputIndexesReversed[3] = { 2, 1, 0 };
-	int* windingOrder;
-
-	short* oldXyz, * newXyz, * oldNormals, * newNormals;
+	short   *oldXyz, *newXyz, *oldNormals, *newNormals;
+	float   *outXyz, *outNormal;
 	float oldXyzScale, newXyzScale;
 	float oldNormalScale, newNormalScale;
 	int vertNum;
 	unsigned lat, lng;
 	int numVerts;
 
-	int i;
+	outXyz = tess.xyz[tess.numVertexes];
+	outNormal = tess.normal[tess.numVertexes];
 
-	newXyz = (short*)((byte*)surf + surf->ofsXyzNormals)
-		+ (backEnd.currentEntity->e.frame * surf->numVerts * 4);
+	newXyz = ( short * )( (byte *)surf + surf->ofsXyzNormals )
+			 + ( backEnd.currentEntity->e.frame * surf->numVerts * 4 );
 	newNormals = newXyz + 3;
 
-	newXyzScale = MD3_XYZ_SCALE * (1.0 - backlerp);
+	newXyzScale = MD3_XYZ_SCALE * ( 1.0 - backlerp );
 	newNormalScale = 1.0 - backlerp;
 
 	numVerts = surf->numVerts;
 
-	if (backEnd.currentEntity->e.reverseRender)
-	{
-		windingOrder = &outputIndexesReversed[0];
-	}
-	else
-	{
-		windingOrder = &outputIndexes[0];
-	}
-
-	if (backlerp == 0) {
+	if ( backlerp == 0 ) {
 		//
 		// just copy the vertexes
 		//
-		for (vertNum = 0; vertNum < numVerts; vertNum+=3)
+		for ( vertNum = 0 ; vertNum < numVerts ; vertNum++,
+			  newXyz += 4, newNormals += 4,
+			  outXyz += 4, outNormal += 4 )
 		{
-			for (i = 0; i < 3; i++, newXyz += 4, newNormals += 4)
-			{
-				int vertexId = tess.numVertexes + vertNum + windingOrder[i];
-				
-				tess.xyz[vertexId][0] = newXyz[0] * newXyzScale;
-				tess.xyz[vertexId][1] = newXyz[1] * newXyzScale;
-				tess.xyz[vertexId][2] = newXyz[2] * newXyzScale;
 
-				lat = (newNormals[0] >> 8) & 0xff;
-				lng = (newNormals[0] & 0xff);
-				lat *= (FUNCTABLE_SIZE / 256);
-				lng *= (FUNCTABLE_SIZE / 256);
+			outXyz[0] = newXyz[0] * newXyzScale;
+			outXyz[1] = newXyz[1] * newXyzScale;
+			outXyz[2] = newXyz[2] * newXyzScale;
 
-				// decode X as cos( lat ) * sin( long )
-				// decode Y as sin( lat ) * sin( long )
-				// decode Z as cos( long )
+			lat = ( newNormals[0] >> 8 ) & 0xff;
+			lng = ( newNormals[0] & 0xff );
+			lat *= ( FUNCTABLE_SIZE / 256 );
+			lng *= ( FUNCTABLE_SIZE / 256 );
 
-				tess.normal[vertexId][0] = tr.sinTable[(lat + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK] * tr.sinTable[lng];
-				tess.normal[vertexId][1] = tr.sinTable[lat] * tr.sinTable[lng];
-				tess.normal[vertexId][2] = tr.sinTable[(lng + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK];
-			}
+			// decode X as cos( lat ) * sin( long )
+			// decode Y as sin( lat ) * sin( long )
+			// decode Z as cos( long )
+
+			outNormal[0] = tr.sinTable[( lat + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK] * tr.sinTable[lng];
+			outNormal[1] = tr.sinTable[lat] * tr.sinTable[lng];
+			outNormal[2] = tr.sinTable[( lng + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK];
 		}
-	}
-	else
-	{
+	} else {
 		//
-	// interpolate and copy the vertex and normal
-	//
-		oldXyz = (short*)((byte*)surf + surf->ofsXyzNormals)
-			+ (backEnd.currentEntity->e.oldframe * surf->numVerts * 4);
+		// interpolate and copy the vertex and normal
+		//
+		oldXyz = ( short * )( (byte *)surf + surf->ofsXyzNormals )
+				 + ( backEnd.currentEntity->e.oldframe * surf->numVerts * 4 );
 		oldNormals = oldXyz + 3;
 
 		oldXyzScale = MD3_XYZ_SCALE * backlerp;
 		oldNormalScale = backlerp;
 
-		for (vertNum = 0; vertNum < numVerts; vertNum += 3)
+		for ( vertNum = 0 ; vertNum < numVerts ; vertNum++,
+			  oldXyz += 4, newXyz += 4, oldNormals += 4, newNormals += 4,
+			  outXyz += 4, outNormal += 4 )
 		{
-			for (i = 0; i < 3; i++, oldXyz += 4, newXyz += 4, oldNormals += 4, newNormals += 4)
-			{
-				vec3_t uncompressedOldNormal, uncompressedNewNormal;
+			vec3_t uncompressedOldNormal, uncompressedNewNormal;
 
-				int vertexId = tess.numVertexes + vertNum + windingOrder[i];
+			// interpolate the xyz
+			outXyz[0] = oldXyz[0] * oldXyzScale + newXyz[0] * newXyzScale;
+			outXyz[1] = oldXyz[1] * oldXyzScale + newXyz[1] * newXyzScale;
+			outXyz[2] = oldXyz[2] * oldXyzScale + newXyz[2] * newXyzScale;
 
-				// interpolate the xyz
-				tess.xyz[vertexId][0] = oldXyz[0] * oldXyzScale + newXyz[0] * newXyzScale;
-				tess.xyz[vertexId][1] = oldXyz[1] * oldXyzScale + newXyz[1] * newXyzScale;
-				tess.xyz[vertexId][2] = oldXyz[2] * oldXyzScale + newXyz[2] * newXyzScale;
+			// FIXME: interpolate lat/long instead?
+			lat = ( newNormals[0] >> 8 ) & 0xff;
+			lng = ( newNormals[0] & 0xff );
+			lat *= 4;
+			lng *= 4;
+			uncompressedNewNormal[0] = tr.sinTable[( lat + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK] * tr.sinTable[lng];
+			uncompressedNewNormal[1] = tr.sinTable[lat] * tr.sinTable[lng];
+			uncompressedNewNormal[2] = tr.sinTable[( lng + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK];
 
-				// FIXME: interpolate lat/long instead?
-				lat = (newNormals[0] >> 8) & 0xff;
-				lng = (newNormals[0] & 0xff);
-				lat *= 4;
-				lng *= 4;
-				uncompressedNewNormal[0] = tr.sinTable[(lat + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK] * tr.sinTable[lng];
-				uncompressedNewNormal[1] = tr.sinTable[lat] * tr.sinTable[lng];
-				uncompressedNewNormal[2] = tr.sinTable[(lng + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK];
+			lat = ( oldNormals[0] >> 8 ) & 0xff;
+			lng = ( oldNormals[0] & 0xff );
+			lat *= 4;
+			lng *= 4;
 
-				lat = (oldNormals[0] >> 8) & 0xff;
-				lng = (oldNormals[0] & 0xff);
-				lat *= 4;
-				lng *= 4;
+			uncompressedOldNormal[0] = tr.sinTable[( lat + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK] * tr.sinTable[lng];
+			uncompressedOldNormal[1] = tr.sinTable[lat] * tr.sinTable[lng];
+			uncompressedOldNormal[2] = tr.sinTable[( lng + ( FUNCTABLE_SIZE / 4 ) ) & FUNCTABLE_MASK];
 
-				uncompressedOldNormal[0] = tr.sinTable[(lat + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK] * tr.sinTable[lng];
-				uncompressedOldNormal[1] = tr.sinTable[lat] * tr.sinTable[lng];
-				uncompressedOldNormal[2] = tr.sinTable[(lng + (FUNCTABLE_SIZE / 4)) & FUNCTABLE_MASK];
+			outNormal[0] = uncompressedOldNormal[0] * oldNormalScale + uncompressedNewNormal[0] * newNormalScale;
+			outNormal[1] = uncompressedOldNormal[1] * oldNormalScale + uncompressedNewNormal[1] * newNormalScale;
+			outNormal[2] = uncompressedOldNormal[2] * oldNormalScale + uncompressedNewNormal[2] * newNormalScale;
 
-				tess.normal[vertexId][0] = uncompressedOldNormal[0] * oldNormalScale + uncompressedNewNormal[0] * newNormalScale;
-				tess.normal[vertexId][1] = uncompressedOldNormal[1] * oldNormalScale + uncompressedNewNormal[1] * newNormalScale;
-				tess.normal[vertexId][2] = uncompressedOldNormal[2] * oldNormalScale + uncompressedNewNormal[2] * newNormalScale;
-			}
+//			VectorNormalize (outNormal);
 		}
-
-		VectorArrayNormalize((vec4_t*)tess.normal[tess.numVertexes], numVerts);
+		VectorArrayNormalize( (vec4_t *)tess.normal[tess.numVertexes], numVerts );
 	}
 }
-// jmarshall end
 
 /*
 =============
@@ -879,8 +859,18 @@ void RB_SurfaceMesh( md3Surface_t *surface ) {
 	indexes = surface->numTriangles * 3;
 	Bob = tess.numIndexes;
 	Doug = tess.numVertexes;
-	for ( j = 0 ; j < indexes ; j++ ) {
-		tess.indexes[Bob + j] = Doug + triangles[j];
+	for ( j = 0 ; j < indexes ; j+=3 ) {
+		if (backEnd.currentEntity->e.reverseRender) {
+			tess.indexes[Bob + j + 0] = Doug + triangles[j + 2];
+			tess.indexes[Bob + j + 1] = Doug + triangles[j + 1];
+			tess.indexes[Bob + j + 2] = Doug + triangles[j + 0];
+		}
+		else {
+			tess.indexes[Bob + j + 0] = Doug + triangles[j + 0];
+			tess.indexes[Bob + j + 1] = Doug + triangles[j + 1];
+			tess.indexes[Bob + j + 2] = Doug + triangles[j + 2];
+		}
+		
 	}
 	tess.numIndexes += indexes;
 
@@ -890,7 +880,10 @@ void RB_SurfaceMesh( md3Surface_t *surface ) {
 	for ( j = 0; j < numVerts; j++ ) {
 		tess.texCoords[Doug + j][0][0] = texCoords[j * 2 + 0];
 		tess.texCoords[Doug + j][0][1] = texCoords[j * 2 + 1];
-		// FIXME: fill in lightmapST for completeness?
+		
+		if (backEnd.currentEntity->e.reverseRender) {
+			tess.texCoords[Doug + j][0][1] = 1.0 - texCoords[j * 2 + 1];
+		}
 	}
 
 	tess.numVertexes += surface->numVerts;

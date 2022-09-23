@@ -1,0 +1,250 @@
+#include "ui/menudef.h"
+
+{
+\\ CINEMATIC \\
+
+	 
+
+menuDef {
+	name "cinematic_menu"
+	visible 0
+	fullscreen 0
+	rect 100 125 443 340
+	focusColor 1 .75 0 1
+	style 1
+	border 1
+	onOpen { setitemcolor fadebox backcolor 0 0 0 1 ; fadeout fadebox ; hide grpSystem ; show cinematic}
+	onEsc { close system_menu ; close setup_menu ; open main }
+}
+
+
+	itemDef 
+	{
+		name window
+		group grpcinematicbutton
+		rect 0 2 443 300	
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible 1
+		decoration
+	}
+
+
+
+ itemDef {
+	name cinematic
+	text "SYSTEM"
+ 	type 1
+	textfont UI_FONT_NORMAL
+	style 0	
+	textstyle 6
+	rect 222.5 -12 64 14 
+	textalign ITEM_ALIGN_CENTER
+	textscale .22		
+	textalignx 2
+	textaligny 12
+	forecolor .9 .9 .9 .8
+	visible 1 
+	decoration
+	}
+
+
+
+
+
+ 
+
+itemDef {
+	name cinematic
+      rect 330 144 256 192
+	group cinematic
+	type ITEM_TYPE_LISTBOX
+	style WINDOW_STYLE_FILLED
+	elementwidth 120
+	elementheight 20
+	textscale .25
+	elementtype LISTBOX_TEXT
+	feeder FEEDER_CINEMATICS
+	doubleclick { uiScript playMovie }
+	textalign 3
+	textaligny 14
+	border 1
+	bordercolor .5 .5 .5 .5
+	forecolor 1 1 1 1
+	backcolor 0 0 .1 1
+	outlinecolor .1 .1 .7 .5
+	visible 1
+	mouseEnter { fadein message_cinematic ; setitemcolor cinematiclist bordercolor .7 0 0 1 } 
+	mouseExit { fadeout message_cinematic ; setitemcolor cinematiclist bordercolor .5 .5 .5 .5 } 
+  	}
+
+
+
+// BACK BAR	//
+
+
+  itemDef {
+	name gotobar
+      	style 2
+      	rect 0 430 640 30 
+      	textscale 0.4
+      	textalign 0		        // center
+      	textalignx 60        // x alignment point for text
+      	textaligny 21        
+      	style 2
+      	border 4
+      	bordercolor 0.5 0.5 0.5 0.5
+      	bordersize 2
+      	backcolor 0 0 .75 0.5
+      	visible 1 
+      	mouseEnter { setcolor backcolor .75 0 0 .5 }
+      	mouseExit { setcolor backcolor 0 0 .75 .5 }
+      	decoration 
+    		}
+
+
+
+    itemDef {
+      	name back
+		style 3
+		background "ui/assets/backarrow.tga"
+		rect 16 424 50 50 
+      	visible 1 
+      	action { close cinematic ; open main }
+		mouseEnter { hide back ; show back_alt ; fadein message_back }
+    		}
+
+itemDef {
+      	name back_alt
+      	style WINDOW_STYLE_SHADER
+		background "ui/assets/backarrow_alt.tga"
+		rect 14 422 54 54 
+      	backcolor 0 0 0 0
+      	forecolor 1 1 1 1
+      	visible 0
+		type ITEM_TYPE_BUTTON
+      	mouseExit { hide back_alt ; show back ; fadeout message_back }	  
+      	action { close cinematic ; open main }	  
+		}
+
+itemDef {
+      	name accept
+      	style 3	
+	     	rect 574 424 50 50 
+	     	background "ui/assets/forwardarrow.tga"
+      	backcolor 0 0 0 0
+      	forecolor 1 1 1 1
+      	visible 1 
+		mouseEnter { hide accept ; show accept_alt ; fadein message_accept }
+      	action { close cinematic ; uiScript playMovie }
+  		}
+
+itemDef {
+      	name accept_alt
+      	style 3	
+	     	rect 572 422 54 54 
+	     	background "ui/assets/forwardarrow_alt.tga"
+      	backcolor 0 0 0 0
+      	forecolor 1 1 1 1
+      	visible 0
+		type ITEM_TYPE_BUTTON   
+      	action { close cinematicMenu ; uiScript playMovie }
+		mouseExit {  hide accept_alt ; show accept ; fadeout message_accept ; playlooped "music/fla_mp03.wav" }	
+  	}
+
+
+
+
+//	MESSAGES	//
+
+itemDef {
+	name message_back
+	group grpmessage
+	style 0 
+	rect 320 430 128 30
+	textstyle 1
+	textalign 1
+	textalignx 0
+	textaligny 25
+	textscale .416
+	text "Exit to Main Menu"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name message_cinematic
+	group grpmessage
+	style 0 
+	rect 320 430 128 30
+	textalign 1
+	textstyle 1
+	textalignx 0
+	textaligny 25
+	textscale .416
+	text "Select Cinematic to Play"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+itemDef {
+	name message_accept
+	group grpmessage
+	style 0 
+	rect 320 430 128 30
+	textalign 1
+	textstyle 1
+	textalignx 0
+	textaligny 25
+	textscale .416
+	text "Select to Play Fullscreen"
+	forecolor 1 1 1 1
+	decoration 
+	visible 0
+	}
+
+itemDef {
+	name mappreview
+	ownerdraw UI_PREVIEWCINEMATIC
+	rect 54 144 256 192
+	backcolor 1 1 1 .25
+	border 1
+	bordersize 1
+	bordercolor .5 .5 .5 1
+	decoration
+	visible 1
+	}
+
+
+itemDef {
+     name fadebox
+     style WINDOW_STYLE_FILLED
+	background "ui/assets/fadebox.tga"
+	forecolor 0 0 0 1
+	backcolor 0 0 0 1
+	rect 0 0 640 480
+     visible 1 
+	decoration
+    	}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+}
+
+}
+}

@@ -1,0 +1,84 @@
+#include "ui/menudef.h"
+
+#define DEFAULT_TEXT_SCALE 0.25
+
+{
+	menuDef {
+		name			"wm_quickmessage"
+		visible			0
+		fullscreen		0
+		rect			510 200 128 190
+		focusColor		1 1 1 1
+		disablecolor	0 0 0 0
+		backcolor		0 0 0 0
+ 		style			WINDOW_STYLE_FILLED
+   		border			1
+
+	itemDef {
+		name			window
+		visible			1
+		rect			0 0 128 190
+		forecolor		1 1 1 1
+		backcolor		0 0 0 1
+ 		style			WINDOW_STYLE_SHADER
+   		border			1
+		background		"ui/assets/quick_message.tga"
+		decoration
+	}
+
+
+	itemDef {
+		name			"window"
+		visible			1
+		rect			64 20 128 20
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		text			"Quick Message"
+		textscale		0.3
+		textalign		ITEM_ALIGN_CENTER
+		decoration
+	}
+
+	itemDef {
+		name			"window"
+		visible			1
+		rect			10 40 128 16
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		text			"Quick Message"
+		textscale		0.28
+		textalign		ITEM_ALIGN_LEFT
+		text			"H. Hail"
+		decoration
+	}
+	execKey "h" { close wm_quickmessage; exec "say [OH] Seig Hail!"; }
+
+	itemDef {
+		name			"window"
+		visible			1
+		rect			10 56 128 16
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		text			"Quick Message"
+		textscale		0.28
+		textalign		ITEM_ALIGN_LEFT
+		text			"O. Over here"
+		decoration
+	}
+	execKey "o" { close wm_quickmessage; exec "say [OO] I'm over here!"; }
+
+	itemDef {
+		name			"window"
+		visible			1
+		rect			10 72 128 16
+		forecolor		1 1 1 1
+		backcolor		0 0 0 0
+		text			"Quick Message"
+		textscale		0.28
+		textalign		ITEM_ALIGN_LEFT
+		text			"F. Fall Back"
+		decoration
+		group			ingamebox
+	}
+	execKey "f" { close wm_quickmessage; exec "say [OF] Fall back!"; }
+}

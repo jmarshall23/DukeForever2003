@@ -1,0 +1,724 @@
+#include "ui/menudef.h"
+{
+
+	assetGlobalDef {
+//		cursor "gfx/2d/usablehint.tga"			// cursor	
+	}
+
+
+
+menuDef {
+	name "notebook"
+   	visible 0
+   	fullscreen 0
+   	rect 0 0 640 480
+	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+	onOpen { play "sound/notebook/book_open.wav"; hide debrief; hide "page*"; showpage 0 }	// showpage 0 - show currently active page
+	onESC { play "sound/notebook/book_close.wav" }
+
+
+//	BUTTONS	//
+
+itemDef {
+	name background
+//	rect 50 50 540 380	// centered
+	rect 20 30 600 420	// centered
+	style WINDOW_STYLE_SHADER
+	background "notebook1"
+	forecolor 0 0 0 1
+	visible 1
+	decoration
+	}
+
+
+
+itemDef {
+	name button_prev
+	type 1
+	textscale .25
+	group grpControlbutton
+	type ITEM_TYPE_BUTTON
+	style WINDOW_STYLE_SHADER
+	background "ui/assets/pageturn.tga"
+	rect 29 380 64 64
+	textalign 1
+	textalignx 22
+	textaligny 20
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1
+	visible 1
+	action { play "sound/notebook/book_pageflip.wav"; hide debrief; showpage "-1" }	// go to previous available page
+	mouseEnter { setitemcolor button_prev backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor button_prev backcolor .37 .1 .1 1 } 
+	}
+
+
+
+
+itemDef {
+	name button_last
+	text "End"
+	type 1
+	textscale .25
+	group grpControlbutton
+	type ITEM_TYPE_BUTTON
+	style WINDOW_STYLE_SHADER
+	background "ui/assets/bookmark_cover.tga"
+	rect 400 0 64 34
+	textalign 1
+	textalignx 32
+	textaligny 30
+	forecolor 1 1 1 .7
+	backcolor .3 .3 .3 1
+	visible 1
+	action { play "sound/notebook/book_close.wav"; hide debrief; showpage 999 }
+	mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 } 
+	}
+
+
+
+itemDef {
+	name button_close
+	text "Close"
+	type 1
+	textscale .25
+	group grpControlbutton
+	type ITEM_TYPE_BUTTON
+	style WINDOW_STYLE_SHADER
+	background "ui/assets/bookmark_back.tga"
+	rect 400 436 64 34
+	textalign 1
+	textalignx 32
+	textaligny 30
+	forecolor 1 1 1 .7
+	backcolor .3 .3 .3 1
+	visible 1
+	action { close notebook }
+	mouseEnter { setitemcolor button_close backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor button_close backcolor .37 .1 .1 1 } 
+	}
+
+
+
+// next page arrow button
+
+itemDef {
+	name button_next
+	type 1
+	textscale .25
+	group grpControlbutton
+	type ITEM_TYPE_BUTTON
+	style WINDOW_STYLE_SHADER
+	background "ui/assets/pageturn2"
+	rect 543 375 64 64
+	textalign 1
+	textalignx 22
+	textaligny 20
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1
+	visible 2
+	action { play "sound/notebook/book_pageflip.wav"; hide debrief; showpage 1}	// go to next available page
+	mouseEnter { setitemcolor button_next backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor button_next backcolor .37 .1 .1 1 } 
+	}
+
+
+
+itemDef {
+	name cover
+	rect 90 370 245 360
+	group cover
+	text "cover"
+	textalign 1
+	textstyle 0
+	textscale .333
+	textalignx 160
+	textaligny 23
+	forecolor .1 .1 .1 .75
+	visible 1
+	decoration
+}
+
+
+
+
+
+
+
+/// PAGES  ////////////////////
+
+
+
+
+	itemDef {
+		name page1a
+		group page1
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/m1_l1_br_p1.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		autowrapped
+		decoration
+	}
+
+///////////// test image ////////////////// 
+
+itemDef {
+	name page1a
+	group page1
+	style WINDOW_STYLE_SHADER
+	background "map_e1"
+	cvarTest "mapname"
+	showcvar { "escape1" }	// added current map rev
+	rect 60 170 230 280
+	textalign 1
+	textalignx 32
+	textaligny 30
+	forecolor 1 1 1 .7
+	backcolor .3 .3 .3 1
+	visible 1
+}
+
+	itemDef {
+		name page1b
+		group page1
+		rect 345 70 230 380
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		textfile "text/EnglishUSA/m1_l1_br_p2.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page2a
+		group page2
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/m1_l1_br_p3.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		autowrapped
+		decoration
+	}
+
+
+itemDef {
+	name page2a
+	group page2
+	style WINDOW_STYLE_SHADER
+	background "kessler"
+	cvarTest "mapname"
+	showcvar {"escape1" }	// added current map rev
+	rect 60 170 180 180
+	textalign 1
+	textalignx 32
+	textaligny 30
+	forecolor 1 1 1 .7
+	backcolor .3 .3 .3 1
+	visible 1
+}
+
+	itemDef {
+		name page2a
+		group page2
+		rect 100 360 240 20
+		text "Partisan contact named Kessler"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		cvarTest "mapname"
+		showcvar { "escape1" }
+		autowrapped
+		decoration
+	   }
+
+	itemDef {
+		name page2b
+		group page2
+		rect 345 70 230 380
+		cvarTest "mapname"
+		showcvar { "escape1" }	// added current map rev
+//		textfile "text/EnglishUSA/m1_l1_br_p4.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		autowrapped
+		decoration
+	}
+
+
+
+////////////// new pages ///////////////////////////////////////////////
+
+
+
+
+//////////////// m2l5 ////////////
+
+itemDef {
+		name page1a
+		group page1
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/m2_l5_br_p1.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		autowrapped
+		decoration
+	}
+
+itemDef {
+	name page1a
+	group page1
+	style WINDOW_STYLE_SHADER
+	background "m_crypt"
+	cvarTest "mapname"
+	showcvar { "crypt1" }	// added current map rev
+	rect 55 180 260 220
+	textalign 1
+	textalignx 32
+	textaligny 30
+	forecolor 1 1 1 .7
+	backcolor .3 .3 .3 1
+	visible 1
+	   }
+
+	itemDef {
+		name page1a
+		group page1
+		rect 150 210 240 20
+		text "Village"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page1a
+		group page1
+		rect 160 400 240 20
+		text "Crypt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page1a
+		group page1
+		rect 240 380 240 20
+		text "Church"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .7
+		visible 1
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		autowrapped
+		decoration
+	}
+	itemDef {
+		name page1b
+		group page1
+		rect 345 60 215 380
+		textfile "text/EnglishUSA/m2_l5_br_p2.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		autowrapped
+		decoration
+	}
+	itemDef {
+		name page2a
+		group page2
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		rect 60 60 240 380
+		textfile "text/EnglishUSA/m2_l5_br_p3.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		name page2b
+		group page2
+		rect 345 60 215 380
+		cvarTest "mapname"
+		showcvar { "crypt1" }
+		textfile "text/EnglishUSA/m2_l4_br_p4.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+
+
+// check boxes
+
+	itemDef {
+		name check1
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective1"
+		showcvar { "1" }
+		rect 72 82 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check2
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective2"
+		showcvar { "1" }
+		rect 72 122 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check3
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective3"
+		showcvar { "1" }
+		rect 72 162 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check4
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective4"
+		showcvar { "1" }
+		rect 72 202 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check5
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective5"
+		showcvar { "1" }
+		rect 72 242 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check6
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective6"
+		showcvar { "1" }
+		rect 72 282 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name check7
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		group page1
+		background "ui/assets/checkmark.tga"
+		cvarTest "g_objective7"
+		showcvar { "1" }
+		rect 72 322 20 20
+		forecolor .1 .1 .1 .9
+		visible 1
+		decoration
+	}
+
+
+
+	
+
+/// DE-BRIEFING PAGES  //////////////////
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page501
+		textfile "text/EnglishUSA/mission1d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+
+	}
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page502
+		textfile "text/EnglishUSA/mission2d.txt"
+	//	textfile "text/EnglishUSA/mission1d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page503
+		textfile "text/EnglishUSA/mission3d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page504
+		textfile "text/EnglishUSA/mission4d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page505
+		textfile "text/EnglishUSA/mission5d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+	itemDef {
+		group debrief
+		rect 70 60 220 360
+		name page506
+		textfile "text/EnglishUSA/mission6d.txt"
+		textfont UI_FONT_HANDWRITING
+		textscale .2
+		forecolor .1 .1 .1 .75
+		visible 1
+		autowrapped
+		decoration
+	}
+
+
+/// DE-BRIEFING TABS  //////////////////
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 250 20 40
+		forecolor 1 1 1 1
+		cvarTest "g_episode"
+		showcvar { "6" }
+		text "6"
+		textscale .2
+		textalignx 10
+		textaligny 25
+		backcolor .3 .3 .3 1
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 506 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 210 20 40
+		forecolor 1 1 1 1
+		cvarTest "g_episode"
+		showcvar { "5"; "6" }
+		text "5"
+		textscale .2
+		textalignx 10
+		textaligny 25
+		backcolor .3 .3 .3 1
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 505 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 170 20 40
+		forecolor 1 1 1 1
+		backcolor .3 .3 .3 1
+		cvarTest "g_episode"
+		showcvar { "4"; "5"; "6" }
+		text "4"
+		textalignx 10
+		textaligny 25
+		textscale .2
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 504 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 130 20 40
+		forecolor 1 1 1 1
+		backcolor .3 .3 .3 1
+		cvarTest "g_episode"
+		text "3"
+		textalignx 10
+		textaligny 25
+		textscale .2
+		showcvar { "3"; "4"; "5"; "6" }
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 503 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 90 20 40
+		forecolor 1 1 1 1
+		backcolor .3 .3 .3 1
+		cvarTest "g_episode"
+		showcvar { "2"; "3"; "4"; "5"; "6" }
+		text "2"
+		textalignx 10
+		textaligny 25
+		textscale .2
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 502 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+
+	itemDef {
+		name button_last
+		type 1
+		group grpControlbutton
+		type ITEM_TYPE_BUTTON
+		style WINDOW_STYLE_SHADER
+		background "ui/assets/tab.tga"
+		rect 8 50 20 40
+		forecolor 1 1 1 1
+		backcolor .3 .3 .3 1
+		cvarTest "g_episode"
+		showcvar { "1"; "2"; "3"; "4"; "5"; "6" }
+		text "1"
+		textscale .2
+		textalignx 10
+		textaligny 25
+		visible 1
+		action { play "sound/notebook/book_close.wav"; hide debrief; showpage 501 }
+		mouseEnter { setitemcolor button_last backcolor .1 .37 .1 1 }
+		mouseExit { setitemcolor button_last backcolor .37 .1 .1 1 }
+		}
+
+/// END DE-BRIEFING TABS //////////////////
+
+
+		}	// end menudef
+}	// end all
+
+

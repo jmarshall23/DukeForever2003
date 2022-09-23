@@ -6549,11 +6549,11 @@ void _UI_Init( qboolean inGameLoad ) {
 	trap_GetGlconfig( &uiInfo.uiDC.glconfig );
 
 	// for 640x480 virtualized screen
-	uiInfo.uiDC.yscale = uiInfo.uiDC.glconfig.vidHeight * ( 1.0 / 480.0 );
-	uiInfo.uiDC.xscale = uiInfo.uiDC.glconfig.vidWidth * ( 1.0 / 640.0 );
-	if ( uiInfo.uiDC.glconfig.vidWidth * 480 > uiInfo.uiDC.glconfig.vidHeight * 640 ) {
+	uiInfo.uiDC.yscale = uiInfo.uiDC.glconfig.vidHeight * ( 1.0 / SCREEN_HEIGHT );
+	uiInfo.uiDC.xscale = uiInfo.uiDC.glconfig.vidWidth * ( 1.0 / SCREEN_WIDTH);
+	if ( uiInfo.uiDC.glconfig.vidWidth * 480 > uiInfo.uiDC.glconfig.vidHeight * SCREEN_WIDTH) {
 		// wide screen
-		uiInfo.uiDC.bias = 0.5 * ( uiInfo.uiDC.glconfig.vidWidth - ( uiInfo.uiDC.glconfig.vidHeight * ( 640.0 / 480.0 ) ) );
+		uiInfo.uiDC.bias = 0.5 * ( uiInfo.uiDC.glconfig.vidWidth - ( uiInfo.uiDC.glconfig.vidHeight * (SCREEN_WIDTH / SCREEN_HEIGHT) ) );
 	} else {
 		// no wide screen
 		uiInfo.uiDC.bias = 0;
@@ -7081,21 +7081,15 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 
 	menuDef_t *menu = Menus_FindByName( "Connect" );
 
+	centerPoint = SCREEN_WIDTH / 2.0f;
+	yStart = 130;
+	scale = 0.5f;
 
-	if ( !overlay && menu ) {
-		Menu_Paint( menu, qtrue );
-	}
+	Menu_Paint(menu, qtrue);
 
-	if ( !overlay ) {
-		centerPoint = 320;
-		yStart = 130;
-		scale = 0.5f;
-	} else {
-		centerPoint = 320;
-		yStart = 32;
-		scale = 0.6f;
-		return;
-	}
+	info[0] = '\0';
+	Text_PaintCenter(centerPoint, SCREEN_HEIGHT - 65, UI_FONT_DEFAULT, scale, colorWhite, va("Loading Map"), ITEM_TEXTSTYLE_SHADOWEDMORE);
+	return;
 
 	// see what information we should display
 	trap_GetClientState( &cstate );

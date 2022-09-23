@@ -1414,9 +1414,18 @@ static qboolean R_LoadMD3( model_t *mod, int lod, void *buffer, const char *mod_
 		shader = ( md3Shader_t * )( (byte *)surf + surf->ofsShaders );
 		for ( j = 0 ; j < surf->numShaders ; j++, shader++ ) {
 			shader_t    *sh;
-
+// jmarshall
 			sh = R_FindShader( shader->name, LIGHTMAP_NONE, qtrue );
-			if ( sh->defaultShader ) {
+			if (sh->defaultShader && !strstr(shader->name, "models/")) {
+				char modpath[512];
+				char fullShaderPath[512];
+				COM_StripFilename(mod_name, modpath);
+				sprintf(fullShaderPath, "%s%s.tga", modpath, shader->name);
+
+				sh = R_FindShader(fullShaderPath, LIGHTMAP_NONE, qtrue);
+			}
+// jmarshall end
+			if(sh->defaultShader) {
 				shader->shaderIndex = 0;
 			} else {
 				shader->shaderIndex = sh->index;

@@ -1,0 +1,699 @@
+#include "ui/menudef.h"
+
+{
+	assetGlobalDef {
+		cursor "ui/assets/3_cursor3"	// cursor	
+		gradientBar "ui/assets/gradientbar2.tga"	// gradient bar
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1						// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowX  5						// x amount for shadow offset
+		shadowY  5						// y amount for shadow offset
+		shadowColor 0.1 0.1 0.1 0.25	// shadow color
+
+	//	font "fonts/impact.ttf" 16		// font
+	//	smallFont "fonts/impact.ttf" 12	// font
+		bigFont "fonts/bigFont" 24	// font
+	}
+
+/////////////////////
+//
+// Delete for sure? popup (from 'save' menu)
+//
+/////////////////////
+
+menuDef {
+	name "del_sure_popmenu_save"
+	visible 0
+	fullscreen 0
+	rect 380 360 212 120
+	backcolor .5 .2 .2 1
+	focusColor 1 .75 0 1
+	style WINDOW_STYLE_FILLED
+	border 1
+	popup
+	onESC {
+		close del_sure_popmenu_save;
+		open ingame_loadsave_loadmorepopup
+		}
+
+
+//	itemDef {
+//		name window
+//		group ingamebox
+//		rect 24 18 260 280	
+//		style WINDOW_STYLE_FILLED
+//		border 1
+//		bordercolor .5 .5 .5 .5
+//		forecolor 1 1 1 1
+//		backcolor 0 0 0 .25
+//		visible 1
+//		decoration
+//	}
+	// QUIT	//
+
+itemDef {
+	name confirm
+	text "Delete Selected Savegame?" 
+	style 0
+	textscale .25
+	textstyle 3
+	rect 50 0 212 60
+	textalign ITEM_ALIGN_CENTER
+	textalignx 106
+	textaligny 30
+	decoration
+	forecolor 1 1 1 1
+	visible 1
+	}
+
+
+itemDef {
+	name yes
+	text "YES"
+	type 1
+	textfont UI_FONT_NORMAL
+	textscale .25
+	rect 8 68 90 44
+	textalign 1
+	textalignx 45
+	textaligny 22
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1 
+	visible 1
+
+	// delete the selected savegame and update the list
+	action
+	{
+		play "sound/misc/nomenu.wav"; 
+		close del_sure_popmenu_save ; 
+		uiScript DelSavegame;
+		uiScript loadSavegames;
+		open ingame_loadsave_savemorepopup 
+	}
+
+	mouseEnter { setitemcolor yes backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor yes backcolor .37 .1 .1 1 } 	
+	}
+
+
+itemDef {
+	name no
+	text "NO"
+	type 1
+	textfont UI_FONT_NORMAL
+	textscale .25
+	rect 114 68 90 44
+	textalign 1
+	textalignx 45
+	textaligny 22
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1 
+	visible 1
+	action 
+	{ 
+		play "sound/misc/nomenu.wav";
+		close del_sure_popmenu_save;
+		open ingame_loadsave_savemorepopup
+	}
+	mouseEnter { setitemcolor no backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor no backcolor .37 .1 .1 1 } 		
+	}
+
+}
+
+
+/////////////////////
+//
+// Delete for sure? popup (from 'load' menu)
+//
+/////////////////////
+
+menuDef {
+	name "del_sure_popmenu_load"
+	visible 0
+	fullscreen 0
+	rect 380 360 212 120
+   	focusColor 1 .75 0 1
+   	border 1
+	style WINDOW_STYLE_FILLED
+	popup
+	onESC { close del_sure_popmenu_load; open ingame_loadsave_loadmorepopup }
+
+
+
+	// QUIT	//
+
+itemDef {
+	name confirm
+	text "Delete Selected Savegame?" 
+	style 0
+	textscale .25
+	textstyle 3
+	rect 50 0 212 60
+	textalign ITEM_ALIGN_CENTER
+	textalignx 117
+	textaligny 16
+	decoration
+	forecolor 1 1 1 1
+	visible 1
+	}
+
+
+itemDef {
+	name yes
+	text "YES"
+	type 1
+	textfont UI_FONT_NORMAL
+	textscale .25
+	rect 8 68 90 44
+	textalign 1
+	textalignx 45
+	textaligny 22
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1 
+	visible 1
+
+	// delete the selected savegame and update the list
+	action
+	{
+		play "sound/misc/nomenu.wav"; 
+		close del_sure_popmenu_load ; 
+		uiScript DelSavegame;
+		uiScript loadSavegames;
+		open ingame_loadsave_loadmorepopup 
+	}
+
+	mouseEnter { setitemcolor yes backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor yes backcolor .37 .1 .1 1 } 	
+	}
+
+
+itemDef {
+	name no
+	text "NO"
+	type 1
+	textfont UI_FONT_NORMAL
+	textscale .25
+	rect 114 68 90 44
+	textalign 1
+	textalignx 45
+	textaligny 22
+	forecolor 1 1 1 1
+	backcolor .37 .1 .1 1 
+	visible 1
+	action 
+	{ 
+		play "sound/misc/nomenu.wav";
+		close del_sure_popmenu_load;
+		open ingame_loadsave_loadmorepopup
+	}
+	mouseEnter { setitemcolor no backcolor .1 .37 .1 1 } 
+	mouseExit { setitemcolor no backcolor .37 .1 .1 1 } 		
+	}
+
+}
+
+
+
+
+/////////////////////
+//
+// Advanced saving popup (you clicked 'more...' in the save menu)
+//
+/////////////////////
+
+
+
+menuDef {
+	name ingame_loadsave_savemorepopup
+   	visible 0
+   	fullscreen 0
+	popup
+   	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+	rect 370 80 232 280
+	onESC {		close ingame_loadsave_savemorepopup}
+	onOpen { 	uiScript loadSavegames}
+
+//	itemDef {
+//		name window
+//		group savemorepopup
+//		rect 10 15 212 250
+//		style 1
+//		backcolor 0 .1 0 1
+//		visible 1
+//		decoration
+//		}
+
+
+// (SA) Max's new pulldown background
+	itemDef {
+		name window
+		group savemorepopup
+//		rect 0 21 212 340	
+		rect 60 15 212 250
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name savegamelist
+		group savemorepopup
+		rect 20 25 128 230
+		type ITEM_TYPE_LISTBOX
+		style WINDOW_STYLE_FILLED
+		elementwidth 120
+		elementheight 20
+		textscale .25
+		elementtype LISTBOX_TEXT
+		feeder FEEDER_SAVEGAMES
+		textaligny 64
+		forecolor 1 1 1 1
+		backcolor .1 .1 .1 1
+		outlinecolor .9 .9 .9 .2
+		visible 1
+//		mouseEnter { fadein message_savegame ; setitemcolor savegamelist bordercolor .7 0 0 1 } 
+//		mouseExit { fadeout message_savegame ; setitemcolor savegamelist bordercolor .5 .5 .5 .5 } 
+		mouseEnter { setitemcolor savegamelist bordercolor .7 0 0 1 } 
+		mouseExit { setitemcolor savegamelist bordercolor .5 .5 .5 1 } 
+  		}
+
+
+	itemDef {
+		name savemore_save
+		group savemorepopup
+		text "Save"
+		type ITEM_TYPE_BUTTON
+		rect 150 50 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor savemore_save backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor savemore_save backcolor .3 .3 .3 .5 }
+
+		visible 1
+		}
+
+	itemDef {
+		name savemore_del
+		group savemorepopup
+		text "Delete..."
+		type ITEM_TYPE_BUTTON
+		rect 150 100 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor savemore_del backcolor 1 .2 .2 .5 }
+      	mouseExit { setitemcolor savemore_del backcolor .3 .3 .3 .5 }
+
+//		action { uiScript DelSavegame; uiScript loadSavegames }	// delete the selected savegame and update the list
+		action { open del_sure_popmenu_save }
+		visible 1
+		}
+
+
+	itemDef {
+		name savemore_cancel
+		group savemorepopup
+		text "Cancel"
+		type ITEM_TYPE_BUTTON
+		rect 150 220 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor savemore_cancel backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor savemore_cancel backcolor .3 .3 .3 .5 }
+
+		action { close ingame_loadsave_savemorepopup; open ingame_loadsave; }
+		visible 1
+		}
+}
+
+
+/////////////////////
+//
+// Advanced loading popup (you clicked 'more...' in the load menu)
+//
+/////////////////////
+
+menuDef {
+	name ingame_loadsave_loadmorepopup
+   	visible 0
+   	fullscreen 0
+	popup
+   	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+	rect 370 80 232 280
+	onESC {		close ingame_loadsave_loadmorepopup}
+	onOpen { 	uiScript loadSavegames}
+
+//	itemDef {
+//		name window
+//		group loadmorepopup
+//		rect 10 15 212 250
+//		style 1
+//		backcolor 0 .1 0 1
+//		visible 1
+//		decoration
+//		}
+
+// (SA) Max's new pulldown background
+	itemDef {
+		name window
+		group loadmorepopup
+		rect 10 15 212 250
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name savegamelist
+		group loadmorepopup
+		rect 20 25 128 230
+		type ITEM_TYPE_LISTBOX
+		style WINDOW_STYLE_FILLED
+		elementwidth 120
+		elementheight 20
+		textscale .25
+		elementtype LISTBOX_TEXT
+		feeder FEEDER_SAVEGAMES
+		doubleclick { uiScript Loadgame }
+		textaligny 64
+		forecolor 1 1 1 1
+		backcolor .1 .1 .1 1
+		outlinecolor .9 .9 .9 .2
+		visible 1
+//		mouseEnter { fadein message_savegame ; setitemcolor savegamelist bordercolor .7 0 0 1 } 
+//		mouseExit { fadeout message_savegame ; setitemcolor savegamelist bordercolor .5 .5 .5 .5 } 
+		mouseEnter { setitemcolor savegamelist bordercolor .7 0 0 1 } 
+		mouseExit { setitemcolor savegamelist bordercolor .5 .5 .5 1 } 
+  		}
+
+
+	itemDef {
+		name loadmore_load
+		group loadmorepopup
+		text "Load"
+		type ITEM_TYPE_BUTTON
+		rect 150 50 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor loadmore_load backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor loadmore_load backcolor 0 0 0 .25}
+
+//		action { close ingame_loadsave_loadmorepopup; open ingame_loadsave; }
+		action { uiScript Loadgame }
+		visible 1
+		}
+
+	itemDef {
+		name loadmore_del
+		group loadmorepopup
+		text "Delete..."
+		type ITEM_TYPE_BUTTON
+		rect 150 100 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor loadmore_del backcolor 1 .2 .2 .5 }
+      	mouseExit { setitemcolor loadmore_del backcolor .3 .3 .3 .5 }
+
+//		action { uiScript DelSavegame; uiScript loadSavegames }	// delete the selected savegame and update the list
+		action { open del_sure_popmenu_load }
+		visible 1
+		}
+
+
+	itemDef {
+		name loadmore_cancel
+		group loadmorepopup
+		text "Cancel"
+		type ITEM_TYPE_BUTTON
+		rect 150 220 64 32
+		style 2
+		textscale .25        
+		backcolor .3 .3 .3 .5
+		textalignx 32
+		textaligny 16
+		textalign ITEM_ALIGN_CENTER
+
+		mouseEnter { setitemcolor loadmore_cancel backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor loadmore_cancel backcolor .3 .3 .3 .5 }
+
+		action { close ingame_loadsave_loadmorepopup; open ingame_loadsave; }
+		visible 1
+		}
+
+}
+
+
+
+
+/////////////////////
+//
+//	main load/save menu
+//
+/////////////////////
+
+menuDef {
+   	name "ingame_loadsave"
+   	visible 0
+   	fullscreen 0
+	outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+	rect 100 125 443 340
+   	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+
+	onOpen { setcvar "ui_savegame" "" }
+
+
+
+itemDef {
+	name window
+	group ingamebox
+	rect 0 2 443 300
+	style WINDOW_STYLE_FILLED
+	border 1
+	bordercolor .5 .5 .5 .5
+	forecolor 1 1 1 1
+	backcolor 0 0 0 .25
+	visible 1
+	decoration
+	}
+
+
+	itemDef {
+		name quicksave
+		text "Quicksave"
+		type ITEM_TYPE_BUTTON
+   		rect 200 15 192 20
+		textscale .25
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		textaligny 15
+		textalignx 96
+		textalign ITEM_ALIGN_CENTER
+		mouseEnter { setitemcolor quicksave backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor quicksave backcolor 0 0 0 .25 }
+
+		action { exec "savegame quicksave";	uiScript closeingame}		// save the current position to quicksave.svg
+		visible 1
+		}
+
+
+	itemDef {
+   		name savename
+		group "loadsavegroup"
+   		type ITEM_TYPE_EDITFIELD
+		text "Save As:"
+		cvar "ui_savegame"
+		maxchars 26
+   		rect 10 70 192 18
+		style 1
+   		textalign ITEM_ALIGN_LEFT		
+		textaligny 14
+   		textalignx 10
+		textscale .25   
+		outlinecolor 1 .5 .5 .5
+		backcolor 0 0 0 .25
+		forecolor 1 1 1 1     
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor savename backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor savename backcolor 0 0 0 .25 }
+   		bordercolor 0 0 0 0
+   		visible 1 
+	}
+
+	itemDef {
+		name save
+		text "Save"
+//		type ITEM_TYPE_BUTTON
+   		rect 0 100 84 18
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		textaligny 12
+		textalignx 42
+		textalign ITEM_ALIGN_CENTER
+		textscale .25        
+//		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor save backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor save backcolor 0 0 0 .25}
+		action { uiScript Savegame; uiScript closeingame }
+		visible 1
+		}
+
+	itemDef {
+		name savemore
+		text "More..."
+		type ITEM_TYPE_BUTTON
+   		rect 128 100 84 20
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		textaligny 12
+		textalignx 42
+		textalign ITEM_ALIGN_CENTER
+		textscale .25        
+//		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor save backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor save backcolor 0 0 0 .25}
+		action { open ingame_loadsave_savemorepopup }
+		visible 1
+		}
+
+
+
+
+itemDef {
+		name quickload
+		text "Quickload"
+		type ITEM_TYPE_BUTTON
+   		rect 200 160 192 18
+		style 1
+		textscale .25
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		textaligny 13
+		textalignx 96
+		textalign ITEM_ALIGN_CENTER
+		mouseEnter { setitemcolor quickload backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor quickload	 backcolor 0 0 0 .25 }
+		action { uiScript closeingame; exec "loadgame quicksave"}
+		visible 1
+
+}
+//	itemDef {
+//		name loadname
+//		group loadsavegroup
+//		type ITEM_TYPE_COMBO	// need to code combo box stuff for this to work
+//	}
+
+	itemDef {
+		name loadname
+		group "loadsavegroup"
+		type ITEM_TYPE_EDITFIELD
+		text "Load:"
+		cvar "ui_savegame"
+		style 1
+		maxchars 26
+		rect 0 210 192 20
+		textalign ITEM_ALIGN_LEFT
+		textaligny 15
+		textalignx 10
+		textscale .25        
+		outlinecolor 1 .5 .5 .5
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor loadname backcolor .6 .6 .6 .5 }
+		mouseExit { setitemcolor loadname backcolor 0 0 0 .25 }
+		visible 1 
+	}
+
+	itemDef {
+		name load
+		text "Load"
+		type ITEM_TYPE_BUTTON
+   		rect 0 240 84 20
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor load backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor load backcolor 0 0 0 .25}
+		textscale .25        
+		textaligny 15
+		textalignx 42
+		textalign ITEM_ALIGN_CENTER
+		visible 1
+		action { uiScript closeingame; uiScript Loadgame}
+		}
+
+	itemDef {
+		name loadmore
+		text "More..."
+		type ITEM_TYPE_BUTTON
+   		rect 108 240 84 20
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor loadmore backcolor .6 .6 .6 .5 }
+      	mouseExit { setitemcolor loadmore backcolor 0 0 0 .25}
+		textscale .25        
+		textaligny 15
+		textalignx 42
+		textalign ITEM_ALIGN_CENTER
+		action { open ingame_loadsave_loadmorepopup }
+//		action { open olderror_popmenu }
+		visible 1
+		}
+
+
+
+}
+
+
+}

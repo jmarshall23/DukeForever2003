@@ -46,8 +46,8 @@ void CG_AdjustFrom640( float *x, float *y, float *w, float *h ) {
 
 	// NERVE - SMF - hack to make images display properly in small view / limbo mode
 	if ( cg.limboMenu && cg.refdef.width ) {
-		float xscale = ( ( cg.refdef.width / cgs.screenXScale ) / 640.f );
-		float yscale = ( ( cg.refdef.height / cgs.screenYScale ) / 480.f );
+		float xscale = ( ( cg.refdef.width / cgs.screenXScale ) / SCREEN_WIDTH);
+		float yscale = ( ( cg.refdef.height / cgs.screenYScale ) / SCREEN_HEIGHT);
 
 		( *x ) = ( *x ) * xscale + ( cg.refdef.x / cgs.screenXScale );
 		( *y ) = ( *y ) * yscale + ( cg.refdef.y / cgs.screenYScale );

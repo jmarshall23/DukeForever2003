@@ -1,0 +1,671 @@
+#include "ui/menudef.h"
+
+{
+\\ play MENU \\
+
+menuDef {
+    name "load_menu"
+    visible MENU_FALSE
+    fullscreen 1
+    rect 0 0 1280 720
+    background "ui/assets/menu_load"
+    soundloop ""
+    focusColor .9 .9 .9 1
+    style 1
+    border 1
+
+	onEsc {
+		close load_menu;
+		open main
+	}
+
+	onOpen {
+		setitemcolor fadebox backcolor 0 0 0 1 ; 
+		play "sound/misc/kcswish.wav";
+
+		fadeout fadebox;
+//		transition mappreview 400 0 640 480 320 143 256 192 20 10;
+		transition mappreview 400 0 640 480 366 150 212 170 20 10;
+
+		uiScript loadSavegames;
+		hide lightning;
+		hide accept_alt;
+		show accept;
+		hide back_alt;
+		show back;
+		hide grpmessage;
+		setcvar ui_savegameListAutosave 0	// hmm
+	}
+		 
+
+
+
+
+//////////////// new wolf
+
+	itemDef {
+		name menu_select					// menu_select
+		style WINDOW_STYLE_SHADER
+		rect 0 0 640 480
+		background "menu_select"
+		visible MENU_TRUE
+		decoration
+		}
+
+
+
+
+	itemDef {
+		name band2					// band2
+		style WINDOW_STYLE_SHADER
+		rect 360 20 128 640
+		background "band2"
+		visible MENU_TRUE
+		decoration
+		}
+
+
+	itemDef {
+		name bands					// bands
+		style WINDOW_STYLE_SHADER
+		rect 0 -480 640 1024
+		background "bands"
+		visible MENU_TRUE
+		decoration
+		}
+
+
+itemDef {
+		name BLACKGRAD					// BLACKGRAD
+		style WINDOW_STYLE_SHADER
+		rect 0 -4 640 132
+		background "BLACKGRAD"
+		visible MENU_TRUE
+		decoration
+		}
+
+itemDef {
+		name BLACKGRAD2					// BLACKGRAD
+		style WINDOW_STYLE_SHADER
+		rect 0 420 640 -128
+		background "BLACKGRAD"
+		visible MENU_TRUE
+		decoration
+		}
+
+
+itemDef {
+		name FLAME					// FLAME
+		style WINDOW_STYLE_SHADER
+		rect 210 20 220 67
+		background "fLAME"
+		visible MENU_TRUE
+		decoration
+		}
+
+itemDef {
+		name WOLFFLAMELOGO					// WOLFFLAMELOGO
+		style WINDOW_STYLE_SHADER
+		rect 200 -5 240 120
+		background "WOLFFLAMELOGO"
+		visible MENU_TRUE
+		decoration
+		}
+
+itemDef {
+		name gold_line					// gold_line
+		style WINDOW_STYLE_SHADER
+		rect 0 76 226 10
+		background "gold_line"
+		visible MENU_TRUE
+		decoration
+		}
+
+itemDef {
+		name gold_line					// gold_line
+		style WINDOW_STYLE_SHADER
+		rect 414 76 230 10
+		background "gold_line"
+		visible MENU_TRUE
+		decoration
+		}
+
+	itemDef {
+		name WOLFICONBACK					// WOLFICONBACK
+		style WINDOW_STYLE_SHADER
+		rect 140 200 360 190
+		background "WOLFICONBACK"
+		visible MENU_TRUE
+		decoration
+		}
+
+
+
+
+//////// 
+
+
+
+
+
+// LEVEL SELECTION BAR	//
+
+//////////////
+
+
+	itemDef 
+	{
+		name window
+		group grpControlbutton
+		rect 61 127 520 260	
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible MENU_TRUE
+		decoration
+	}
+
+
+
+
+
+
+	itemDef {
+		name levelbar
+		text "LOAD GAME"
+		textscale .23
+		style 0	
+		type 1
+		textfont UI_FONT_NORMAL
+		textalign ITEM_ALIGN_CENTER
+		textstyle 6
+		rect 220 100 200 30 
+		textalign 1	 
+		textalignx 100  	
+		textaligny 15        
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+		decoration
+		}
+
+
+//////////////////// temp layout /////////////////////
+
+	itemDef 
+	{
+		name window2
+		group grpControlbutton
+		rect 64 130 512 20	
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .1 .1 .1 .2
+		forecolor 1 1 1 1
+		backcolor .3 0.5 0.2 .25
+		visible 1
+		decoration
+	}
+
+	itemDef 
+	{
+		name window2
+		group grpControlbutton
+		rect 208 130 140 250	
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .1 .1 .1 .2
+		forecolor 1 1 1 1
+		backcolor .3 0.4 0.2 .25
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name levelbar
+		text "Name"
+		textscale .23
+		style 0	
+		type ITEM_TYPE_BUTTON
+		textalign ITEM_ALIGN_CENTER
+		textfont UI_FONT_NORMAL
+		textstyle 6
+		rect 90 134 100 20 
+		textalign 1	 
+		textalignx 50  	
+		textaligny 12        
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+//		decoration
+		action {
+			play "sound/misc/kcswish.wav";
+			uiScript SavegameSort 0
+			}
+		}
+
+
+
+	itemDef {
+		name levelbar
+		text "Date"
+		textscale .23
+		style 0
+		textalign ITEM_ALIGN_CENTER	
+		type ITEM_TYPE_BUTTON
+		textfont UI_FONT_NORMAL
+		textstyle 6
+		rect 230 134 100 20 
+		textalign 1	 
+		textalignx 50  	
+		textaligny 12        
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+//		decoration
+		action {
+			play "sound/misc/kcswish.wav";
+			uiScript SavegameSort 1
+			}
+		}
+
+
+////////////
+
+
+ 
+
+itemDef {
+		name savegamelist
+		rect 66 150 300 230
+		type ITEM_TYPE_LISTBOX
+		style WINDOW_STYLE_FILLED
+		elementwidth 120
+		elementheight 14
+		textscale .23
+
+//		columns 2  2 40 18  170 40 30
+		columns 2  2 40 18  142 40 30
+
+		elementtype LISTBOX_TEXT
+		feeder FEEDER_SAVEGAMES
+		doubleclick { uiScript Loadgame }
+		textalign 3
+		textaligny 10
+		forecolor .9 .9 .9 .5
+		backcolor .10 .10 .1 .3
+		outlinecolor .9 .9 .9 .2
+		visible MENU_TRUE
+		mouseEnter { fadein message_savegame ; setitemcolor savegamelist bordercolor .7 0 0 1 } 
+		mouseExit { fadeout message_savegame ; setitemcolor savegamelist bordercolor .5 .5 .5 .5 } 
+		}
+
+
+
+// the actual switch
+
+	itemDef {
+		name autosave
+//		type ITEM_TYPE_BUTTON
+		rect 104 390 170 18
+//		cvar ui_savegameListAutosave
+		type ITEM_TYPE_MULTI
+		cvar "ui_savegameListAutosave"
+		cvarFloatList { "" 0 "" 1  }	// no text, just toggle
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5        
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor showgametype backcolor .3 .5 .2 .25 }
+		mouseExit { setitemcolor showgametype backcolor 0 0 0 .25 }
+		action {	uiScript update "ui_savegameListAutosave" }	// update the feeder
+		visible MENU_TRUE
+	}
+
+// the 'off' button
+	itemDef {
+		name autosave_off
+		group showgametype
+		text "Show Autosaves..."
+		rect 104 390 170 18
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "0" }
+		style 1
+		textscale .25
+		border 1
+		bordercolor .5 .5 .5 .0        
+		backcolor 0 0 0 .0
+		textaligny 13
+		textalignx 82
+		textalign ITEM_ALIGN_CENTER
+		visible MENU_TRUE
+		decoration
+	}
+
+// the 'on' button
+	itemDef {
+		name autosave_on
+		group showgametype
+		text "Show Savegames..."
+		rect 104 390 170 18
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "1" }
+		style 1
+		textscale .25
+		border 1
+		bordercolor .5 .5 .5 .0        
+		backcolor 0 0 0 .0
+		textaligny 13
+		textalignx 82
+		textalign ITEM_ALIGN_CENTER
+		visible MENU_TRUE
+		decoration
+	}
+
+	itemDef {
+		name autosave_off
+		text "Manual Saved Games"
+		type 1
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "0" }
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 400 134 40 14 
+		textalign 0
+		textscale .25		
+		textalignx 6
+		textaligny 12
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+		decoration
+	}
+	itemDef {
+		name autosave_on
+		text "Autosaved Games"
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "1" }
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 410 134 40 14 
+		textalign 0
+		textscale .25		
+		textalignx 6
+		textaligny 12
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+		decoration
+	}
+
+
+
+// BACK BAR	//
+
+
+	itemDef {
+		name gotobar
+		style 2
+		rect 0 445 640 20 
+		border 4
+		bordercolor 0.5 0.5 0.5 0.0
+		bordersize 2
+		backcolor 0.5 0.5 .5 0.0
+		visible MENU_TRUE
+		mouseEnter { setcolor backcolor .5 0.5 0.5 .5 }
+		mouseExit { setcolor backcolor .5 .5 .5 .0 }
+		decoration 
+		}
+
+
+
+
+	itemDef {
+		name back
+		text "BACK"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 30 450 40 14 
+		textalign 0
+		textscale .23		
+		textalignx 6
+		textaligny 12
+		forecolor .9 .9 .9 .9
+		visible MENU_TRUE
+		action { close load_menu ; open main }
+		mouseEnter { hide back ; show back_alt ; fadein message_back }
+	}
+
+	itemDef {
+		name back_alt
+		text "BACK"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 30 450 40 14 
+		textalign 0
+		textscale .23		
+		textalignx 6
+		textaligny 12
+		forecolor .6 .6 .6 .6
+		visible MENU_TRUE
+		type ITEM_TYPE_BUTTON
+		mouseExit { hide back_alt ; show back ; fadeout message_back }	  
+		action { close load_menu ; open main }		  
+		}
+
+	itemDef {
+		name accept
+		text "LOAD"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 560 450 40 14 
+		textalign 0
+		textscale .23		
+		textalignx 6
+		textaligny 12
+		forecolor .9 .9 .9 .9
+		visible MENU_TRUE
+		mouseEnter { hide accept ; show accept_alt ; fadein message_accept }
+		action { close load_menu }
+  		}
+
+	itemDef {
+		name accept_alt
+		text "LOAD"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 560 450 40 14 
+		textalign 0
+		textscale .23		
+		textalignx 6
+		textaligny 12
+		forecolor .6 .6 .6 .6
+		visible MENU_TRUE
+		action { close load_menu ; uiScript Loadgame }
+		mouseExit { hide accept_alt ; show accept ; fadeout message_accept }	
+  	}
+
+
+
+
+//	MESSAGES	//
+
+	itemDef {
+		name message_back
+		group grpmessage
+		style 0 
+		rect 320 437 128 30
+		textstyle 1
+		textalign 1
+		textalignx 0
+		textaligny 25
+		textscale .23
+		text "EXIT TO MAIN MENU"
+		forecolor 1 1 1 1
+		decoration 
+		visible MENU_FALSE
+		}
+
+
+
+
+
+
+	itemDef {
+		name autosave_mes
+		group grpmessage
+		style 0 
+		rect 320 437 128 30
+		textalign 1
+		textstyle 1
+		textalignx 0
+		textaligny 25
+		textscale .23
+		text "ACTIVATE TO SHOW AUTOSAVED GAMES"
+		forecolor 1 1 1 .6
+		decoration 
+		visible MENU_FALSE
+		}
+
+	itemDef {
+		name savegame_mes
+		group grpmessage
+		style 0 
+		rect 320 437 128 30
+		textalign 1
+		textstyle 1
+		textalignx 0
+		textaligny 25
+		textscale .23
+		text "ACTIVATE TO SHOW MANUAL SAVEGAMES"
+		forecolor 1 1 1 .6
+		decoration 
+		visible MENU_FALSE
+		}
+
+	itemDef {
+		name message_savegame
+		group grpmessage
+		style 0 
+		rect 320 437 128 30
+		textalign 1
+		textstyle 1
+		textalignx 0
+		textaligny 25
+		textscale .23
+		text "SELECT SAVE GAME TO LOAD"
+		forecolor 1 1 1 .6
+		decoration 
+		visible MENU_FALSE
+		}
+
+	itemDef {
+		name message_accept
+		group grpmessage
+		style 0 
+		rect 320 437 128 30
+		textalign 1
+		textstyle 1
+		textalignx 0
+		textaligny 25
+		textscale .23
+		text "SELECT TO PLAY LEVEL"
+		forecolor 1 1 1 1
+		decoration 
+		visible MENU_FALSE
+		}
+
+//////////////////////// video /////////////////////////////// 
+
+
+
+
+
+
+	itemDef {
+		name mappreview
+		ownerdraw UI_SAVEGAME_SHOT		// screenshot for savegame.  			//located in /save/images/<savegamename>.tga
+		rect 20 90 256 192
+		backcolor 1 1 1 .25
+//		border 1
+//		bordersize 1
+//		bordercolor .1 .1 .1 .7
+		decoration
+		visible MENU_TRUE
+		}
+
+
+	itemDef {
+		name mapname
+		ownerdraw UI_SAVEGAMENAME
+		rect 372 320 200 60
+		backcolor 1 1 1 .25
+		autowrapped
+//		border 1
+//		bordersize 1
+//		bordercolor .1 .1 .1 .7
+		visible MENU_TRUE
+		textalign ITEM_ALIGN_CENTER
+		textscale .25
+//		textfont UI_FONT_HANDWRITING
+		textfont UI_FONT_NORMAL
+		textstyle 6
+		textaligny 10
+		textalignx 100
+		decoration	
+		}
+	
+	itemDef {
+		name mapinfo
+
+//		ownerdraw UI_SAVEGAMEINFO
+//		text "savegameinfo"
+		textsavegame	// get text from current savegame file
+		autowrapped
+		rect 372 320 200 60
+		backcolor 1 1 1 .25
+//		border 1
+//		bordersize 1
+//		bordercolor .1 .1 .1 .7
+		visible MENU_TRUE
+		textalign ITEM_ALIGN_CENTER
+		textscale .25
+//		textfont UI_FONT_HANDWRITING
+		textfont UI_FONT_NORMAL
+		textstyle 6
+		textaligny 30
+		textalignx 100
+		decoration	
+		}
+	
+
+	itemDef {
+		name fadebox
+		style WINDOW_STYLE_FILLED
+		background "ui/assets/fadebox.tga"
+		forecolor 0 0 0 1
+		backcolor 0 0 0 1
+		rect 0 0 640 480
+		visible MENU_TRUE
+		decoration
+		}
+
+
+
+}
+
+
+}
+
+
+
