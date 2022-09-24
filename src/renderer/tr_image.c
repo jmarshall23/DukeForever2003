@@ -610,77 +610,11 @@ static void Upload32(   unsigned *data,
 			ri.Printf( PRINT_ALL, "r_rmse of %f has saved %dkb\n", r_rmse->value, ( rmse_saved / 1024 ) );
 		}
 	}
-	//
-	// convert to exact power of 2 sizes
-	//
-	for ( scaled_width = 1 ; scaled_width < width ; scaled_width <<= 1 )
-		;
-	for ( scaled_height = 1 ; scaled_height < height ; scaled_height <<= 1 )
-		;
-	if ( r_roundImagesDown->integer && scaled_width > width ) {
-		scaled_width >>= 1;
-	}
-	if ( r_roundImagesDown->integer && scaled_height > height ) {
-		scaled_height >>= 1;
-	}
-
-	if ( scaled_width != width || scaled_height != height ) {
-		//resampledBuffer = ri.Hunk_AllocateTempMemory( scaled_width * scaled_height * 4 );
-		resampledBuffer = R_GetImageBuffer( scaled_width * scaled_height * 4, BUFFER_RESAMPLED );
-		ResampleTexture( data, width, height, resampledBuffer, scaled_width, scaled_height );
-		data = resampledBuffer;
-		width = scaled_width;
-		height = scaled_height;
-	}
-
-	//
-	// perform optional picmip operation
-	//
-	if ( picmip ) {
-		if ( characterMip ) {
-			scaled_width >>= r_picmip2->integer;
-			scaled_height >>= r_picmip2->integer;
-		} else {
-			scaled_width >>= r_picmip->integer;
-			scaled_height >>= r_picmip->integer;
-		}
-	}
-
-	//
-	// clamp to the current upper OpenGL limit
-	// scale both axis down equally so we don't have to
-	// deal with a half mip resampling
-	//
-	while ( scaled_width > glConfig.maxTextureSize
-			|| scaled_height > glConfig.maxTextureSize ) {
-		scaled_width >>= 1;
-		scaled_height >>= 1;
-	}
 
 	rmse = R_RMSE( (byte *)data, width, height );
 
-	if ( r_lowMemTextureSize->integer && ( scaled_width > r_lowMemTextureSize->integer || scaled_height > r_lowMemTextureSize->integer ) && rmse < r_lowMemTextureThreshold->value ) {
-		int scale;
-
-		for ( scale = 1 ; scale < r_lowMemTextureSize->integer; scale <<= 1 ) {
-			;
-		}
-
-		while ( scaled_width > scale || scaled_height > scale ) {
-			scaled_width >>= 1;
-			scaled_height >>= 1;
-		}
-
-		ri.Printf( PRINT_ALL, "r_lowMemTextureSize forcing reduction from %i x %i to %i x %i\n", width, height, scaled_width, scaled_height );
-
-		resampledBuffer = R_GetImageBuffer( scaled_width * scaled_height * 4, BUFFER_RESAMPLED );
-		ResampleTexture( data, width, height, resampledBuffer, scaled_width, scaled_height );
-		data = resampledBuffer;
-		width = scaled_width;
-		height = scaled_height;
-
-	}
-
+	scaled_width = width;
+	scaled_height = height;
 
 	//
 	// clamp to minimum size

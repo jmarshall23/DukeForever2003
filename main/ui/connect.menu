@@ -5,7 +5,7 @@
 
 menuDef {
     	name "Connect"
-    	background "ui/assets/menu_load"
+    	background "ui/assets2/menu_load"
       	rect 0 0 1280 720
     	fullScreen MENU_FALSE
     	visible MENU_FALSE
