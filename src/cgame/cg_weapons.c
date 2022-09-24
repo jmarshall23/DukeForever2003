@@ -2584,6 +2584,9 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 		gun.shaderRGBA[3] = 255;
 	}
 
+	gun.frame = parent->frame;
+	gun.oldframe = parent->oldframe;
+
 	if ( ps ) {
 		gun.hModel = weapon->weaponModel[W_FP_MODEL];
 	} else {
