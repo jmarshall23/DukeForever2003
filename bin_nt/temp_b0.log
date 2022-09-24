@@ -1,0 +1,150 @@
+BSPC version 2.1c, Oct 22 2001 13:38:08 by Mr Elusive
+threads = 1
+using cfg file aascfg_sm.c
+bsp2aas: ..\main\maps\test_box.bsp to ..\main\maps\test_box_b0.aas
+-- Q3_LoadMapFromBSP --
+Loading map from ..\main\maps\test_box.bsp...
+creating planar surface planes...
+searching visible brush sides...
+     0 brush sides108 brush sides textured out of 168
+-------- Brush CSG ---------
+    88 original brushes
+    87 output brushes
+-------- Brush BSP ---------
+    87 brushes
+   457 visible faces
+     0 nonvisible faces
+   681 total sides
+Win32 multi-threading
+     1 threads max
+depth first bsp building
+  3695 splits
+   490 KB of peak total bsp memory
+BSP tree created in     0 seconds
+------- Prune Nodes --------
+ 2450 pruned nodes
+---- Node Portalization ----
+  1245 nodes portalized
+    90 tiny portals
+   220 KB of portal memory
+   391 KB of winding memory
+------ FloodEntities -------
+------- FillOutside --------
+  270 solid leaves
+   51 leaves filled
+  302 inside leaves
+AAS_CreateAreas
+   302 areas created
+AAS_MergeAreaFaces
+    36 face merges
+AAS_GravitationalSubdivision
+    10 gravitational subdivisions
+AAS_MergeAreaFaces
+     0 face merges
+AAS_MergeAreas
+   158 areas merged
+AAS_PruneNodes
+   193 nodes pruned
+   154 areas checked for shared face flipping
+AAS_MergeAreaFaces
+   323 face merges
+AAS_MergePlaneFaces
+    11 plane face merges
+AAS_LadderSubdivision
+     0 ladder subdivisions
+AAS_MeltAreaFaceWindings
+   586 edges melted
+AAS_RemoveTinyFaces
+13 tiny faces removed
+AAS_CreateAreaSettings
+allocated 219 KB and 860 bytes of AAS memory
+AAS_StoreFile
+AAS_GetFace: face 93 had degenerate edge 0-1
+AAS_GetFace: face 94 had degenerate edge 3-0
+AAS_GetFace: face 136 had degenerate edge 2-3
+AAS_GetFace: face 139 had degenerate edge 3-0
+AAS_GetFace: face 161 had degenerate edge 5-0
+AAS_GetFace: face 164 had degenerate edge 2-3
+AAS_GetFace: face 206 had degenerate edge 1-2
+AAS_GetFace: face 211 had degenerate edge 3-4
+AAS_GetFace: face 214 had degenerate edge 1-2
+AAS_GetFace: face 215 had degenerate edge 0-1
+AAS_GetFace: face 454 had degenerate edge 0-1
+AAS_GetFace: face 454 had degenerate edge 4-5
+AAS_GetFace: face 460 had degenerate edge 3-0
+AAS_GetFace: face 462 had degenerate edge 1-2
+AAS_GetFace: face 593 had degenerate edge 0-1
+AAS_GetFace: face 605 had degenerate edge 4-5
+   155 areas stored
+
+AAS created in     0 seconds
+loading collision map...
+CM_LoadMap( ..\main\maps\test_box.bsp, 0 )
+0 weapon jump areas
+calculating reachability...
+
+please wait while storing reachability...
+AAS_Reachability_Elevator
+     0 reach swim
+   106 reach equal floor
+     0 reach step
+     0 reach barrier
+     0 reach waterjump
+    12 reach walkoffledge
+     2 reach jump
+     0 reach ladder
+     0 reach walk
+     0 reach teleport
+     0 reach funcbob
+     0 reach elevator
+     0 reach grapple
+     0 reach rocketjump
+     0 reach jumppad
+calculating clusters...
+     0 forced portals
+possible portal: 111
+possible portal: 110
+portal 1: area 110
+portal 2: area 111
+portal area 110 has no front cluster
+portal 1: area 111
+
+     2 portals created
+     3 clusters created
+cluster 1 has 30 reachability areas
+cluster 2 has 2 reachability areas
+    32 total reachability areas
+  2904 AAS memory/CPU usage (the lower the better)
+writing ..\main\maps\test_box_b0.aas
+numvertexes = 703
+numplanes = 238
+numedges = 1519
+edgeindexsize = 4137
+numfaces = 892
+faceindexsize = 1427
+numareas = 155
+numareasettings = 155
+reachabilitysize = 121
+numnodes = 440
+numportals = 2
+portalindexsize = 2
+numclusters = 3
+   106 walk
+     0 crouch
+     0 barrier jump
+     2 jump
+     0 ladder
+    12 walk off ledge
+     0 swim
+     0 water jump
+     0 teleport
+     0 elevator
+     0 rocket jump
+     0 bfg jump
+     0 grapple hook
+     0 double jump
+     0 ramp jump
+     0 strafe jump
+     0 jump pad
+     0 func bob
+freed 219 KB and 860 bytes of AAS memory

@@ -2869,7 +2869,7 @@ static void CG_DrawFlashFade( void ) {
 		VectorClear( col );
 		col[3] = cgs.scrFadeAlphaCurrent;
 //		CG_FillRect( -10, -10, 650, 490, col );
-		CG_FillRect( 0, 0, 640, 480, col ); // why do a bunch of these extend outside 640x480?
+		CG_FillRect( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, col ); // why do a bunch of these extend outside 640x480?
 	}
 }
 

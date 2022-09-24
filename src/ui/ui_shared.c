@@ -4374,7 +4374,7 @@ void Item_Paint( itemDef_t *item ) {
 		DC->drawRect( r->x, r->y, r->w, r->h, 1, color );
 	}
 
-	//DC->drawRect(item->window.rect.x, item->window.rect.y, item->window.rect.w, item->window.rect.h, 1, red);
+	//DC->drawRect(item->window.rect.x, item->window.rect.y, item->window.rect.w, item->window.rect.h, 1, `red);
 
 	switch ( item->type ) {
 	case ITEM_TYPE_OWNERDRAW:
