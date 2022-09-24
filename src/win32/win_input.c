@@ -427,7 +427,7 @@ void IN_Init( void ) {
 	Cmd_AddCommand( "midiinfo", MidiInfo_f );
 
 	// mouse variables
-	in_mouse                = Cvar_Get( "in_mouse",                  "1",     CVAR_ARCHIVE | CVAR_LATCH );
+	in_mouse                = Cvar_Get( "in_mouse2",                  "-1",     CVAR_ARCHIVE | CVAR_LATCH );
 
 	// joystick variables
 	in_joystick             = Cvar_Get( "in_joystick",               "0",     CVAR_ARCHIVE | CVAR_LATCH );

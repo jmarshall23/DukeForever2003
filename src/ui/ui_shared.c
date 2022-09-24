@@ -4195,12 +4195,6 @@ void Item_OwnerDraw_Paint( itemDef_t *item ) {
 			}
 		}
 
-		// take hudalpha into account unless explicitly ignoring
-		if ( !( item->window.flags & WINDOW_IGNORE_HUDALPHA ) ) {
-			color[3] *= DC->getCVarValue( "cg_hudAlpha" );;
-		}
-
-
 		if ( item->window.flags & WINDOW_HASFOCUS ) {
 			lowLight[0] = 0.8 * parent->focusColor[0];
 			lowLight[1] = 0.8 * parent->focusColor[1];
