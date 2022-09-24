@@ -560,10 +560,10 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 
 	// if any skins failed to load, return failure
 //----(SA) modified this for head separation
-	if ( !CG_RegisterClientSkin( ci, modelName, skinName ) ) {
-		Com_Printf( "Failed to load skin file: %s/%s\n", modelName, skinName );
-		return qfalse;
-	}
+	//if ( !CG_RegisterClientSkin( ci, modelName, skinName ) ) {
+	//	Com_Printf( "Failed to load skin file: %s/%s\n", modelName, skinName );
+	//	return qfalse;
+	//}
 
 	// load cmodels before models so filecache works
 /*

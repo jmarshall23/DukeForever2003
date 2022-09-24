@@ -1419,10 +1419,18 @@ static qboolean R_LoadMD3( model_t *mod, int lod, void *buffer, const char *mod_
 			if (sh->defaultShader && !strstr(shader->name, "models/")) {
 				char modpath[512];
 				char fullShaderPath[512];
+				char shaderNameNoExtension[512];
+				
 				COM_StripFilename(mod_name, modpath);
-				sprintf(fullShaderPath, "%s%s.tga", modpath, shader->name);
+				COM_StripExtension(shader->name, shaderNameNoExtension);
+				
+				sprintf(fullShaderPath, "%s%s.tga", modpath, shaderNameNoExtension);
 
 				sh = R_FindShader(fullShaderPath, LIGHTMAP_NONE, qtrue);
+
+				if (sh->defaultShader) {
+					Com_Printf("R_LoadMD3: Failed to load shader %s\n", fullShaderPath);
+				}
 			}
 // jmarshall end
 			if(sh->defaultShader) {

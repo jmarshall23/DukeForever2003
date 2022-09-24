@@ -72,7 +72,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 			0.8,        // tactical
 			0.0,        // camper
 			16000,      // alertness
-			100,        // starting health
+			30,        // starting health
 			1.0,        // hearing scale
 			0.9,        // not in pvs hearing scale
 			512,        // relaxed detection radius
@@ -92,7 +92,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 		},
 		AITEAM_NAZI,                        // team
 		"edf2/default",                    // default model/skin
-		{WP_MP40,WP_GRENADE_LAUNCHER},      // starting weapons
+		{WP_MP40},      // starting weapons
 		BBOX_SMALL, {32,48},                // bbox, crouch/stand height
 		AIFL_CATCH_GRENADE | AIFL_STAND_IDLE2, // flags
 		NULL, NULL, NULL,                   // special attack routine
