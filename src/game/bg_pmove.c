@@ -2013,7 +2013,7 @@ static void PM_BeginWeaponReload( int weapon ) {
 		break;
 
 		// no reloading
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 	case WP_TESLA:
 		return;
 
@@ -3106,7 +3106,7 @@ if ( pm->ps->leanf != 0 && pm->ps->weapon != WP_GRENADE_LAUNCHER && pm->ps->weap
 
 // player is underwater - no fire
 if ( pm->waterlevel == 3 ) {
-	if ( pm->ps->weapon != WP_KNIFE &&
+	if ( pm->ps->weapon != WP_MIGHTY_FOOT &&
 		 pm->ps->weapon != WP_GRENADE_LAUNCHER &&
 		 pm->ps->weapon != WP_GRENADE_PINEAPPLE ) {
 		PM_AddEvent( EV_NOFIRE_UNDERWATER );        // event for underwater 'click' for nofire
@@ -3162,7 +3162,7 @@ case WP_GARAND:
 	}
 	break;
 // melee
-case WP_KNIFE:
+case WP_MIGHTY_FOOT:
 	if ( !delayedFire ) {
 		BG_AnimScriptEvent( pm->ps, ANIM_ET_FIREWEAPON, qfalse, qfalse );
 	}
@@ -3349,7 +3349,7 @@ pm->ps->lastFireTime = pm->cmd.serverTime;
 aimSpreadScaleAdd = 0;
 
 switch ( pm->ps->weapon ) {
-case WP_KNIFE:
+case WP_MIGHTY_FOOT:
 case WP_DYNAMITE:
 case WP_GRENADE_LAUNCHER:
 case WP_GRENADE_PINEAPPLE:

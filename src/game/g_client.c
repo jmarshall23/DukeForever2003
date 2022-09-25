@@ -827,10 +827,10 @@ void SetWolfSpawnWeapons( gclient_t *client ) {
 	// All players start with a knife (not OR-ing so that it clears previous weapons)
 	client->ps.weapons[0] = 0;
 	client->ps.weapons[1] = 0;
-	COM_BitSet( client->ps.weapons, WP_KNIFE );
+	COM_BitSet( client->ps.weapons, WP_MIGHTY_FOOT );
 
-	client->ps.ammo[BG_FindAmmoForWeapon( WP_KNIFE )] = 1;
-	client->ps.weapon = WP_KNIFE;
+	client->ps.ammo[BG_FindAmmoForWeapon( WP_MIGHTY_FOOT )] = 1;
+	client->ps.weapon = WP_MIGHTY_FOOT;
 	client->ps.weaponstate = WEAPON_READY;
 
 	// Engineer gets dynamite

@@ -238,7 +238,7 @@ static int weapIconDrawSize( int weap ) {
 	switch ( weap ) {
 
 		// weapons to not draw
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 		return 0;
 
 		// weapons with 'wide' icons
@@ -597,7 +597,7 @@ static void CG_DrawPlayerAmmoValue( rectDef_t *rect, int font, float scale, vec4
 	}
 
 	switch ( weap ) {      // some weapons don't draw ammo count text
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 	case WP_CLASS_SPECIAL:              // DHM - Nerve
 		return;
 

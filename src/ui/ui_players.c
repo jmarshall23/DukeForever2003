@@ -255,7 +255,7 @@ static void UI_TorsoSequencing( playerInfo_t *pi ) {
 			case WP_GAUNTLET:
 			case WP_SILENCER:
 			case WP_M1911:
-			case WP_KNIFE:
+			case WP_MIGHTY_FOOT:
 				raisetype = TORSO_RAISE3;	// (pistol)
 				break;
 

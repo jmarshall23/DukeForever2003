@@ -7,6 +7,7 @@ player
 
 	playerstart
 	{
+		giveweapon weapon_mightyfoot
 		giveweapon weapon_m1911
 		setammo ammo_9mm 50
 		selectweapon weapon_m1911

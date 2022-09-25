@@ -56,7 +56,7 @@ int weapBanks[MAX_WEAP_BANKS][MAX_WEAPS_IN_BANK] = {
 	// bank
 	{0,                     0,                      0           },  //	0 (empty)
 
-	{WP_KNIFE,              0,                      0           },  //	1
+	{WP_MIGHTY_FOOT,              0,                      0           },  //	1
 	{WP_M1911,              WP_COLT,                0           },  //	2	// WP_AKIMBO
 	{WP_MP40,               WP_THOMPSON,            WP_STEN     },  //	3
 	{WP_MAUSER,             WP_GARAND,              0           },  //	4
@@ -71,7 +71,7 @@ int weapBanks[MAX_WEAP_BANKS][MAX_WEAPS_IN_BANK] = {
 // JPW NERVE -- in mutiplayer, characters get knife/special on button 1, pistols on 2, 2-handed on 3
 int weapBanksMultiPlayer[MAX_WEAP_BANKS_MP][MAX_WEAPS_IN_BANK_MP] = {
 	{0,                     0,                      0,          0,          0,          0,              0,          0           },  // empty bank '0'
-	{WP_KNIFE,              0,                      0,          0,          0,          0,              0,          0           },
+	{WP_MIGHTY_FOOT,              0,                      0,          0,          0,          0,              0,          0           },
 	{WP_M1911,              WP_COLT,                0,          0,          0,          0,              0,          0           },
 	{WP_MP40,               WP_THOMPSON,            WP_STEN,    WP_MAUSER,  WP_GARAND,  WP_PANZERFAUST, WP_VENOM,   WP_FLAMETHROWER     },
 	{WP_GRENADE_LAUNCHER,   WP_GRENADE_PINEAPPLE,   0,          0,          0,          0,              0,          0,          },
@@ -1236,6 +1236,13 @@ void CG_RegisterWeapon( int weaponNum ) {
 	case WP_MONSTER_ATTACK3:
 		break;
 // jmarshall
+	case WP_MIGHTY_FOOT:
+		VectorSet(weaponInfo->weapon_offset, 0, -10, -30);
+
+		weaponInfo->flashSound[0] = trap_S_RegisterSound("sound/weapons/knife/knife_slash1.wav");
+		weaponInfo->flashSound[1] = trap_S_RegisterSound("sound/weapons/knife/knife_slash2.wav");
+		break;
+
 	case WP_M1911:
 		VectorSet(weaponInfo->weapon_offset, 20, 5, -15);
 		MAKERGB(weaponInfo->flashDlightColor, 1.0, 0.6, 0.23);
@@ -1266,12 +1273,6 @@ void CG_RegisterWeapon( int weaponNum ) {
 		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound( "sound/weapons/mp40/mp40e1.wav" ); // use same as mp40
 		weaponInfo->reloadSound = trap_S_RegisterSound( "sound/weapons/colt/colt_reload.wav" );
 		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
-		break;
-
-
-	case WP_KNIFE:
-		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/knife/knife_slash1.wav" );
-		weaponInfo->flashSound[1] = trap_S_RegisterSound( "sound/weapons/knife/knife_slash2.wav" );
 		break;
 
 	case WP_SILENCER:   // luger mod
@@ -1788,7 +1789,7 @@ static void CG_CalculateWeaponPosition( vec3_t origin, vec3_t angles ) {
 			break;
 
 			// never adjust
-		case WP_KNIFE:
+		case WP_MIGHTY_FOOT:
 		case WP_GRENADE_LAUNCHER:
 		case WP_GRENADE_PINEAPPLE:
 			break;
@@ -2866,7 +2867,7 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 	// weapons that don't need to go any further as they have no flash or light
 	if ( weaponNum == WP_GRENADE_LAUNCHER ||
 		 weaponNum == WP_GRENADE_PINEAPPLE ||
-		 weaponNum == WP_KNIFE ||
+		 weaponNum == WP_MIGHTY_FOOT ||
 		 weaponNum == WP_DYNAMITE ) {
 		return;
 	}
@@ -5160,7 +5161,7 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, in
 	}
 
 	switch ( weapon ) {
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 		sfx     = cgs.media.sfx_knifehit[4];    // different values for different types (stone/metal/wood/etc.)
 		mark    = cgs.media.bulletMarkShader;
 		radius  = 1 + rand() % 2;
@@ -5774,7 +5775,7 @@ void CG_MissileHitPlayer( centity_t *cent, int weapon, vec3_t origin, vec3_t dir
 	// others will just make the blood
 	switch ( weapon ) {
 		// knives just make the flesh hit sound.  no other effects
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 		i = rand() % 4;
 		if ( cgs.media.sfx_knifehit[i] ) {
 			trap_S_StartSound( origin, cent->currentState.number, CHAN_WEAPON, cgs.media.sfx_knifehit[i] );

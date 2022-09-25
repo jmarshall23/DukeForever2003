@@ -532,9 +532,11 @@ typedef enum
 typedef enum {
 	WP_NONE,                // 0
 
-	WP_KNIFE,               // 1
-	// German weapons
+	WP_MIGHTY_FOOT,         // 1
 	WP_M1911,               // 2
+
+
+// Old Weapons
 	WP_MP40,                // 3
 	WP_MAUSER,              // 4
 	WP_FG42,                // 5
@@ -548,7 +550,7 @@ typedef enum {
 // weapon keys only go 1-0, so put the alternates above that (since selection will be a double click on the german weapon key)
 
 	// American equivalents
-//	WP_KNIFE2,				// 12
+//	WP_MIGHTY_FOOT2,				// 12
 	WP_COLT,                // 11	equivalent american weapon to german luger
 	WP_THOMPSON,            // 12	equivalent american weapon to german mp40
 	WP_GARAND,              // 13	equivalent american weapon to german mauser
@@ -618,15 +620,15 @@ extern int weapAlts[];  // defined in bg_misc.c
 
 //----(SA)
 // for routines that need to check if a WP_ is </=/> a given set of weapons
-#define WP_FIRST            WP_KNIFE
-#define WP_BEGINGERMAN      WP_KNIFE
+#define WP_FIRST            WP_MIGHTY_FOOT
+#define WP_BEGINGERMAN      WP_MIGHTY_FOOT
 #define WP_LASTGERMAN       WP_TESLA
 #define WP_BEGINAMERICAN    WP_COLT
 #define WP_LASTAMERICAN     WP_GRENADE_PINEAPPLE
 #define WP_BEGINSECONDARY   WP_SNIPERRIFLE
 #define WP_LASTSECONDARY    WP_FG42SCOPE
 
-#define WEAPS_ONE_HANDED    ( ( 1 << WP_KNIFE ) | ( 1 << WP_M1911 ) | ( 1 << WP_COLT ) | ( 1 << WP_SILENCER ) | ( 1 << WP_GRENADE_LAUNCHER ) | ( 1 << WP_GRENADE_PINEAPPLE ) )
+#define WEAPS_ONE_HANDED    ( ( 1 << WP_MIGHTY_FOOT ) | ( 1 << WP_M1911 ) | ( 1 << WP_COLT ) | ( 1 << WP_SILENCER ) | ( 1 << WP_GRENADE_LAUNCHER ) | ( 1 << WP_GRENADE_PINEAPPLE ) )
 //----(SA)	end
 
 typedef enum {

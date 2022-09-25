@@ -185,7 +185,7 @@ void Weapon_Medic( gentity_t *ent ) {
 				if ( ent->client->ps.classWeaponTime > level.time ) { // heal the dude
 /*
 					traceEnt->health = 80;
-					traceEnt->s.weapon = WP_KNIFE;
+					traceEnt->s.weapon = WP_MIGHTY_FOOT;
 					traceEnt->r.maxs[2] = 0;
 					traceEnt->client->ps.pm_type = PM_NORMAL;
 					traceEnt->client->ps.torsoAnim = traceEnt->client->oldAnimTorso;
@@ -595,7 +595,7 @@ int G_GetWeaponDamage( int weapon ) {
 		case WP_SNIPERRIFLE: return 55;
 		case WP_SNOOPERSCOPE: return 25;
 		case WP_NONE: return 0;
-		case WP_KNIFE: return 5;
+		case WP_MIGHTY_FOOT: return 5;
 		case WP_GRENADE_LAUNCHER: return 100;
 		case WP_GRENADE_PINEAPPLE: return 80;
 		case WP_DYNAMITE: return 400;
@@ -624,7 +624,7 @@ int G_GetWeaponDamage( int weapon ) {
 		case WP_SNIPERRIFLE: return 80;
 		case WP_SNOOPERSCOPE: return 75;
 		case WP_NONE: return 0;
-		case WP_KNIFE: return 10;
+		case WP_MIGHTY_FOOT: return 10;
 		case WP_GRENADE_SMOKE: return 100;
 		case WP_GRENADE_LAUNCHER: return 200;
 		case WP_GRENADE_PINEAPPLE: return 200;
@@ -1756,7 +1756,7 @@ void FireWeapon( gentity_t *ent ) {
 
 	// fire the specific weapon
 	switch ( ent->s.weapon ) {
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 		Weapon_Knife( ent );
 		break;
 // JPW NERVE

@@ -89,7 +89,7 @@ ammotable_t ammoTable[] = {
 	//	AMMO			AMT.	CLIP	TIME	DELAY			SHOT
 	{   0,              0,      0,      0,      50,             0,      0,      0,      0                       },  //	WP_NONE					// 0
 
-	{   999,            0,      999,    0,      50,             200,    0,      0,      MOD_KNIFE               },  //	WP_KNIFE				// 1
+	{   999,            0,      999,    0,      50,             200,    0,      0,      MOD_KNIFE               },  //	WP_MIGHTY_FOOT				// 1
 
 	{   MAX_AMMO_9MM,   1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_M1911               },  //	WP_M1911				// 2	// NOTE: also 32 round 'snail' magazine
 	{   MAX_AMMO_9MM,   1,      32,     2600,   DELAY_LOW,      100,    0,      0,      MOD_MP40                },  //	WP_MP40					// 3
@@ -103,7 +103,7 @@ ammotable_t ammoTable[] = {
 	{   300,            1,      300,    1000,   DELAY_LOW,      0,      0,      0,      MOD_TESLA               },  //	WP_TESLA				// 10
 //	{	50,				1,		50,		1000,	DELAY_LOW,		1200,	0,		0,		MOD_SPEARGUN			},	//	WP_SPEARGUN				// 11
 
-//	{	999,			0,		999,	0,		50,				200,	0,		0,		MOD_KNIFE2				},	//	WP_KNIFE2				// 12
+//	{	999,			0,		999,	0,		50,				200,	0,		0,		MOD_KNIFE2				},	//	WP_MIGHTY_FOOT2				// 12
 	{   MAX_AMMO_45,    1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_COLT                },  //	WP_COLT					// 13
 	{   MAX_AMMO_45,    1,      30,     2400,   DELAY_LOW,      120,    0,      0,      MOD_THOMPSON            },  //	WP_THOMPSON				// 14	// NOTE: also 50 round drum magazine
 	{   MAX_AMMO_GARAND,1,      5,      2500,   DELAY_HIGH,     1200,   0,      0,      MOD_GARAND              },  //	WP_GARAND				// 15	// NOTE: always 5 round clips
@@ -140,7 +140,7 @@ ammotable_t ammoTable[] = {
 //----(SA)	moved in here so both games can get to it
 int weapAlts[] = {
 	WP_NONE,            // 0 WP_NONE
-	WP_NONE,            // 1 WP_KNIFE
+	WP_NONE,            // 1 WP_MIGHTY_FOOT
 	WP_SILENCER,        // 2 WP_M1911
 	WP_NONE,            // 3 WP_MP40
 	WP_SNIPERRIFLE,     // 4 WP_MAUSER
@@ -151,7 +151,7 @@ int weapAlts[] = {
 	WP_NONE,            // 9 WP_FLAMETHROWER
 	WP_NONE,            // 10 WP_TESLA
 //	WP_SPEARGUN_CO2,	// 11 WP_SPEARGUN
-//	WP_NONE,			// 12 WP_KNIFE2
+//	WP_NONE,			// 12 WP_MIGHTY_FOOT2
 	WP_AKIMBO,          // 13 WP_COLT		//----(SA)	new
 	WP_NONE,            // 14 WP_THOMPSON
 	WP_SNOOPERSCOPE,    // 15 WP_GARAND
@@ -917,11 +917,11 @@ weapon_gauntlet
 model="models/weapons2/knife/knife.md3"
 */
 	{
-		"weapon_knife",
+		"weapon_mightyfoot",
 		"sound/misc/w_pkup.wav",
-		{   "models/weapons2/knife/knife.md3",
-			"models/weapons2/knife/v_knife.md3",
-			"models/weapons2/knife/pu_knife.md3",
+		{   "models/weapons/mightyfoot/mightyfoot.md3",
+			"models/weapons/mightyfoot/mightyfoot.md3",
+			"models/weapons/mightyfoot/mightyfoot.md3",
 			0, 0 },
 
 		"icons/iconw_knife_1",   // icon
@@ -929,9 +929,9 @@ model="models/weapons2/knife/knife.md3"
 		"Knife",             // pickup
 		50,
 		IT_WEAPON,
-		WP_KNIFE,
-		WP_KNIFE,
-		WP_KNIFE,
+		WP_MIGHTY_FOOT,
+		WP_MIGHTY_FOOT,
+		WP_MIGHTY_FOOT,
 		"",                      // precache
 		"",                      // sounds
 		{0,0,0,0}
@@ -956,9 +956,9 @@ model="models/weapons2/knife2/knife2.md3"
 		"Other Knife",			// pickup
 		50,
 		IT_WEAPON,
-		WP_KNIFE2,
-		WP_KNIFE2,
-		WP_KNIFE2,
+		WP_MIGHTY_FOOT2,
+		WP_MIGHTY_FOOT2,
+		WP_MIGHTY_FOOT2,
 		"",						// precache
 		"",						// sounds
 		{0,0,0,0}

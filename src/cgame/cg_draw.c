@@ -781,7 +781,7 @@ static void CG_DrawStatusBar( void ) {
 			}
 
 			// don't draw ammo value for knife
-			if ( cg.predictedPlayerState.weapon != WP_KNIFE ) {
+			if ( cg.predictedPlayerState.weapon != WP_MIGHTY_FOOT ) {
 				if ( cgs.dmflags & DF_NO_WEAPRELOAD ) {
 					CG_DrawBigString2( ( 580 - 23 + 35 ) + wideOffset, STATUSBARHEIGHT, va( "%d.", value ), cg_hudAlpha.value );
 				} else if ( value ) {
@@ -2241,7 +2241,7 @@ static void CG_DrawCrosshair( void ) {
 		break;
 
 		// special reticle for weapon
-	case WP_KNIFE:
+	case WP_MIGHTY_FOOT:
 		if ( cg.zoomedBinoc ) {
 			CG_DrawBinocReticle();
 			return;
