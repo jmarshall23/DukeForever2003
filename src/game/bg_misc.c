@@ -89,7 +89,7 @@ ammotable_t ammoTable[] = {
 	//	AMMO			AMT.	CLIP	TIME	DELAY			SHOT
 	{   0,              0,      0,      0,      50,             0,      0,      0,      0                       },  //	WP_NONE					// 0
 
-	{   999,            0,      999,    0,      50,             200,    0,      0,      MOD_KNIFE               },  //	WP_MIGHTY_FOOT				// 1
+	{   999,            0,      999,    0,      300,             300,    0,      0,      MOD_KNIFE               },  //	WP_MIGHTY_FOOT				// 1
 
 	{   MAX_AMMO_9MM,   1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_M1911               },  //	WP_M1911				// 2	// NOTE: also 32 round 'snail' magazine
 	{   MAX_AMMO_9MM,   1,      32,     2600,   DELAY_LOW,      100,    0,      0,      MOD_MP40                },  //	WP_MP40					// 3

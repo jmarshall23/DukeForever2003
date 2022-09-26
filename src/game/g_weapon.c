@@ -64,10 +64,10 @@ KNIFE/GAUNTLET (NOTE: gauntlet is now the Zombie melee)
 
 /*
 ==============
-Weapon_Knife
+Weapon_MightyFoot
 ==============
 */
-void Weapon_Knife( gentity_t *ent ) {
+void Weapon_MightyFoot( gentity_t *ent ) {
 	trace_t tr;
 	gentity_t   *traceEnt, *tent;
 	int damage, mod;
@@ -108,14 +108,6 @@ void Weapon_Knife( gentity_t *ent ) {
 	traceEnt = &g_entities[ tr.entityNum ];
 
 	if ( !( traceEnt->takedamage ) ) {
-		return;
-	}
-
-	// RF, no knife damage for big guys
-	switch ( traceEnt->aiCharacter ) {
-	case AICHAR_PROTOSOLDIER:
-	case AICHAR_SUPERSOLDIER:
-	case AICHAR_HEINRICH:
 		return;
 	}
 
@@ -1757,7 +1749,7 @@ void FireWeapon( gentity_t *ent ) {
 	// fire the specific weapon
 	switch ( ent->s.weapon ) {
 	case WP_MIGHTY_FOOT:
-		Weapon_Knife( ent );
+		Weapon_MightyFoot( ent );
 		break;
 // JPW NERVE
 	case WP_CLASS_SPECIAL:
