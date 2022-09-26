@@ -2320,7 +2320,7 @@ void CG_Init( int serverMessageNum, int serverCommandSequence ) {
 
 	CG_InitConsoleCommands();
 
-//	cg.weaponSelect = WP_MP40;
+//	cg.weaponSelect = WP_M16;
 
 	// get the rendering configuration from the client system
 	trap_GetGlconfig( &cgs.glconfig );

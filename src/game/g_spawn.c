@@ -976,7 +976,7 @@ void SP_worldspawn( void ) {
 		item = BG_FindItem( "Sten" );
 		item->giAmmoIndex = WP_STEN;
 		item = BG_FindItem( "MP40" );
-		item->giAmmoIndex = WP_MP40;
+		item->giAmmoIndex = WP_M16;
 	}
 // jpw
 

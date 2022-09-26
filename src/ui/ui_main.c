@@ -1793,7 +1793,7 @@ static void UI_DrawPlayerModel( rectDef_t *rect ) {
 	}
 
 	//	info.moveAngles[YAW] += 1;
-	//   UI_PlayerInfo_SetInfo( &info, LEGS_IDLE, TORSO_STAND, viewangles, moveangles, WP_MP40, qfalse );
+	//   UI_PlayerInfo_SetInfo( &info, LEGS_IDLE, TORSO_STAND, viewangles, moveangles, WP_M16, qfalse );
 	UI_DrawPlayer( rect->x, rect->y, rect->w, rect->h, &info, uiInfo.uiDC.realTime / 2 );
 
 }
@@ -1983,7 +1983,7 @@ static void UI_DrawOpponent( rectDef_t *rect ) {
 #else
 		UI_PlayerInfo_SetModel( &info2, model );
 #endif  // #ifdef MISSIONPACK
-		UI_PlayerInfo_SetInfo( &info2, LEGS_IDLE, TORSO_STAND, viewangles, vec3_origin, WP_MP40, qfalse );
+		UI_PlayerInfo_SetInfo( &info2, LEGS_IDLE, TORSO_STAND, viewangles, vec3_origin, WP_M16, qfalse );
 #ifdef MISSIONPACK
 		UI_RegisterClientModelname( &info2, model, headmodel, team );
 #else
@@ -4023,7 +4023,7 @@ static weaponType_t weaponTypes[] = {
 	{ WP_M1911, "Luger pistol",  PT_PISTOL,  "mp_weapon", 1, "ui/assets/weapon_luger.tga",     "firing_pistolB_1",      "stand_pistolB" },
 	//	{ 0,		"Medkit",		PT_MEDKIT,	"mp_item2",		2, "ui/assets/item_medkit.tga",			"firing_pistolB_1",		"stand_pistolB" },
 
-	{ WP_MP40,              "MP40 submachinegun",        PT_LIGHTONLY | PT_RIFLE,    "mp_weapon", 3, "ui/assets/weapon_mp40.tga",          "relaxed_idle_2h_1", "relaxed_idle_2h_1" },
+	{ WP_M16,              "MP40 submachinegun",        PT_LIGHTONLY | PT_RIFLE,    "mp_weapon", 3, "ui/assets/weapon_mp40.tga",          "relaxed_idle_2h_1", "relaxed_idle_2h_1" },
 	{ WP_THOMPSON,          "Thompson submachinegun",    PT_LIGHTONLY | PT_RIFLE,    "mp_weapon", 4, "ui/assets/weapon_thompson.tga",      "relaxed_idle_2h_1", "relaxed_idle_2h_1" },
 	{ WP_STEN,              "Sten submachinegun",        PT_LIGHTONLY | PT_RIFLE,    "mp_weapon", 5, "ui/assets/weapon_sten.tga",          "relaxed_idle_2h_1", "relaxed_idle_2h_1" },
 

@@ -467,14 +467,14 @@ void BotUpdateInventory( bot_state_t *bs ) {
 	//weapons
 	bs->inventory[INVENTORY_M1911]              =   COM_BitCheck( bs->cur_ps.weapons, ( WP_M1911 ) );
 	bs->inventory[INVENTORY_MAUSER]             =   COM_BitCheck( bs->cur_ps.weapons, ( WP_MAUSER ) );
-	bs->inventory[INVENTORY_MP40]               =   COM_BitCheck( bs->cur_ps.weapons, ( WP_MP40 ) );
+	bs->inventory[INVENTORY_MP40]               =   COM_BitCheck( bs->cur_ps.weapons, ( WP_M16 ) );
 	bs->inventory[INVENTORY_GRENADELAUNCHER]    =   COM_BitCheck( bs->cur_ps.weapons, ( WP_GRENADE_LAUNCHER ) );
 	bs->inventory[INVENTORY_VENOM]              =   COM_BitCheck( bs->cur_ps.weapons, ( WP_VENOM ) );
 	bs->inventory[INVENTORY_FLAMETHROWER]       =   COM_BitCheck( bs->cur_ps.weapons, ( WP_FLAMETHROWER ) );
 	bs->inventory[INVENTORY_GAUNTLET]           =   COM_BitCheck( bs->cur_ps.weapons, ( WP_GAUNTLET ) );
 
 	// ammo
-	bs->inventory[INVENTORY_9MM]            = bs->cur_ps.ammo[BG_FindAmmoForWeapon( WP_MP40 )];
+	bs->inventory[INVENTORY_9MM]            = bs->cur_ps.ammo[BG_FindAmmoForWeapon( WP_M16 )];
 	bs->inventory[INVENTORY_792MM]          = bs->cur_ps.ammo[BG_FindAmmoForWeapon( WP_MAUSER )];
 	bs->inventory[INVENTORY_GRENADES]       = bs->cur_ps.ammo[BG_FindAmmoForWeapon( WP_GRENADE_LAUNCHER )];
 	bs->inventory[INVENTORY_127MM]          = bs->cur_ps.ammo[BG_FindAmmoForWeapon( WP_VENOM )];

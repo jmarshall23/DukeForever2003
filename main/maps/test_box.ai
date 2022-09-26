@@ -7,6 +7,6 @@ player
 
 	playerstart
 	{
-
+		giveweapon weapon_m16
 	}
 }

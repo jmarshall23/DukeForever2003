@@ -73,7 +73,7 @@ void CG_CheckAmmo( void ) {
 		case WP_SILENCER:
 		case WP_FG42:
 		case WP_FG42SCOPE:
-		case WP_MP40:
+		case WP_M16:
 		case WP_THOMPSON:
 		case WP_STEN:
 		case WP_VENOM:

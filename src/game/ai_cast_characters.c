@@ -92,7 +92,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 		},
 		AITEAM_NAZI,                        // team
 		"edf2/default",                    // default model/skin
-		{WP_MP40},      // starting weapons
+		{WP_M16},      // starting weapons
 		BBOX_SMALL, {32,48},                // bbox, crouch/stand height
 		AIFL_CATCH_GRENADE | AIFL_STAND_IDLE2, // flags
 		NULL, NULL, NULL,                   // special attack routine
@@ -480,7 +480,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 		},
 		AITEAM_NAZI,
 		"stim/default",
-		{WP_MP40, WP_MONSTER_ATTACK1},  // attack1 is leaping rocket attack
+		{WP_M16, WP_MONSTER_ATTACK1},  // attack1 is leaping rocket attack
 		BBOX_LARGE, {48,64},
 		AIFL_NO_RELOAD,
 		AIFunc_StimSoldierAttack1Start, NULL, NULL,
@@ -528,7 +528,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 		},
 		AITEAM_NAZI,
 		"stim/default",
-		{WP_MP40, WP_TESLA},    // no monster_attack1, since that's only used for the jumping rocket attack
+		{WP_M16, WP_TESLA},    // no monster_attack1, since that's only used for the jumping rocket attack
 		BBOX_LARGE, {48,64},
 		AIFL_NO_RELOAD,
 		AIFunc_StimSoldierAttack1Start, NULL, NULL,
@@ -624,7 +624,7 @@ AICharacterDefaults_t aiDefaults[NUM_CHARACTERS] = {
 		},
 		AITEAM_NAZI,
 		"blackguard/default",
-//		{WP_MP40, WP_GRENADE_LAUNCHER, WP_MONSTER_ATTACK1},	// attack1 is melee kick
+//		{WP_M16, WP_GRENADE_LAUNCHER, WP_MONSTER_ATTACK1},	// attack1 is melee kick
 		{WP_FG42, WP_FG42SCOPE, WP_GRENADE_LAUNCHER, WP_MONSTER_ATTACK1},   // attack1 is melee kick
 		BBOX_SMALL, {32,48},
 		AIFL_CATCH_GRENADE | AIFL_FLIP_ANIM | AIFL_STAND_IDLE2,

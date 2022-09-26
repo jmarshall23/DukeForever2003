@@ -92,7 +92,7 @@ ammotable_t ammoTable[] = {
 	{   999,            0,      999,    0,      300,             300,    0,      0,      MOD_KNIFE               },  //	WP_MIGHTY_FOOT				// 1
 
 	{   MAX_AMMO_9MM,   1,      8,      1500,   DELAY_PISTOL,   400,    0,      0,      MOD_M1911               },  //	WP_M1911				// 2	// NOTE: also 32 round 'snail' magazine
-	{   MAX_AMMO_9MM,   1,      32,     2600,   DELAY_LOW,      100,    0,      0,      MOD_MP40                },  //	WP_MP40					// 3
+	{   MAX_AMMO_9MM,   1,      32,     2600,   DELAY_LOW,      100,    0,      0,      MOD_MP40                },  //	WP_M16					// 3
 	{   MAX_AMMO_MAUSER,1,      10,     2500,   DELAY_HIGH,     1200,   0,      0,      MOD_MAUSER              },  //	WP_MAUSER				// 4	// NOTE: authentic clips are 5/10/25 rounds
 	{   MAX_AMMO_FG42,  1,      20,     2000,   DELAY_LOW,      200,    0,      0,      MOD_FG42                },  //	WP_FG42					// 5
 	{   15,             1,      15,     1000,   DELAY_THROW,    1600,   0,      0,      MOD_GRENADE_LAUNCHER    },  //	WP_GRENADE_LAUNCHER		// 6
@@ -142,7 +142,7 @@ int weapAlts[] = {
 	WP_NONE,            // 0 WP_NONE
 	WP_NONE,            // 1 WP_MIGHTY_FOOT
 	WP_SILENCER,        // 2 WP_M1911
-	WP_NONE,            // 3 WP_MP40
+	WP_NONE,            // 3 WP_M16
 	WP_SNIPERRIFLE,     // 4 WP_MAUSER
 	WP_FG42SCOPE,       // 5 WP_FG42	// was SP5
 	WP_NONE,            // 6 WP_GRENADE_LAUNCHER
@@ -1152,11 +1152,11 @@ model="models/weapons2/garand/garand.md3"
 model="models\weapons2\mp40\mp40.md3"
 */
 	{
-		"weapon_mp40",
+		"weapon_m16",
 		"sound/misc/w_pkup.wav",
-		{   "models/weapons2/mp40/mp40.md3",
-			"models/weapons2/mp40/v_mp40.md3",
-			"models/weapons2/mp40/pu_mp40.md3",
+		{   "models/weapons/m16/m16.md3",
+			"models/weapons/m16/m16.md3",
+			"models/weapons/m16/m16.md3",
 			0, 0 },
 
 		"icons/iconw_mp40_1",    // icon
@@ -1164,9 +1164,9 @@ model="models\weapons2\mp40\mp40.md3"
 		"MP40",              // pickup
 		30,
 		IT_WEAPON,
-		WP_MP40,
+		WP_M16,
 		WP_M1911,
-		WP_MP40,
+		WP_M16,
 		"",                  // precache
 		"",                  // sounds
 		{0,0,0,0}

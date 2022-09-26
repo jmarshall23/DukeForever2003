@@ -3061,7 +3061,7 @@ char *AIFunc_BattleChase( cast_state_t *cs ) {
 			if ((cs->castScriptStatus.scriptNoAttackTime < level.time) && (cs->noAttackTime < level.time)) {
 				// if we are using a bullet weapon, start firing now
 				switch (cs->weaponNum) {
-				case WP_MP40:
+				case WP_M16:
 				case WP_VENOM:
 				case WP_THOMPSON:
 				case WP_STEN:	//----(SA)	added

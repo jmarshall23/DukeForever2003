@@ -58,7 +58,7 @@ int weapBanks[MAX_WEAP_BANKS][MAX_WEAPS_IN_BANK] = {
 
 	{WP_MIGHTY_FOOT,              0,                      0           },  //	1
 	{WP_M1911,              WP_COLT,                0           },  //	2	// WP_AKIMBO
-	{WP_MP40,               WP_THOMPSON,            WP_STEN     },  //	3
+	{WP_M16,               WP_THOMPSON,            WP_STEN     },  //	3
 	{WP_MAUSER,             WP_GARAND,              0           },  //	4
 	{WP_FG42,               0,                      0           },  //	5
 	{WP_GRENADE_LAUNCHER,   WP_GRENADE_PINEAPPLE,   WP_DYNAMITE },  //	6
@@ -73,7 +73,7 @@ int weapBanksMultiPlayer[MAX_WEAP_BANKS_MP][MAX_WEAPS_IN_BANK_MP] = {
 	{0,                     0,                      0,          0,          0,          0,              0,          0           },  // empty bank '0'
 	{WP_MIGHTY_FOOT,              0,                      0,          0,          0,          0,              0,          0           },
 	{WP_M1911,              WP_COLT,                0,          0,          0,          0,              0,          0           },
-	{WP_MP40,               WP_THOMPSON,            WP_STEN,    WP_MAUSER,  WP_GARAND,  WP_PANZERFAUST, WP_VENOM,   WP_FLAMETHROWER     },
+	{WP_M16,               WP_THOMPSON,            WP_STEN,    WP_MAUSER,  WP_GARAND,  WP_PANZERFAUST, WP_VENOM,   WP_FLAMETHROWER     },
 	{WP_GRENADE_LAUNCHER,   WP_GRENADE_PINEAPPLE,   0,          0,          0,          0,              0,          0,          },
 	{WP_CLASS_SPECIAL,      0,                      0,          0,          0,          0,              0,          0,          },
 	{WP_DYNAMITE,           0,                      0,          0,          0,          0,              0,          0           }
@@ -206,7 +206,7 @@ static void CG_MachineGunEjectBrass( centity_t *cent ) {
 		offset[0] = 32;
 		offset[1] = -4;
 		offset[2] = 0;
-	} else if ( cg.predictedPlayerState.weapon == WP_MP40 || cg.predictedPlayerState.weapon == WP_THOMPSON )     {
+	} else if ( cg.predictedPlayerState.weapon == WP_M16 || cg.predictedPlayerState.weapon == WP_THOMPSON )     {
 		offset[0] = 20; // Maxx Kaufman offset value
 		offset[1] = -4;
 		offset[2] = 24;
@@ -1254,6 +1254,16 @@ void CG_RegisterWeapon( int weaponNum ) {
 		weaponInfo->reloadSound = trap_S_RegisterSound("sound/weapons/luger/luger_reload.wav");
 		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
 		break;
+
+	case WP_M16:
+		MAKERGB(weaponInfo->flashDlightColor, 1.0, 0.6, 0.23);
+		VectorSet(weaponInfo->weapon_offset, 10, 0, -10);
+		weaponInfo->flashSound[0] = trap_S_RegisterSound("sound/weapons/mp40/mp40f1.wav");
+		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound("sound/weapons/mp40/mp40e1.wav");
+		weaponInfo->reloadSound = trap_S_RegisterSound("sound/weapons/mp40/mp40_reload.wav");
+		weaponInfo->overheatSound = trap_S_RegisterSound("sound/weapons/mp40/mp40_overheat.wav");
+		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
+		break;
 // jmarshall end
 
 	case WP_AKIMBO: //----(SA)	added
@@ -1320,15 +1330,6 @@ void CG_RegisterWeapon( int weaponNum ) {
 		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound( "sound/weapons/mp40/mp40e1.wav" ); // use same as mp40
 		weaponInfo->reloadSound = trap_S_RegisterSound( "sound/weapons/thompson/thompson_reload.wav" );
 		weaponInfo->overheatSound = trap_S_RegisterSound( "sound/weapons/thompson/thompson_overheat.wav" );
-		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
-		break;
-
-	case WP_MP40:
-		MAKERGB( weaponInfo->flashDlightColor, 1.0, 0.6, 0.23 );
-		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/mp40/mp40f1.wav" );
-		weaponInfo->flashEchoSound[0] = trap_S_RegisterSound( "sound/weapons/mp40/mp40e1.wav" );
-		weaponInfo->reloadSound = trap_S_RegisterSound( "sound/weapons/mp40/mp40_reload.wav" );
-		weaponInfo->overheatSound = trap_S_RegisterSound( "sound/weapons/mp40/mp40_overheat.wav" );
 		weaponInfo->ejectBrassFunc = CG_MachineGunEjectBrass;
 		break;
 
@@ -1523,7 +1524,7 @@ void CG_RegisterItemVisuals( int itemNum ) {
 		item = BG_FindItem( "Sten" );
 		item->giAmmoIndex = WP_STEN;
 		item = BG_FindItem( "MP40" );
-		item->giAmmoIndex = WP_MP40;
+		item->giAmmoIndex = WP_M16;
 	}
 // jpw
 
@@ -3214,7 +3215,7 @@ void CG_DrawWeaponSelect( void ) {
 
 		switch ( drawweap ) {
 		case WP_THOMPSON:
-		case WP_MP40:
+		case WP_M16:
 		case WP_STEN:
 		case WP_MAUSER:
 		case WP_GARAND:
@@ -3712,13 +3713,13 @@ int getEquivWeapon( int weapnum ) {
 		// going from german to american
 	case WP_M1911:              num = WP_COLT;              break;
 	case WP_MAUSER:             num = WP_GARAND;            break;
-	case WP_MP40:               num = WP_THOMPSON;          break;
+	case WP_M16:               num = WP_THOMPSON;          break;
 	case WP_GRENADE_LAUNCHER:   num = WP_GRENADE_PINEAPPLE; break;
 
 		// going from american to german
 	case WP_COLT:               num = WP_M1911;             break;
 	case WP_GARAND:             num = WP_MAUSER;            break;
-	case WP_THOMPSON:           num = WP_MP40;              break;
+	case WP_THOMPSON:           num = WP_M16;              break;
 	case WP_GRENADE_PINEAPPLE:  num = WP_GRENADE_LAUNCHER;  break;
 	}
 	return num;
@@ -4714,7 +4715,7 @@ void CG_WeaponFireRecoil( int weapon ) {
 		break;
 	case WP_FG42SCOPE:
 	case WP_FG42:
-	case WP_MP40:
+	case WP_M16:
 	case WP_THOMPSON:
 	case WP_STEN:
 		//pitchRecoilAdd = 1;
@@ -5180,7 +5181,7 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, in
 	case WP_GARAND:
 	case WP_SNIPERRIFLE:
 	case WP_SNOOPERSCOPE:
-	case WP_MP40:
+	case WP_M16:
 	case WP_FG42:
 	case WP_FG42SCOPE:
 	case WP_THOMPSON:
@@ -6228,7 +6229,7 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
 		fromweap = cg_entities[sourceEntityNum].currentState.weapon;
 
 		if ( !fromweap || cg_entities[sourceEntityNum].currentState.eFlags & EF_MG42_ACTIVE ) { // mounted
-			fromweap = WP_MP40;
+			fromweap = WP_M16;
 		}
 
 		// TODO: not sure what kind of effect were going to do

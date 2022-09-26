@@ -765,7 +765,7 @@ static void CG_DrawStatusBar( void ) {
 
 			switch ( cg.predictedPlayerState.weapon ) {
 			case WP_THOMPSON:
-			case WP_MP40:
+			case WP_M16:
 			case WP_STEN:
 			case WP_MAUSER:
 			case WP_GARAND:

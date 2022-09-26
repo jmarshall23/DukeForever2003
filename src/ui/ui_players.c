@@ -86,12 +86,12 @@ tryagain:
 
 	if ( pi->weaponModel == 0 ) {
 //		if( weaponNum == WP_MACHINEGUN ) {	//----(SA)	removing old weapon references
-		if ( weaponNum == WP_MP40 ) {
+		if ( weaponNum == WP_M16 ) {
 			weaponNum = WP_NONE;
 			goto tryagain;
 		}
 //		weaponNum = WP_MACHINEGUN;	//----(SA)	removing old weapon references
-		weaponNum = WP_MP40;
+		weaponNum = WP_M16;
 		goto tryagain;
 	}
 
@@ -1570,7 +1570,7 @@ void UI_PlayerInfo_SetModel( playerInfo_t *pi, const char *model ) {
 	memset( pi, 0, sizeof( *pi ) );
 	UI_RegisterClientModelname( pi, model );
 //	pi->weapon = WP_MACHINEGUN;
-//	pi->weapon = WP_MP40;
+//	pi->weapon = WP_M16;
 	pi->currentWeapon = pi->weapon;
 	pi->lastWeapon = pi->weapon;
 	pi->pendingWeapon = -1;

@@ -534,10 +534,9 @@ typedef enum {
 
 	WP_MIGHTY_FOOT,         // 1
 	WP_M1911,               // 2
-
+	WP_M16,                 // 3
 
 // Old Weapons
-	WP_MP40,                // 3
 	WP_MAUSER,              // 4
 	WP_FG42,                // 5
 	WP_GRENADE_LAUNCHER,    // 6
@@ -1245,7 +1244,7 @@ typedef struct gitem_s {
 
 	int giTag;
 
-	int giAmmoIndex;            // type of weapon ammo this uses.  (ex. WP_MP40 and WP_M1911 share 9mm ammo, so they both have WP_M1911 for giAmmoIndex)
+	int giAmmoIndex;            // type of weapon ammo this uses.  (ex. WP_M16 and WP_M1911 share 9mm ammo, so they both have WP_M1911 for giAmmoIndex)
 	int giClipIndex;            // which clip this weapon uses.  this allows the sniper rifle to use the same clip as the garand, etc.
 
 	char        *precaches;     // string of all models and images this item will use

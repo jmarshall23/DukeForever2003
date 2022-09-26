@@ -577,7 +577,7 @@ int G_GetWeaponDamage( int weapon ) {
 		case WP_COLT: return 8;
 		case WP_AKIMBO: return 8;       //----(SA)	added
 		case WP_VENOM: return 12;       // 15  ----(SA)	slight modify for DM
-		case WP_MP40: return 6;
+		case WP_M16: return 6;
 		case WP_THOMPSON: return 8;
 		case WP_STEN: return 10;
 		case WP_FG42SCOPE:
@@ -606,7 +606,7 @@ int G_GetWeaponDamage( int weapon ) {
 		case WP_COLT: return 18;
 		case WP_AKIMBO: return 18;      //----(SA)	added
 		case WP_VENOM: return 20;
-		case WP_MP40: return 14;
+		case WP_M16: return 14;
 		case WP_THOMPSON: return 18;
 		case WP_STEN: return 14;
 		case WP_FG42SCOPE:
@@ -650,7 +650,7 @@ float G_GetWeaponSpread( int weapon ) {
 			case WP_COLT:       return 700;
 			case WP_AKIMBO:     return 700; //----(SA)	added
 			case WP_VENOM:      return 1000;
-			case WP_MP40:       return 1000;
+			case WP_M16:       return 1000;
 			case WP_FG42SCOPE:  return 300;
 			case WP_FG42:       return 800;
 			case WP_THOMPSON:   return 1200;
@@ -667,7 +667,7 @@ float G_GetWeaponSpread( int weapon ) {
 			case WP_COLT:       return 30;
 			case WP_AKIMBO:     return 30;      //----(SA)	added
 			case WP_VENOM:      return 200;
-			case WP_MP40:       return 200;
+			case WP_M16:       return 200;
 			case WP_FG42SCOPE:  return 10;
 			case WP_FG42:       return 150;
 			case WP_THOMPSON:   return 250;
@@ -685,7 +685,7 @@ float G_GetWeaponSpread( int weapon ) {
 		case WP_COLT: return 800;
 		case WP_AKIMBO: return 800;         //----(SA)added
 		case WP_VENOM: return 600;
-		case WP_MP40: return 400;
+		case WP_M16: return 400;
 		case WP_FG42SCOPE:
 		case WP_FG42:   return 500;
 		case WP_THOMPSON: return 600;
@@ -710,8 +710,8 @@ float G_GetWeaponSpread( int weapon ) {
 #define VENOM_SPREAD    G_GetWeaponSpread( WP_VENOM )
 #define VENOM_DAMAGE    G_GetWeaponDamage( WP_VENOM ) // JPW
 
-#define MP40_SPREAD     G_GetWeaponSpread( WP_MP40 )
-#define MP40_DAMAGE     G_GetWeaponDamage( WP_MP40 ) // JPW
+#define MP40_SPREAD     G_GetWeaponSpread( WP_M16 )
+#define MP40_DAMAGE     G_GetWeaponDamage( WP_M16 ) // JPW
 #define THOMPSON_SPREAD G_GetWeaponSpread( WP_THOMPSON )
 #define THOMPSON_DAMAGE G_GetWeaponDamage( WP_THOMPSON ) // JPW
 #define STEN_SPREAD     G_GetWeaponSpread( WP_STEN )
@@ -1821,7 +1821,7 @@ void FireWeapon( gentity_t *ent ) {
 	case WP_STEN:
 		Bullet_Fire( ent, STEN_SPREAD * aimSpreadScale, STEN_DAMAGE );
 		break;
-	case WP_MP40:
+	case WP_M16:
 		Bullet_Fire( ent, MP40_SPREAD * aimSpreadScale, MP40_DAMAGE );
 		break;
 	case WP_THOMPSON:

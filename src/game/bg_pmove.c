@@ -2596,7 +2596,7 @@ void PM_AdjustAimSpreadScale( void ) {
 	case WP_GARAND:
 		wpnScale = 0.5f;
 		break;
-	case WP_MP40:
+	case WP_M16:
 		wpnScale = 0.5f;        // 2 handed, but not as long as mauser, so harder to keep aim
 		break;
 	case WP_FG42:
@@ -3126,7 +3126,7 @@ default:
 	}
 	break;
 	// machineguns should continue the anim, rather than start each fire
-case WP_MP40:
+case WP_M16:
 case WP_THOMPSON:
 case WP_STEN:
 case WP_VENOM:
@@ -3311,7 +3311,7 @@ case WP_DYNAMITE:
 	break;
 
 case WP_VENOM:
-case WP_MP40:
+case WP_M16:
 case WP_THOMPSON:
 case WP_STEN:
 	PM_ContinueWeaponAnim( weapattackanim );
@@ -3436,7 +3436,7 @@ aimSpreadScaleAdd = 10;
 break;
 
 case WP_FG42:
-case WP_MP40:
+case WP_M16:
 case WP_THOMPSON:
 addTime = ammoTable[pm->ps->weapon].nextShotTime;
 aimSpreadScaleAdd = 15 + rand() % 10;       // (SA) new values for DM

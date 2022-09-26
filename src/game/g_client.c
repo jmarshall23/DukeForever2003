@@ -1564,8 +1564,8 @@ void ClientSpawn( gentity_t *ent ) {
 */
 	//----(SA) no longer giving the player any default stuff
 
-//	COM_BitSet( client->ps.weapons, WP_MP40 );
-//	client->ps.ammo[BG_FindAmmoForWeapon(WP_MP40)] = 100;
+//	COM_BitSet( client->ps.weapons, WP_M16 );
+//	client->ps.ammo[BG_FindAmmoForWeapon(WP_M16)] = 100;
 
 //	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
 //		client->ps.ammo[BG_FindAmmoForWeapon(WP_M1911)] = 50;
@@ -1599,7 +1599,7 @@ void ClientSpawn( gentity_t *ent ) {
 		trap_LinkEntity( ent );
 
 		// force the base weapon up
-//		client->ps.weapon = WP_MP40;
+//		client->ps.weapon = WP_M16;
 //		client->ps.weaponstate = WEAPON_READY;
 
 	}

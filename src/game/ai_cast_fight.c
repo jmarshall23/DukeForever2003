@@ -1614,7 +1614,7 @@ qboolean AICast_RandomTriggerRelease( cast_state_t *cs ) {
 	}
 
 	switch ( cs->weaponNum ) {
-	case WP_MP40:
+	case WP_M16:
 	case WP_VENOM:
 	case WP_FG42SCOPE:
 	case WP_FG42:
@@ -1864,7 +1864,7 @@ float AICast_GetWeaponSoundRange( int weapon ) {
 		// TODO: case for each monster
 		return 1000;
 
-	case    WP_MP40:
+	case    WP_M16:
 	case    WP_THOMPSON:
 		return 1000;
 
