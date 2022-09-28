@@ -108,6 +108,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="bink\binkw32.pdb" />
     <None Include="ref_trin.def" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +186,7 @@
     <ClCompile Include="..\win32\win_qgl.c" />
     <ClCompile Include="tr_animation.c" />
     <ClCompile Include="tr_backend.c" />
+    <ClCompile Include="tr_bink.c" />
     <ClCompile Include="tr_bsp.c" />
     <ClCompile Include="tr_cmds.c" />
     <ClCompile Include="tr_cmesh.c" />
@@ -284,6 +286,8 @@
     <ClInclude Include="..\win32\resource.h" />
     <ClInclude Include="..\win32\win_local.h" />
     <ClInclude Include="anorms256.h" />
+    <ClInclude Include="bink\bink.h" />
+    <ClInclude Include="bink\radbase.h" />
     <ClInclude Include="qgl.h" />
     <ClInclude Include="tr_local.h" />
     <ClInclude Include="tr_public.h" />

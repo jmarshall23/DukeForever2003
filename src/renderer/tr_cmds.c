@@ -359,7 +359,7 @@ void RE_BeginFrame( stereoFrame_t stereoFrame ) {
 	for (i = 0; i < tr.numImages; i++) {
 		if (tr.images[i]->video.Bink)
 		{
-			
+			R_ImageForVideoTime(&tr.images[i]->video, qfalse, )
 		}
 	}
 // jmarshall end

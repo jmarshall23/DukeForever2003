@@ -28,10 +28,16 @@
       <UniqueIdentifier>{164b48f2-b3c6-4577-bad5-15dc901a1472}</UniqueIdentifier>
       <Extensions>.h</Extensions>
     </Filter>
+    <Filter Include="Source Files\bink">
+      <UniqueIdentifier>{bf57a7f1-a553-44aa-b2cd-0611d7c7dac7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ref_trin.def">
       <Filter>Source Files</Filter>
+    </None>
+    <None Include="bink\binkw32.pdb">
+      <Filter>Source Files\bink</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +332,9 @@
     <ClCompile Include="tr_mdr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tr_bink.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="anorms256.h">
@@ -558,6 +567,12 @@
     </ClInclude>
     <ClInclude Include="..\ft2\tttypes.h">
       <Filter>FreeType2\Header Files No. 2</Filter>
+    </ClInclude>
+    <ClInclude Include="bink\bink.h">
+      <Filter>Source Files\bink</Filter>
+    </ClInclude>
+    <ClInclude Include="bink\radbase.h">
+      <Filter>Source Files\bink</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
