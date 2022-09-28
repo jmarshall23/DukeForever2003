@@ -36,6 +36,7 @@ If you have questions concerning this license or the applicable additional terms
 #include "../qcommon/qcommon.h"
 #include "tr_public.h"
 #include "qgl.h"
+#include "bink/bink.h"
 
 #define GL_INDEX_TYPE       GL_UNSIGNED_INT
 typedef unsigned int glIndex_t;
@@ -85,6 +86,12 @@ typedef struct {
 	float modelMatrix[16];
 } orientationr_t;
 
+typedef struct video_s {
+	HBINK Bink;
+	byte* video_buffer;
+	qboolean isVideoDone;
+} video_t;
+
 typedef struct image_s {
 	char imgName[MAX_QPATH];            // game path, including extension
 	int width, height;                      // source image
@@ -103,6 +110,8 @@ typedef struct image_s {
 	int wrapClampMode;              // GL_CLAMP or GL_REPEAT
 
 	int hash;           // for fast building of the backupHash
+
+	video_t	video;
 
 	struct image_s* next;
 } image_t;
@@ -1046,7 +1055,6 @@ typedef struct {
 
 	// RF, temp var used while parsing shader only
 	int allowCompress;
-
 } trGlobals_t;
 
 extern backEndState_t backEnd;
@@ -1828,6 +1836,13 @@ void R_AddMDCSurfaces( trRefEntity_t *ent );
 
 void R_LatLongToNormal( vec3_t outNormal, short latLong );
 
+//
+// Bink Video
+//
+
+qboolean R_OpenVideo(const char* fileName, video_t* video);
+qboolean R_ImageForVideoTime(video_t* video, qboolean isLooping, int millisecond);
+void R_CloseVideo(video_t* video);
 
 /*
 ============================================================

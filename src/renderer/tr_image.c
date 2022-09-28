@@ -1869,7 +1869,7 @@ Loads any of the supported image types into a cannonical
 32 bit format.
 =================
 */
-void R_LoadImage( const char *name, byte **pic, int *width, int *height ) {
+qboolean R_LoadImage( const char *name, byte **pic, int *width, int *height ) {
 	int len;
 
 	*pic = NULL;
@@ -1878,7 +1878,7 @@ void R_LoadImage( const char *name, byte **pic, int *width, int *height ) {
 
 	len = strlen( name );
 	if ( len < 5 ) {
-		return;
+		return qfalse;
 	}
 
 	if ( !Q_stricmp( name + len - 4, ".tga" ) ) {
@@ -1899,6 +1899,12 @@ void R_LoadImage( const char *name, byte **pic, int *width, int *height ) {
 	} else if ( !Q_stricmp( name + len - 4, ".jpg" ) ) {
 		LoadJPG( name, pic, width, height );
 	}
+
+	if (pic) {
+		return qtrue;
+	}
+
+	return qfalse;
 }
 
 
@@ -1964,31 +1970,22 @@ image_t *R_FindImageFileExt( const char *name, qboolean mipmap, qboolean allowPi
 	//
 	// load the pic from disk
 	//
-	R_LoadImage( name, &pic, &width, &height );
-	if ( pic == NULL ) {                                    // if we dont get a successful load
-// RF, no need to check uppercase on win32 systems
-// TTimo: Duane changed to _DEBUG in all cases
-// I'd still want that code in the release builds on linux
-// (possibly for mod authors)
-// /me maintained off for win32, using otherwise but printing diagnostics as developer
-#if !defined( _WIN32 )
-		char altname[MAX_QPATH];                            // copy the name
-		int len;                                          //
-		strcpy( altname, name );                          //
-		len = strlen( altname );                          //
-		altname[len - 3] = toupper( altname[len - 3] );   // and try upper case extension for unix systems
-		altname[len - 2] = toupper( altname[len - 2] );   //
-		altname[len - 1] = toupper( altname[len - 1] );   //
-		ri.Printf( PRINT_DEVELOPER, "trying %s...", altname );
-		R_LoadImage( altname, &pic, &width, &height );      //
-		if ( pic == NULL ) {                              // if that fails
-			ri.Printf( PRINT_DEVELOPER, "no\n" );
-			return NULL;                                  // bail
-		}
-		ri.Printf( PRINT_DEVELOPER, "yes\n" );
-#else
-		return NULL;
-#endif
+	int len = strlen(name);
+	qboolean isLoaded = qfalse;
+	if (!Q_stricmp(name + len - 4, ".bik")) {
+		isLoaded = R_OpenVideo(name, &image->video);
+		width = image->video.Bink->Width;
+		height = image->video.Bink->Height;
+		mipmap = qfalse;
+		allowPicmip = qfalse;
+		characterMIP = qfalse;
+	}
+	else {
+		isLoaded = R_LoadImage(name, &pic, &width, &height);
+	}
+
+	if ( !isLoaded) {                                    // if we dont get a successful load
+		return qfalse;
 	}
 
 	image = R_CreateImageExt( ( char * ) name, pic, width, height, mipmap, allowPicmip, characterMIP, glWrapClampMode );
@@ -2325,6 +2322,11 @@ void R_DeleteTextures( void ) {
 
 	for ( i = 0; i < tr.numImages ; i++ ) {
 		qglDeleteTextures( 1, &tr.images[i]->texnum );
+
+		if (tr.images[i]->video.Bink)
+		{
+			R_CloseVideo(tr.images[i]->video.Bink);
+		}
 	}
 	memset( tr.images, 0, sizeof( tr.images ) );
 	// Ridah
@@ -3401,6 +3403,11 @@ void R_PurgeImage( image_t *image ) {
 	texnumImages[image->texnum - 1024] = NULL;
 
 	qglDeleteTextures( 1, &image->texnum );
+
+	if (image->video.Bink)
+	{
+		R_CloseVideo(image->video.Bink);
+	}
 
 	R_CacheImageFree( image );
 

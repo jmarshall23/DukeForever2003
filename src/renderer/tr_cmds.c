@@ -345,6 +345,7 @@ for each RE_EndFrame
 */
 void RE_BeginFrame( stereoFrame_t stereoFrame ) {
 	drawBufferCommand_t *cmd;
+	int i;
 
 	if ( !tr.registered ) {
 		return;
@@ -353,6 +354,15 @@ void RE_BeginFrame( stereoFrame_t stereoFrame ) {
 
 	tr.frameCount++;
 	tr.frameSceneNum = 0;
+
+// jmarshall - update all of the bink videos.
+	for (i = 0; i < tr.numImages; i++) {
+		if (tr.images[i]->video.Bink)
+		{
+			
+		}
+	}
+// jmarshall end
 
 	//
 	// do overdraw measurement
