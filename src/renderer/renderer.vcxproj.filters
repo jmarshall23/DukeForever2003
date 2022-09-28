@@ -575,4 +575,9 @@
       <Filter>Source Files\bink</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="bink\binkw32.lib">
+      <Filter>Source Files\bink</Filter>
+    </Library>
+  </ItemGroup>
 </Project>

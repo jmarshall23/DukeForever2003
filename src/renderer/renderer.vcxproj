@@ -292,6 +292,9 @@
     <ClInclude Include="tr_local.h" />
     <ClInclude Include="tr_public.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="bink\binkw32.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
