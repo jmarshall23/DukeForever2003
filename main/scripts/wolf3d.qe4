@@ -1,0 +1,13 @@
+{
+"brush_primit" "0"
+"bsp_nolight " "!q3map2 -game wolf -fs_basepath C:\Projects\DukeForever $ && !q3map2 -game wolf -fs_basepath C:\Projects\DukeForever -vis $ &"
+"bsp_FullVis " "!q3map2 -game wolf -fs_basepath C:\Projects\DukeForever $ && !q3map2 -game wolf -fs_basepath C:\Projects\DukeForever -vis $ && !q3map2 -game wolf -fs_basepath C:\Projects\DukeForever -light -bounce 2 $"
+"bsp_FastVis " "!q3map2 -game wolf -fs_basepath C:\Projects\DukeForever $ && !q3map2 -game wolf -fs_basepath C:\Projects\DukeForever -vis -fast $ && !q3map2 -game wolf -fs_basepath C:\Projects\DukeForever -light $"
+"autosave" "e:\autosave.map"
+"texturepath" "C:\Projects\DukeForever\main\textures"
+"entitypath" "C:\Projects\DukeForever\main\scripts\wolf.def"
+"mapspath" ""
+"remotebasepath" "C:\Projects\DukeForever\main"
+"rshcmd" "C:\Projects\DukeForever\bin_nt\"
+"basepath" "C:\Projects\DukeForever\main"
+}
