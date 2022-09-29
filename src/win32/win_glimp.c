@@ -566,7 +566,7 @@ static qboolean GLW_CreateWindow( const char *drivername, int width, int height,
 		r.right  = width;
 		r.bottom = height;
 
-		if ( cdsFullscreen || !Q_stricmp( _3DFX_DRIVER_NAME, drivername ) ) {
+		if ( cdsFullscreen ) {
 			exstyle = WS_EX_TOPMOST;
 			stylebits = WS_POPUP | WS_VISIBLE | WS_SYSMENU;
 		} else
@@ -579,7 +579,7 @@ static qboolean GLW_CreateWindow( const char *drivername, int width, int height,
 		w = r.right - r.left;
 		h = r.bottom - r.top;
 
-		if ( cdsFullscreen || !Q_stricmp( _3DFX_DRIVER_NAME, drivername ) ) {
+		if ( cdsFullscreen ) {
 			x = 0;
 			y = 0;
 		} else
@@ -1152,10 +1152,6 @@ static qboolean GLW_LoadOpenGL( const char *drivername ) {
 		glConfig.driverType = GLDRV_STANDALONE;
 
 		ri.Printf( PRINT_ALL, "...assuming '%s' is a standalone driver\n", drivername );
-
-		if ( strstr( buffer, _3DFX_DRIVER_NAME ) ) {
-			glConfig.driverType = GLDRV_VOODOO;
-		}
 	}
 
 	// disable the 3Dfx splash screen
@@ -1242,69 +1238,12 @@ void GLimp_EndFrame( void ) {
 
 
 extern qboolean GlideIsValid( void );
-static void GLW_StartOpenGL( void ) {
-	qboolean attemptedOpenGL32 = qfalse;
-	qboolean attempted3Dfx = qfalse;
-
-	// this bit will pre-detect voodoo gl and if appropriate
-	// set the r_glDriver to point at one of the wicked 3D drivers
-	if ( !r_glIgnoreWicked3D->integer && GlideIsValid() ) {
-		const char *vid = WICKED3D_V5_DRIVER_NAME;
-		HMODULE handle;
-		handle = LoadLibrary( vid );
-		if ( handle == 0 ) {
-			vid = WICKED3D_V3_DRIVER_NAME;
-			handle = LoadLibrary( vid );
-		}
-
-		if ( handle ) {
-			Cvar_Set( "r_glDriver", vid );
-			FreeLibrary( handle );
-		}
-	}
-
-	if ( r_glIgnoreWicked3D->integer ) {
-		Cvar_Set( "r_glDriver", OPENGL_DRIVER_NAME );
-	}
-
+static void GLW_StartOpenGL( void ) {	
 	//
 	// load and initialize the specific OpenGL driver
 	//
 	if ( !GLW_LoadOpenGL( r_glDriver->string ) ) {
-		if ( !Q_stricmp( r_glDriver->string, OPENGL_DRIVER_NAME ) ) {
-			attemptedOpenGL32 = qtrue;
-		} else if ( !Q_stricmp( r_glDriver->string, _3DFX_DRIVER_NAME ) )   {
-			attempted3Dfx = qtrue;
-		}
-
-		if ( !attempted3Dfx ) {
-			attempted3Dfx = qtrue;
-			if ( GLW_LoadOpenGL( _3DFX_DRIVER_NAME ) ) {
-				ri.Cvar_Set( "r_glDriver", _3DFX_DRIVER_NAME );
-				r_glDriver->modified = qfalse;
-			} else
-			{
-				if ( !attemptedOpenGL32 ) {
-					if ( !GLW_LoadOpenGL( OPENGL_DRIVER_NAME ) ) {
-						ri.Error( ERR_FATAL, "GLW_StartOpenGL() - could not load OpenGL subsystem\n" );
-					}
-					ri.Cvar_Set( "r_glDriver", OPENGL_DRIVER_NAME );
-					r_glDriver->modified = qfalse;
-				} else
-				{
-					ri.Error( ERR_FATAL, "GLW_StartOpenGL() - could not load OpenGL subsystem\n" );
-				}
-			}
-		} else if ( !attemptedOpenGL32 )   {
-			attemptedOpenGL32 = qtrue;
-			if ( GLW_LoadOpenGL( OPENGL_DRIVER_NAME ) ) {
-				ri.Cvar_Set( "r_glDriver", OPENGL_DRIVER_NAME );
-				r_glDriver->modified = qfalse;
-			} else
-			{
-				ri.Error( ERR_FATAL, "GLW_StartOpenGL() - could not load OpenGL subsystem\n" );
-			}
-		}
+		ri.Error(ERR_FATAL, "GLW_StartOpenGL() - could not load OpenGL subsystem\n");
 	}
 }
 

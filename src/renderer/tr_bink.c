@@ -9,7 +9,7 @@ R_OpenVideo
 ================
 */
 qboolean R_OpenVideo(const char* fileName, video_t *video) {
-	video->Bink = BinkOpen(fileName, 0);
+	video->Bink = BinkOpen(va("%s/%s", BASEGAME,fileName), 0);
 	if (!video->Bink)
 	{
 		ri.Printf(PRINT_WARNING, "Failed to open video %s\n", fileName);
@@ -19,6 +19,18 @@ qboolean R_OpenVideo(const char* fileName, video_t *video) {
 	video->video_buffer = ri.Hunk_AllocateTempMemory(video->Bink->Width * video->Bink->Height * 4);
 
 	return qtrue;
+}
+
+/*
+================
+R_GetVideoInfo
+================
+*/
+void R_GetVideoInfo(video_t* video, int* width, int* height, qboolean *isDonePlaying) {
+	*width = video->Bink->Width;
+	*height = video->Bink->Height;
+
+	*isDonePlaying = (video->Bink->FrameNum == video->Bink->Frames);
 }
 
 /*

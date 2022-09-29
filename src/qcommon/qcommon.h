@@ -1069,4 +1069,6 @@ extern huffman_t clientHuffTables;
 #define CL_ENCODE_START     12
 #define CL_DECODE_START     4
 
+void CIN_Init(void);
+
 #endif // _QCOMMON_H_

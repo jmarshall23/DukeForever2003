@@ -31,12 +31,12 @@ If you have questions concerning this license or the applicable additional terms
 #ifndef TR_LOCAL_H
 #define TR_LOCAL_H
 
+#include "bink/bink.h"
 #include "../game/q_shared.h"
 #include "../qcommon/qfiles.h"
 #include "../qcommon/qcommon.h"
 #include "tr_public.h"
 #include "qgl.h"
-#include "bink/bink.h"
 
 #define GL_INDEX_TYPE       GL_UNSIGNED_INT
 typedef unsigned int glIndex_t;
@@ -85,12 +85,6 @@ typedef struct {
 	vec3_t viewOrigin;          // viewParms->or.origin in local coordinates
 	float modelMatrix[16];
 } orientationr_t;
-
-typedef struct video_s {
-	HBINK Bink;
-	byte* video_buffer;
-	qboolean isVideoDone;
-} video_t;
 
 typedef struct image_s {
 	char imgName[MAX_QPATH];            // game path, including extension

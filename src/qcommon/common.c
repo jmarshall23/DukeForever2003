@@ -1976,6 +1976,8 @@ void Com_Init( char *commandLine ) {
 	Swap_Init();
 	Cbuf_Init();
 
+	CIN_Init();
+
 	Com_InitZoneMemory();
 	Cmd_Init();
 
@@ -2118,7 +2120,7 @@ void Com_Init( char *commandLine ) {
 			PlayIntroMovies();
 		#endif
 			//Cvar_Set( com_introPlayed->name, "1" );		//----(SA)	force this to get played every time (but leave cvar for override)
-			Cbuf_AddText( "cinematic wolfintro.RoQ 3\n" );
+			Cbuf_AddText( "cinematic videos/intro.bik\n" );
 			//Cvar_Set( "nextmap", "cinematic wolfintro.RoQ" );
 		}
 	}
