@@ -2913,14 +2913,6 @@ qboolean QGL_Init( const char *dllname ) {
 
 	ri.Printf( PRINT_ALL, "...initializing QGL\n" );
 
-	// NOTE: this assumes that 'dllname' is lower case (and it should be)!
-	if ( strstr( dllname, _3DFX_DRIVER_NAME ) ) {
-		if ( !GlideIsValid() ) {
-			ri.Printf( PRINT_ALL, "...WARNING: missing Glide installation, assuming no 3Dfx available\n" );
-			return qfalse;
-		}
-	}
-
 	if ( dllname[0] != '!' && strstr( "dllname", ".dll" ) == NULL ) {
 		Com_sprintf( libName, sizeof( libName ), "%s\\%s", systemDir, dllname );
 	} else

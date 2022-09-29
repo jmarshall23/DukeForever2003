@@ -1,7 +1,11 @@
-﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  ui_syscalls.c
+  ui_shared.c
   ui_players.c
   ui_main.c
+  ui_gameinfo.c
+  ui_atoms.c
   Generating Code...
-C:\Program Files\Microsoft Visual Studio\2022\Preview\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1391,5): warning MSB8012: TargetPath(C:\Projects\DukeForever\src\ui\Debug\ui.dll) does not match the Linker's OutputFile property value (C:\Projects\DukeForever\uix86.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
-C:\Program Files\Microsoft Visual Studio\2022\Preview\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1393,5): warning MSB8012: TargetName(ui) does not match the Linker's OutputFile property value (uix86). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
-  ui.vcxproj -> C:\Projects\DukeForever\src\ui\Debug\ui.dll
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1371,5): warning MSB8012: TargetPath(D:\DukeForever\src\ui\Debug\ui.dll) does not match the Linker's OutputFile property value (D:\DukeForever\uix86.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1373,5): warning MSB8012: TargetName(ui) does not match the Linker's OutputFile property value (uix86). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+  ui.vcxproj -> D:\DukeForever\src\ui\Debug\ui.dll

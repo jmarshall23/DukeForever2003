@@ -1900,7 +1900,7 @@ qboolean R_LoadImage( const char *name, byte **pic, int *width, int *height ) {
 		LoadJPG( name, pic, width, height );
 	}
 
-	if (pic) {
+	if (*pic != NULL) {
 		return qtrue;
 	}
 

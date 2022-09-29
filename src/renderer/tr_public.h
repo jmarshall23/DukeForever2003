@@ -174,6 +174,10 @@ typedef struct {
 
 } refimport_t;
 
+qboolean R_OpenVideo(const char* fileName, video_t* video);
+qboolean R_ImageForVideoTime(video_t* video, qboolean isLooping, int millisecond);
+void R_CloseVideo(video_t* video);
+void R_GetVideoInfo(video_t* video, int* width, int* height, qboolean* isDonePlaying);
 
 // this is the only function actually exported at the linker level
 // If the module can't init to a valid rendering state, NULL will be
