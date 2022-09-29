@@ -1956,7 +1956,10 @@ Com_Init
 =================
 */
 void Com_Init( char *commandLine ) {
+	qboolean commandlineHasWarp;
 	char    *s;
+
+	commandlineHasWarp = strstr(commandLine, "spdevmap") || strstr(commandLine, "devmap") != NULL;
 
 	Com_Printf( "%s %s %s\n", Q3_VERSION, CPUSTRING, __DATE__ );
 
@@ -2114,7 +2117,7 @@ void Com_Init( char *commandLine ) {
 
 	if ( !com_dedicated->integer ) {
 		//Cbuf_AddText ("cinematic gmlogo.RoQ\n");
-		if ( !com_introPlayed->integer ) {
+		if ( !com_introPlayed->integer && !commandlineHasWarp) {
 		#ifdef __MACOS__
 			extern void PlayIntroMovies( void );
 			PlayIntroMovies();
