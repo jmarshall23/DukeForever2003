@@ -118,6 +118,7 @@ SCR_DrawCinematic
 */
 void CIN_DrawCinematic( int handle ) {
 	int x, y, w, h;  //, barheight;
+	int vidwidth, vidheight;
 	byte    *buf; 
 	qboolean isDone;
 
@@ -129,6 +130,8 @@ void CIN_DrawCinematic( int handle ) {
 	x = 0;
 	y = 0;	
 	R_GetVideoInfo(&video, &w, &h, &isDone);
+	vidwidth = w;
+	vidheight = h;
 	SCR_AdjustFrom640( &x, &y, &w, &h );
 
 	if (isDone)
@@ -137,7 +140,7 @@ void CIN_DrawCinematic( int handle ) {
 		return;
 	}
 
-	re.DrawStretchRaw(x, y, w, h, w, h, video.video_buffer, 0, qfalse);
+	re.DrawStretchRaw(x, y, w, h, vidwidth, vidheight, video.video_buffer, 0, qfalse);
 }
 
 /*

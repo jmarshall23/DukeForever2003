@@ -381,7 +381,7 @@ typedef struct vidmode_s
 vidmode_t r_vidModes[] =
 {
 	{ "Mode  0: 1280x720",       1280,    720,    1 },
-	{ "Mode  1: 1920x1080",      1290,    1080,    1 }
+	{ "Mode  1: 1920x1080",      1920,    1080,    1 }
 };
 static int s_numVidModes = ( sizeof( r_vidModes ) / sizeof( r_vidModes[0] ) );
 
