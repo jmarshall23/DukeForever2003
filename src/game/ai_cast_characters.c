@@ -1503,5 +1503,8 @@ SP_ai_soldier
 ============
 */
 void SP_ai_grunt_edf2( gentity_t *ent ) {
+	if (g_noAi.integer)
+		return;
+
 	AICast_DelayedSpawnCast( ent, AICHAR_GRUNT_EDF2);
 }

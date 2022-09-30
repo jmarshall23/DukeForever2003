@@ -58,6 +58,8 @@ vmCvar_t g_gametype;
 vmCvar_t g_gameskill;
 // done
 
+vmCvar_t g_noAi;
+
 vmCvar_t g_reloading;       //----(SA)	added
 
 vmCvar_t g_dmflags;
@@ -158,6 +160,8 @@ cvarTable_t gameCvarTable[] = {
 	// done
 
 	{ &g_reloading, "g_reloading", "0", CVAR_ROM },   //----(SA)	added
+
+	{ &g_noAi, "g_noAi", "0", CVAR_CHEAT },
 
 // JPW NERVE multiplayer stuffs
 	{ &g_redlimbotime, "g_redlimbotime", "30000", CVAR_SERVERINFO | CVAR_LATCH, 0, qfalse },
