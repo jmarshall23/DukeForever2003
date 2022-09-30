@@ -131,14 +131,14 @@ static void CG_LoadHud_f( void ) {
 	String_Init();
 	Menu_Reset();
 
-	trap_Cvar_VariableStringBuffer( "cg_hudFiles", buff, sizeof( buff ) );
-	hudSet = buff;
-	if ( hudSet[0] == '\0' ) {
-		hudSet = "ui/hud.txt";
-	}
-
-	CG_LoadMenus( hudSet );
-	menuScoreboard = NULL;
+	//trap_Cvar_VariableStringBuffer( "cg_hudFiles", buff, sizeof( buff ) );
+	//hudSet = buff;
+	//if ( hudSet[0] == '\0' ) {
+	//	hudSet = "ui/hud.txt";
+	//}
+	//
+	//CG_LoadMenus( hudSet );
+	//menuScoreboard = NULL;
 }
 
 // TTimo: defined but not used

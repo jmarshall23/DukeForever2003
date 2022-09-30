@@ -459,7 +459,7 @@ void CG_DrawStringExt2( int x, int y, const char *string, const float *setColor,
 			}
 			CG_DrawChar2( xx + 2, y + 2, charWidth, charHeight, *s );
 			cnt++;
-			xx += charWidth;
+			xx += charWidth * 0.75f;
 			s++;
 		}
 	}
@@ -480,7 +480,7 @@ void CG_DrawStringExt2( int x, int y, const char *string, const float *setColor,
 			continue;
 		}
 		CG_DrawChar2( xx, y, charWidth, charHeight, *s );
-		xx += charWidth;
+		xx += charWidth * 0.75f;
 		cnt++;
 		s++;
 	}
@@ -632,7 +632,7 @@ void CG_DrawBigString( int x, int y, const char *s, float alpha ) {
 	color[0] = color[1] = color[2] = 1.0;
 	color[3] = alpha;
 	//CG_DrawStringExt( x, y, s, color, qfalse, qtrue, BIGCHAR_WIDTH, BIGCHAR_HEIGHT, 0 );
-	CG_DrawStringExt2( x, y, s, color, qfalse, qtrue, BIGCHAR_WIDTH, BIGCHAR_HEIGHT, 0 );
+	CG_DrawStringExt2( x, y, s, color, qfalse, qtrue, BIGCHAR_WIDTH * 2, BIGCHAR_HEIGHT * 2, 0 );
 }
 
 void CG_DrawBigStringColor( int x, int y, const char *s, vec4_t color ) {

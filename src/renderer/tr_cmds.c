@@ -268,6 +268,25 @@ void    RE_SetColor( const float *rgba ) {
 	cmd->color[3] = rgba[3];
 }
 
+/*
+=============
+RE_GetShaderStageInfo
+=============
+*/
+qboolean RE_GetShaderStageInfo(qhandle_t hShader, int stage, int* width, int* height) {
+	shader_t* shader;
+	textureBundle_t* bundle;
+
+	shader = R_GetShaderByHandle(hShader);
+	if (shader == NULL) {
+		return qfalse;
+	}
+
+	*width = shader->stages[stage]->bundle[0].image[0]->width;
+	*height = shader->stages[stage]->bundle[0].image[0]->height;
+
+	return qtrue;
+}
 
 /*
 =============

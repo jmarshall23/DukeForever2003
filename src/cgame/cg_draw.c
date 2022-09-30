@@ -3343,7 +3343,9 @@ CG_Draw2D
 =================
 */
 static void CG_Draw2D( void ) {
-
+#if 1
+	CG_DrawDukeHud();
+#else
 	// if we are taking a levelshot for the menu, don't draw anything
 	if ( cg.levelShot ) {
 		return;
@@ -3419,6 +3421,7 @@ static void CG_Draw2D( void ) {
 
 	// Ridah, draw flash blends now
 	CG_DrawFlashBlend();
+#endif
 }
 
 /*

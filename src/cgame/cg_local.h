@@ -2462,3 +2462,13 @@ void        CG_FreeCamera( int camNum );
 void CG_StartShakeCamera( float p, int duration, vec3_t src, float radius );
 
 qboolean    trap_GetModelInfo( int clientNum, char *modelName, animModelInfo_t **modelInfo );
+qboolean trap_GetShaderStageInfo(qhandle_t hShader, int stage, int* width, int* height);
+
+void CG_InitDukeHud(void);
+void CG_DrawDukeHud(void);
+
+void CG_DrawShader(int x, int y, qhandle_t shader);
+
+typedef struct {
+	qhandle_t			hudfin;
+} hudAssets_t;

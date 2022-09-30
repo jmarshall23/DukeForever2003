@@ -540,3 +540,7 @@ void trap_UI_ClosePopup( const char *arg0 ) {
 qboolean trap_GetModelInfo( int clientNum, char *modelName, animModelInfo_t **modelInfo ) {
 	return syscall( CG_GETMODELINFO, clientNum, modelName, modelInfo );
 }
+
+qboolean trap_GetShaderStageInfo(qhandle_t hShader, int stage, int* width, int* height) {
+	return syscall(CG_GETSHADERSTAGEINFO, hShader, stage, width, height);
+}

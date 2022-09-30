@@ -1896,4 +1896,6 @@ ANIMATED MODELS
 void R_MDRAddAnimSurfaces(trRefEntity_t* ent);
 void RB_MDRSurfaceAnim(mdrSurface_t* surface);
 
+qboolean RE_GetShaderStageInfo(qhandle_t hShader, int stage, int* width, int* height);
+
 #endif //TR_LOCAL_H (THIS MUST BE LAST!!)

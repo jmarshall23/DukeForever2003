@@ -116,6 +116,8 @@ typedef struct {
 	void ( *ZombieFXAddNewHit )( int entityNum, const vec3_t hitPos, const vec3_t hitDir );
 
 	qboolean ( *GetEntityToken )( char *buffer, int size );
+
+	qboolean (*GetShaderStageInfo)(qhandle_t hShader, int stage, int* width, int* height);
 } refexport_t;
 
 //
